@@ -1,11 +1,17 @@
+import { Container } from "@/components/container";
 import { Text } from "@/components/text";
 
 export default function Home() {
 	return (
-		<main className="container min-h-screen grid place-content-center">
-			<Text as="h1" variant="heading-6">
-				Example h1
+		<Container>
+			<Text as="h1" aling="center" variant={{
+				sm: "heading-3",
+				"2xl": "heading-5",
+				md: "heading-4"
+			}}>
+				Aprende con el politecnico Madre Rafela Ybarra
 			</Text>
-		</main>
+			<Text variant={"paragraph-lg"}>No se cansen de hacer el bien</Text>
+		</Container>
 	);
 }

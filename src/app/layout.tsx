@@ -1,6 +1,4 @@
 import { Providers } from "@/components/providers";
-import { Header } from "@/components/ui/Header";
-import { Footer } from "@/components/ui/Footer";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -22,18 +20,12 @@ export default function RootLayout({
 		<html lang="es-DO">
 			<body
 				className={cn(
-					"max-w-screen overflow-x-hidden min-h-screen",
+					"max-w-screen overflow-x-hidden",
 					inter.className,
 				)}
 			>
-				<header className="print:hidden relative min-w-screen h-28">
-					<div className="fixed z-40">
-						<Header />
-					</div>
-				</header>
 				<Providers>
 					{children}
-					<Footer />
 				</Providers>
 			</body>
 		</html>

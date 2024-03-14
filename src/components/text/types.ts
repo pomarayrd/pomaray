@@ -15,7 +15,7 @@ export const textVariants = {
 
 type Screens = "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
 type Variants = keyof typeof textVariants;
-type TextResponsive = Record<Screens, Variants>;
+type TextResponsive = Partial<Record<Screens, Variants>>;
 
 export type Variant = Variants | TextResponsive;
 
