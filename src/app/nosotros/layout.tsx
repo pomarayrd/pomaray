@@ -7,7 +7,7 @@ export default function AboutLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<main className="container mx-auto">
+		<main className="container mx-20">
 			<Breadcrumbs>
 				<BreadcrumbItem>Noticias</BreadcrumbItem>
 				<BreadcrumbItem>{"{news_title}"}</BreadcrumbItem>

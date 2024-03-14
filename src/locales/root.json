@@ -1,0 +1,132 @@
+{
+	"WEBSITE": {
+		"NAME": "Politécnico Madre Rafaela Ybarra",
+		"DESCRIPTION": "Descubre y enriquece tus conocimientos con la oferta educativa del Politécnico Madre Rafaela Ybarra.",
+		"CATEGORY": "Educación",
+		"MAIL": "soporte@pomaray.edu.do",
+		"TAGS": [
+			"educación",
+			"aprendizaje",
+			"tecnología",
+			"clases",
+			"formación",
+			"desarrollo académico",
+			"innovación educativa",
+			"politécnico"
+		],
+		"BANNER": "/images/banner/home.png"
+	},
+	"NAVBAR": {
+		"NAME": "POMARAY",
+		"SEE_NEWS": "Ver noticias",
+		"NOTIFICATION": {
+			"TEXT": "¡No te pierdas nuestro aniversario! %s",
+			"LINK_TEXT": "Ver invitación",
+			"LINK": "/invitacion"
+		},
+		"ITEMS": [
+			{
+				"TEXT": "Inicio",
+				"LINK": "/"
+			},
+			{
+				"TEXT": "Técnicas",
+				"LINK": "/tecnicas"
+			},
+			{
+				"TEXT": "Noticias",
+				"LINK": "/noticias"
+			},
+			{
+				"TEXT": "Anuario",
+				"LINK": "/anuario"
+			},
+			{
+				"TEXT": "Acerca de",
+				"SUB_ITEMS": [
+					{
+						"TEXT": "Nosotros",
+						"LINK": "/nosotros",
+						"DESCRIPTION": "Historia, misión, visión y valores del politécnico."
+					},
+					{
+						"TEXT": "Contacto",
+						"LINK": "/contacto",
+						"DESCRIPTION": "Conéctate con nosotros para cualquier pregunta, comentario o colaboración."
+					},
+					{
+						"TEXT": "Descargas",
+						"LINK": "/descargas",
+						"DESCRIPTION": "Documentos vitales y recursos del politécnico."
+					},
+					{
+						"TEXT": "Contribudores",
+						"LINK": "/contribudores",
+						"DESCRIPTION": "Grupo de desarrolladores de la aplicación del politécnico."
+					}
+				]
+			}
+		]
+	},
+	"NETWORKS": {
+		"INSTAGRAM": "http://instagram.com/",
+		"FACEBOOK": "http://facebook.com"
+	},
+	"FOOTER": [
+		{
+			"TITLE": "Nosotros",
+			"ELEMENTS": [
+				{
+					"TEXT": "Contacto",
+					"LINK": "/contacto"
+				},
+				{
+					"TEXT": "Historia",
+					"LINK": "/nosotros"
+				},
+				{
+					"TEXT": "Ubicación",
+					"LINK": "/#ubicacion"
+				},
+				{
+					"TEXT": "Técnicas",
+					"LINK": "/tecnicas"
+				}
+			]
+		},
+		{
+			"TITLE": "Sitio",
+			"ELEMENTS": [
+				{
+					"TEXT": "Página Principal",
+					"LINK": "/"
+				},
+				{
+					"TEXT": "Descargas",
+					"LINK": "/descargas"
+				},
+				{
+					"TEXT": "Noticias",
+					"LINK": "/noticias"
+				},
+				{
+					"TEXT": "Anuario",
+					"LINK": "/anuario"
+				}
+			]
+		},
+		{
+			"TITLE": "Legal",
+			"ELEMENTS": [
+				{
+					"TEXT": "Términos y Condiciones",
+					"LINK": "/terminos"
+				},
+				{
+					"TEXT": "Política de Privacidad",
+					"LINK": "/privacidad"
+				}
+			]
+		}
+	]
+}
