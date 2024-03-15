@@ -1,25 +1,27 @@
+import { Carousel } from "@/components/carousel";
 import { Container } from "@/components/container";
 import { Text } from "@/components/text";
+import locale from "@/locales/home.json"
 
 export default function Home() {
 	return (
 		<Container>
-			<section className="flex flex-col gap-8 justify-center items-center h-screen">
-				<div className="flex flex-col gap-5 max-w-[70ch]">
+			<Carousel className="flex flex-col gap-8 justify-center items-center h-screen" images={
+				locale.SEO.IMAGES
+			}>
+				<div className="flex flex-col gap-5 max-w-[70ch] text-white">
 					<Text
 						as="h1"
 						align="center"
 						size="heading-5"
-						className="text-primary"
 					>
-						Aprende con el Politecnico Madre Rafela Ybarra
+						{locale.SEO.TITLE}
 					</Text>
 					<Text align="center" size="paragraph-xl" className="italic">
-						No se cansen de hacer el bien
+						{locale.SEO.SLOGAN}
 					</Text>
 				</div>
-				<div>{"<Card/>"}</div>
-			</section>
+			</Carousel>
 		</Container>
 	);
 }

@@ -21,7 +21,7 @@ export default function RootLayout({
 		<html lang="es-DO">
 			<body
 				className={cn(
-					"max-w-screen overflow-x-hidden text-foreground bg-background",
+					"max-w-screen overflow-x-hidden text-foreground",
 					inter.className,
 				)}
 			>
