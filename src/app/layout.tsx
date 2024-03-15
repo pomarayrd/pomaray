@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { Providers } from "@/components/providers";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -20,12 +21,17 @@ export default function RootLayout({
 		<html lang="es-DO">
 			<body
 				className={cn(
-					"max-w-screen overflow-x-hidden",
+					"max-w-screen overflow-x-hidden text-foreground bg-background",
 					inter.className,
 				)}
 			>
+				<div className="text-center py-2 w-screen bg-primary text-background">
+					Example Notify
+				</div>
+
 				<Providers>
 					{children}
+					<Footer />
 				</Providers>
 			</body>
 		</html>

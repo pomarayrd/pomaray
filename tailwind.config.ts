@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
+import { withTV } from "tailwind-variants/dist/transformer.js";
 
 const config: Config = {
 	content: [
@@ -63,4 +64,4 @@ const config: Config = {
 		}),
 	],
 };
-export default config;
+export default withTV(config);

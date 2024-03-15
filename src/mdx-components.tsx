@@ -10,14 +10,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 			<Text
 				as="h1"
 				className={cn("text-primary", className)}
-				variant="heading-4"
+				size="heading-4"
 				{...props}
 			>
 				{children}
 			</Text>
 		),
 		h2: ({ children, ...props }) => (
-			<Text as="h2" variant="heading-3" {...props}>
+			<Text as="h2" size="heading-3" {...props}>
 				{children}
 			</Text>
 		),
@@ -25,7 +25,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 			<Text
 				as="h3"
 				className={cn("font-bold", className)}
-				variant="paragraph-xl"
+				size="paragraph-xl"
 				{...props}
 			>
 				{children}
@@ -35,14 +35,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 			<Text
 				as="h5"
 				className={cn("font-bold lea", className)}
-				variant="paragraph-lg"
+				size="paragraph-lg"
 				{...props}
 			>
 				{children}
 			</Text>
 		),
 		h4: ({ children, ...props }) => (
-			<Text as="h3" variant="heading-3" {...props}>
+			<Text as="h3" size="heading-3" {...props}>
 				{children}
 			</Text>
 		),
@@ -75,7 +75,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 					fontStyle: "italic",
 					opacity: 0.2,
 				}}
-				variant="label-xs"
+				size="label-xs"
 			>
 				{children}
 			</Text>
