@@ -17,7 +17,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 			</Text>
 		),
 		h2: ({ children, ...props }) => (
-			<Text as="h2" size="heading-3" {...props}>
+			<Text
+				as="h2"
+				size="heading-1"
+				className="text-primary font-extrabold text-5sm"
+				{...props}
+			>
 				{children}
 			</Text>
 		),
@@ -25,7 +30,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 			<Text
 				as="h3"
 				className={cn("font-bold", className)}
-				size="paragraph-xl"
+				size="paragraph-md"
 				{...props}
 			>
 				{children}

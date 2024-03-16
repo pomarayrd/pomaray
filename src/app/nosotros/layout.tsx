@@ -7,7 +7,7 @@ export default function AboutLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<Container>
+		<Container className="max-w-5xl">
 			<article>{children}</article>
 		</Container>
 	);

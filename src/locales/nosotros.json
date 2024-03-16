@@ -1,0 +1,72 @@
+{
+	"TITLE": "Politécnico Madre Rafaela Ybarra",
+	"SLOGAN": "\"No se cansen de hacer el bien\"",
+	"OBJETIVO_GENERAL": {
+		"TITLE": "Objetivo General",
+		"CONTENT": "Lograr la sinergia necesaria para que los temas de Ciencia, Tecnología, Innovación y los programas de posgrado, logren desarrollar su máximo potencial hacia dentro y fuera de la institución."
+	},
+	"MISION": {
+		"TITLE": "Misión",
+		"CONTENT": "Gestionamos de manera sistémica la formación técnica y profesional para impactar positivamente en el desarrollo socioeconómico de nuestra comunidad y del país."
+	},
+	"VISION": {
+		"TITLE": "Visión",
+		"CONTENT": "Ser reconocidos como líderes en la formación técnica y profesional, destacándonos por nuestra calidad educativa, innovación y contribución al progreso de la sociedad."
+	},
+	"LEGADO": {
+		"TITLE": "Un Legado de Compromiso y Transformación",
+		"CONTENT": [
+			"El Politécnico Madre Rafaela Ybarra, inaugurado con solemnidad el 14 de febrero de 1978, se enorgullece al conmemorar su 46 aniversario como un bastión educativo en la República Dominicana. Su origen se remonta a sus primeros días como una institución dirigida por monjas comprometidas con la educación y la formación integral de sus estudiantes.",
+			"A lo largo de su rica historia, el Politécnico ha experimentado una evolución significativa al pasar de ser una institución de carácter religioso a formar parte integral del Ministerio de Educación de la República Dominicana. Este cambio marcó un hito trascendental, consolidándose como un referente destacado en la educación técnica y profesional en el país.",
+			"La institución ha mantenido a lo largo de los años su firme compromiso con la excelencia académica y la formación de profesionales altamente capacitados. Su legado está impregnado de valores éticos y morales, reflejando la visión de su fundadora y el impacto positivo que ha tenido en la sociedad dominicana."
+		],
+		"IMAGES": [
+			"/assets/images/Nosotros1.jpg",
+			"/assets/images/Nosotros3.jpg",
+			"/assets/images/Nosotros4.jpg",
+			"/assets/images/Nosotros5.jpg",
+			"/assets/images/Nosotros6.jpg",
+			"/assets/images/Nosotros7.jpg"
+		]
+	},
+	"TECNICAS": {
+		"INTRODUCCION": "El Politécnico Madre Rafaela Ybarra ofrece una variedad de técnicas en áreas industriales y de tecnología para satisfacer las demandas del mercado laboral. Nuestras técnicas están diseñadas para proporcionar a los estudiantes las habilidades prácticas y teóricas necesarias para destacarse en sus campos respectivos.",
+		"TECNICAS": [
+			{
+				"NOMBRE": "Informática",
+				"URL": "https://pomaray.edu.do/tecnicas/daai",
+				"IMAGEN": "/assets/images/banner/informatica.png"
+			},
+			{
+				"NOMBRE": "Electricidad",
+				"URL": "https://pomaray.edu.do/tecnicas/electricidad",
+				"IMAGEN": "/assets/images/banner/electricidad.png"
+			},
+			{
+				"NOMBRE": "Electrónica",
+				"URL": "https://pomaray.edu.do/tecnicas/electronica",
+				"IMAGEN": "/assets/images/banner/electronica.png"
+			},
+			{
+				"NOMBRE": "Refrigeración",
+				"URL": "https://pomaray.edu.do/tecnicas/refrigeracion",
+				"IMAGEN": "/assets/images/banner/refrigeracion.png"
+			},
+			{
+				"NOMBRE": "Gastronomía",
+				"URL": "https://pomaray.edu.do/tecnicas/gastronomia",
+				"IMAGEN": "/assets/images/banner/gastronomia.png"
+			},
+			{
+				"NOMBRE": "Comercio y Mercadeo",
+				"URL": "https://pomaray.edu.do/tecnicas/comercio-mercadeo",
+				"IMAGEN": "/assets/images/banner/mercadeo.png"
+			},
+			{
+				"NOMBRE": "Gestión Administrativa y Tributaria",
+				"URL": "https://pomaray.edu.do/tecnicas/gestion-administrativa-tributaria",
+				"IMAGEN": "/assets/images/banner/contabilidad.png"
+			}
+		]
+	}
+}
