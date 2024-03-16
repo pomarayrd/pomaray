@@ -6,6 +6,11 @@
     animation: pulse 1.5s infinite;
 }
 
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
 @keyframes pulse {
     0% {
         transform: scale(0.9);

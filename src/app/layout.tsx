@@ -1,9 +1,13 @@
 import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import { Notify } from "@/components/notify";
 import { Providers } from "@/components/providers";
 import { cn } from "@/lib/utils";
+import { NavbarContent } from "@nextui-org/navbar";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -24,11 +28,10 @@ export default function RootLayout({
 					inter.className,
 				)}
 			>
-				<div className="text-center py-2 w-screen bg-primary text-background">
-					Example Notify
-				</div>
-
 				<Providers>
+					<Header>
+						<Notify />
+					</Header>
 					{children}
 					<Footer />
 				</Providers>

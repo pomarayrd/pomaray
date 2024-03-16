@@ -17,25 +17,20 @@
 		"BANNER": "assets/images/banner/home.png"
 	},
 	"NAVBAR": {
-		"NAME": "POMARAY",
-		"SEE_NEWS": "Ver noticias",
-		"NOTIFICATION": {
-			"TEXT": "¡No te pierdas nuestro aniversario! %s",
-			"LINK_TEXT": "Ver invitación",
-			"LINK": "/invitacion"
-		},
 		"ITEMS": [
 			{
 				"TEXT": "Inicio",
-				"LINK": "/"
-			},
-			{
-				"TEXT": "Técnicas",
-				"LINK": "/tecnicas"
+				"LINK": "/#ubicacion"
 			},
 			{
 				"TEXT": "Noticias",
-				"LINK": "/noticias"
+				"LINK": "/noticias",
+				"IMPORTANT": true
+			},
+			{
+				"TEXT": "Técnicas",
+				"LINK": "/tecnicas",
+				"IMPORTANT": true
 			},
 			{
 				"TEXT": "Anuario",

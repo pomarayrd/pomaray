@@ -6,10 +6,10 @@ const textVariant = tv({
 	base: "text-base",
 	variants: {
 		size: {
-			"heading-6": "font-black text-6xl",
-			"heading-5": "font-extrabold text-5xl",
-			"heading-4": "font-extrabold text-4xl",
-			"heading-3": "font-bold text-3xl",
+			"heading-6": "font-black text-6xl text-primary",
+			"heading-5": "font-extrabold text-5xl text-primary",
+			"heading-4": "font-extrabold text-4xl text-primary",
+			"heading-3": "font-bold text-3xl text-primary",
 			"paragraph-xs": "text-xs",
 			"paragraph-sm": "text-sm",
 			"paragraph-base": "text-base",

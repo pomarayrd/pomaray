@@ -1,11 +1,20 @@
 {
 	"SEO": {
 		"TITLE": "Apreden junto al Politecnica Madre Rafaela Ybarra",
-		"SLOGAN": "No te canses de hacer el bien",
-		"IMAGES": [
-			"assets/images/drone_1.jpg",
-			"assets/images/drone_2.jpg",
-			"assets/images/drone_4.jpg"
+		"SLOGAN": "No te canses de hacer el bien"
+	},
+	"SECTION3": {
+		"COLLAGE": [
+			{
+				"TITLE": "Vida Estudiantil",
+				"DESCRIPTION": "La vida estudiantil en nuestro centro es enriquecedora y llena de oportunidades para el crecimiento potencial y académico. Nuestros estudiantes disfrutan de una amplia variedad de actividades y recursos.",
+				"IMAGE": "https://th.bing.com/th/id/OIP.CjNGixK1detxfVl9iF2s7wHaFj?pid=ImgDet&rs=1"
+			},
+			{
+				"TITLE": "Red de Contactos Profesionales Sólida gracias al Politécnico",
+				"DESCRIPTION": "El amplio alcance del politécnico permite a los estudiantes conectarse con expertos de la industria y establecer relaciones valiosas que pueden beneficiarles durante toda su carrera.",
+				"IMAGE": "https://th.bing.com/th/id/OIP.R8wwROorsXVuV0tW_0FCKgHaE8?pid=ImgDet&rs=1"
+			}
 		]
 	}
 }

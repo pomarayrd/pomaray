@@ -8,11 +8,15 @@ const Footer = () => {
 
 	return (
 		<footer className="print:hidden shadow-xl border-t-2">
-			<div className="sm:flex-row flex flex-col justify-between mx-auto max-w-6xl gap-6 min-h-[10rem] sm:p-20 p-10">
+			<div className="sm:flex-row flex flex-col justify-between mx-auto max-w-7xl gap-6 min-h-[10rem] sm:p-20 p-10">
 				<div>
 					<div className="grid grid-cols-1 grid-flow-row place-content-center gap-6">
 						<div>
-							<Text as="h2" className="col-span-3 text-primary" size="heading-3">
+							<Text
+								as="h2"
+								className="col-span-3 text-primary"
+								size="heading-3"
+							>
 								POMARAY
 							</Text>
 							<Text as="small" className="col-span-3" size="label-sm">
