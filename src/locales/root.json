@@ -55,8 +55,8 @@
 						"DESCRIPTION": "Documentos vitales y recursos del politécnico."
 					},
 					{
-						"TEXT": "Contribudores",
-						"LINK": "/contribudores",
+						"TEXT": "Contribuidores",
+						"LINK": "/contribuidores",
 						"DESCRIPTION": "Grupo de desarrolladores de la aplicación del politécnico."
 					}
 				]
