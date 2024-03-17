@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { tv } from "tailwind-variants";
 
 const containerVariant = tv({
-	base: "mx-auto p-10 min-h-screen flex flex-col",
+	base: "mx-auto p-10 min-h-screen flex flex-col justify-center items-center",
 	variants: {
 		size: {
 			"7xl": "max-w-7xl",

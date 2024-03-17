@@ -1,9 +1,21 @@
-// https://nextjs.org/docs/app/building-your-application/authentication#setting-up-middleware
+import { getTokenUser } from "@/app/actions/auth";
+import { type NextRequest, NextResponse } from "next/server";
 
-import { NextResponse } from "next/server";
+const middleware = async (request: NextRequest) => {
+	try {
+		const currentUser = await getTokenUser();
+		if (!currentUser.results) {
+			throw new Error("Is not logged in");
+		}
 
-const middleware = () => {
-	return NextResponse.next();
+		return NextResponse.next();
+	} catch {
+		return NextResponse.redirect(new URL("/acceder", request.url));
+	}
 };
 
 export default middleware;
+
+export const config = {
+	matcher: ["/admin/:path*"],
+};

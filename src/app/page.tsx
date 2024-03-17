@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Home() {
 	return (
-		<Container size="7xl" className="flex flex-col gap-32">
+		<Container size="7xl" className="gap-32">
 			<section className="flex flex-col gap-8 flex-center min-h-[85vh]">
 				<div className="flex flex-col gap-5 max-w-[70ch] mt-20">
 					<Text as="h1" align="center" size="heading-5">
@@ -26,7 +26,7 @@ export default function Home() {
 							href="/card-1"
 							shadow="none"
 							radius="sm"
-							className=" bg-background shadow-sm  flex flex-col flex-center gap-4 w-[200px] h-[170px] text-center hover:opacity-55 transition-opacity cursor-pointer"
+							className="bg-background shadow-sm  flex flex-col flex-center gap-4 w-[200px] h-[170px] text-center hover:opacity-55 transition-opacity cursor-pointer"
 						>
 							<CloseIcon className="text-3xl text-primary" />
 							<p className="p-2">{"<Card/>"}</p>
@@ -50,7 +50,8 @@ export default function Home() {
 						loading="lazy"
 						className="aspect-video"
 						width={600}
-						src="/assets/imagen/nosotros/Nosotros2.jpg"
+						alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+						src="/assets/images/banner/home.png"
 					/>
 				</div>
 			</section>
@@ -99,7 +100,10 @@ export default function Home() {
 					))}
 				</div>
 			</section>
-			<section id="ubicacion" className="flex flex-col flex-center gap-9">
+			<section
+				id="ubicacion"
+				className="flex flex-col flex-center gap-9 w-full"
+			>
 				<Text as="h2" size="heading-4">
 					Lorem ipsum dolor sit.
 				</Text>

@@ -25,8 +25,19 @@ const config: Config = {
 				light: {
 					colors: {
 						background: "#ECEDEE",
-						focus: "#068bff",
-						primary: {
+						focus: {
+							DEFAULT: "#387040",
+							50: "#f4f9f4",
+							100: "#e5f3e7",
+							200: "#cce6cf",
+							300: "#a4d1aa",
+							400: "#74b47d",
+							500: "#50975a",
+							600: "#387040",
+							700: "#33623a",
+							800: "#2c4f31",
+							900: "#26412b",
+						},						primary: {
 							DEFAULT: "#387040",
 							50: "#f4f9f4",
 							100: "#e5f3e7",
@@ -52,6 +63,20 @@ const config: Config = {
 							800: "#085bc5",
 							900: "#0d4f9b",
 						},
+						danger: {
+							DEFAULT: "#dc2626",
+							50: '#fef2f2',
+							100: '#fee2e2',
+							200: '#fecaca',
+							300: '#fca5a5',
+							400: '#f87171',
+							500: '#ef4444',
+							600: '#dc2626',
+							700: '#b91c1c',
+							800: '#991b1b',
+							900: '#7f1d1d',
+						},
+						
 					},
 				},
 				dark: {

@@ -11,6 +11,7 @@ export default function Pomaray({ className, ...rest }: PomarayComponent) {
 			viewBox="0 0 1300.000000 1300.000000"
 			className={cn("aspect-square", className)}
 			{...rest}
+			width={30}
 		>
 			<g
 				transform="translate(0.000000,1536.000000) scale(0.100000,-0.100000)"
