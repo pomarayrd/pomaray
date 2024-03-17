@@ -1,5 +1,5 @@
 import { Text } from "@/components/text";
-import { Image, Link } from "@nextui-org/react";
+import { Divider, Image, Link } from "@nextui-org/react";
 import type { MDXComponents } from "mdx/types";
 import NextLink from "next/link";
 import { cn } from "./lib/utils";
@@ -17,20 +17,18 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 			</Text>
 		),
 		h2: ({ children, ...props }) => (
-			<Text
-				as="h2"
-				size="heading-1"
-				className="text-primary font-extrabold text-5sm"
-				{...props}
-			>
-				{children}
-			</Text>
+			<>
+				<Text as="h2" size="heading-3" {...props}>
+					{children}
+				</Text>
+				<Divider className="bg-primary" style={{ height: "1.3px" }} />
+			</>
 		),
 		h3: ({ children, className, ...props }) => (
 			<Text
 				as="h3"
 				className={cn("font-bold", className)}
-				size="paragraph-md"
+				size="paragraph-base"
 				{...props}
 			>
 				{children}

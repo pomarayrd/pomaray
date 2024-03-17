@@ -26,7 +26,7 @@ export default function Home() {
 							href="/card-1"
 							shadow="none"
 							radius="sm"
-							className="bg-background shadow-sm  flex flex-col flex-center gap-4 w-[200px] h-[170px] text-center hover:opacity-55 transition-opacity cursor-pointer"
+							className="bg-white shadow-sm  flex flex-col flex-center gap-4 w-[200px] h-[170px] text-center hover:opacity-55 transition-opacity cursor-pointer"
 						>
 							<CloseIcon className="text-3xl text-primary" />
 							<p className="p-2">{"<Card/>"}</p>

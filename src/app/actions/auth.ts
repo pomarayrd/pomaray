@@ -62,6 +62,7 @@ export async function login(formData: FormData): Promise<ResultResponse<User>> {
 			secure: process.env.NODE_ENV === "production",
 			maxAge: cookiesKeys.token.time,
 		});
+
 		return {
 			code: response.status,
 			message: responseBody.message || "Login successful",

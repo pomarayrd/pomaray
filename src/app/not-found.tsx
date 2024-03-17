@@ -1,17 +1,18 @@
 import { Container } from "@/components/container";
 import { Text } from "@/components/text";
-import { Button, Link } from "@nextui-org/react";
+import locale from "@/locales/not-found.json";
+import { Button } from "@nextui-org/react";
+import Link from "next/link";
 
 export default function NotFound() {
 	return (
-		<Container>
+		<Container className="flex-center">
 			<div className="relative flex flex-col gap-6 py-10">
 				<Text as="h1" align="center" size="heading-6">
-					Parece que la pagina que buscas no existe.
+					{locale.TITLE}
 				</Text>
 				<Text size="paragraph-lg" align="center">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit,
-					impedit.
+					{locale.DESCRIPTION}
 				</Text>
 				<img
 					className="absolute -top-10 right-0 rotate-12"
@@ -27,17 +28,19 @@ export default function NotFound() {
 				/>
 			</div>
 			<div className="flex justify-center gap-4">
-				<Button as={"a"} href="/" className="px-20" color="primary">
-					Ir a incio
+				<Button as={Link} href="/" className="px-20" color="primary">
+					{locale.GO_HOME}
 				</Button>
-				<Link
+				<Button
+					as={"a"}
+					target="_blank"
+					referrerPolicy="no-referrer"
 					href="https://instagram.com/"
 					color="danger"
-					showAnchorIcon
-					isExternal
+					variant="faded"
 				>
-					Ver Instagram
-				</Link>
+					{locale.VIEW_INSTAGRAM}
+				</Button>
 			</div>
 		</Container>
 	);

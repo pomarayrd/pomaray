@@ -37,7 +37,8 @@ const config: Config = {
 							700: "#33623a",
 							800: "#2c4f31",
 							900: "#26412b",
-						},						primary: {
+						},						
+						primary: {
 							DEFAULT: "#387040",
 							50: "#f4f9f4",
 							100: "#e5f3e7",
@@ -77,12 +78,6 @@ const config: Config = {
 							900: '#7f1d1d',
 						},
 						
-					},
-				},
-				dark: {
-					extend: "light",
-					colors: {
-						background: "#3d3d3d",
 					},
 				},
 			},

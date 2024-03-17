@@ -16,7 +16,10 @@ export const SexScheme = createEnumScheme("Sexo", Object.keys(Sex));
 export const User = z.object({
 	id: createOptionalStringScheme(),
 	username: UsernameSchema,
-	display_name: createRegexSchema("El nombre a mostrar"),
+	profile: z.object({
+		photo: z.string().url(),
+		display_name: createRegexSchema("El nombre a mostrar"),
+	}),
 	password: createOptionalStringScheme(),
 	role: RoleScheme,
 	sex: SexScheme,

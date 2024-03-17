@@ -20,7 +20,7 @@ function SubmitButton() {
 			type="submit"
 			aria-disabled={pending}
 		>
-			Acceder {String(pending)}
+			Acceder
 		</Button>
 	);
 }
