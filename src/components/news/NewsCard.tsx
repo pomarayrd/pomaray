@@ -1,7 +1,7 @@
 import { Text } from "@/components/text";
+import { UserAvatar } from "@/components/user";
 import { cn } from "@/lib/utils";
 import { AvatarGroup, Image } from "@nextui-org/react";
-import UserAvatar from "../user/User";
 
 export interface NewsProps {
 	src?: string;

@@ -18,7 +18,7 @@ export default function Noticias() {
 	};
 	return (
 		<Container size="container">
-			<section className="flex flex-col justify-between mt-20">
+			<section className="flex flex-col justify-between mt-24">
 				<div className="flex flex-col gap-4">
 					<Text as="h1" size="heading-4">
 						Ultimas noticias
@@ -63,7 +63,7 @@ export default function Noticias() {
 					return (
 						<News
 							authors={["John", "George", "Linda"]}
-							description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, ipsa."
+							description={`${i} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, ipsa.`}
 							// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 							key={i}
 							title="Lorem ipsum dolor sit."
