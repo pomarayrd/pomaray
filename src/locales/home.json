@@ -3,7 +3,37 @@
 		"TITLE": "Aprende junto al Politécnico Madre Rafaela Ybarra",
 		"SLOGAN": "No se cansen de hacer el bien"
 	},
+	"POLYTECHNIC_TECHNIQUES": [
+		{
+			"id": "1",
+			"title": "Ingeniería de Software",
+			"slug": "ingenieria-de-software"
+		},
+		{
+			"id": "2",
+			"title": "Electrónica Avanzada",
+			"slug": "electronica-avanzada"
+		},
+		{
+			"id": "3",
+			"title": "Inteligencia Artificial",
+			"slug": "inteligencia-artificial"
+		}
+	],
+	"SECTION1": {
+		"TITLE": "Educación de Calidad",
+		"DESCRIPTION": "En el Politécnico Madre Rafaela Ybarra, nos comprometemos a ofrecer educación de calidad que prepara a nuestros estudiantes para enfrentar los desafíos del mundo actual.",
+		"IMAGE_SRC": "/assets/images/banner/home.png",
+		"IMAGE_ALT": "Educación de Calidad"
+	},
+	"SECTION2": {
+		"TITLE": "Excelencia Académica",
+		"DESCRIPTION": "Nuestro compromiso con la excelencia académica se refleja en nuestro cuerpo docente altamente calificado y en nuestras instalaciones de vanguardia.",
+		"IMAGE_SRC": "/assets/images/banner/home.png",
+		"IMAGE_ALT": "Excelencia Académica"
+	},
 	"SECTION3": {
+		"TITLE": "Vida Estudiantil Activa",
 		"COLLAGE": [
 			{
 				"TITLE": "Vida Estudiantil",
@@ -11,10 +41,16 @@
 				"IMAGE": "https://th.bing.com/th/id/OIP.CjNGixK1detxfVl9iF2s7wHaFj?pid=ImgDet&rs=1"
 			},
 			{
-				"TITLE": "Red de Contactos Profesionales Sólida gracias al Politécnico",
-				"DESCRIPTION": "El amplio alcance del politécnico permite a los estudiantes conectarse con expertos de la industria y establecer relaciones valiosas que pueden beneficiarles durante toda su carrera.",
+				"TITLE": "Red de Contactos Profesionales Sólida",
+				"DESCRIPTION": "El amplio alcance del Politécnico permite a los estudiantes conectarse con expertos de la industria y establecer relaciones valiosas que pueden beneficiarles durante toda su carrera.",
 				"IMAGE": "https://th.bing.com/th/id/OIP.R8wwROorsXVuV0tW_0FCKgHaE8?pid=ImgDet&rs=1"
 			}
 		]
+	},
+	"SECTION4": {
+		"TITLE": "Encuéntranos en el Mapa",
+		"IFRAME_SRC": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.213641194164!2d-69.99740142496333!3d18.473979582610603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8a793d63f471%3A0xf12da92c55cac14b!2sMadre%20Rafaela%20Ybarra%20Polytecniquenic!5e0!3m2!1sen!2sdo!4v1700580333116!5m2!1sen!2sdo",
+		"IFRAME_TITLE": "Nuestra ubicación",
+		"IFRAME_ARIA_LABEL": "Ubicación en el mapa del Politécnico."
 	}
 }
