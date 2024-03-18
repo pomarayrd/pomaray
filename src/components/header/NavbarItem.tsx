@@ -15,7 +15,7 @@ const NavbarItem = forwardRef<HTMLDivElement, NavbarItemProps>(
 			>
 				{children}
 				{isImportant && (
-					<span className="size-1.5 bg-primary-500 rounded-full" />
+					<span className="size-1.5 bg-primary-500 rounded-full animate-pulse" />
 				)}
 			</NextNavbarItem>
 		);

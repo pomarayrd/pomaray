@@ -3,7 +3,7 @@
 import { getUserById } from "@/app/actions/user";
 import type { User } from "@/types/schemas/user";
 import { Avatar } from "@nextui-org/react";
-import { EyeIcon } from "@nextui-org/shared-icons";
+import { AvatarIcon } from "@nextui-org/shared-icons";
 import { useEffect, useState } from "react";
 
 export interface UserProps {
@@ -27,6 +27,9 @@ function UserAvatar({ userId }: UserProps) {
 			size="sm"
 			className="text-neutral-500"
 			name={user?.username}
+			fallback={
+				<AvatarIcon className="size-4 animate-pulse" />
+			}
 			src={user?.profile.photo}
 		/>
 	);

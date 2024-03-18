@@ -1,14 +1,17 @@
 "use client";
+
 import { Container } from "@/components/container";
 import News from "@/components/news/NewsCard";
 import { Text } from "@/components/text";
-import { Button, Chip, Divider, Input, Switch } from "@nextui-org/react";
-import { useState } from "react";
+import { Button, Chip, Divider, Input, Pagination, Skeleton, Switch } from "@nextui-org/react";
+import { useEffect, useState } from "react";
 
 const initialFruits = ["Apple", "Banana", "Cherry", "Watermelon", "Orange"];
 
 export default function Noticias() {
 	const [fruits, setFruits] = useState(initialFruits);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [isLoaded, setIsLoaded] = useState(false)
 
 	const handleClose = (fruitToRemove: string) => {
 		setFruits(fruits.filter((fruit) => fruit !== fruitToRemove));
@@ -16,9 +19,39 @@ export default function Noticias() {
 			setFruits(initialFruits);
 		}
 	};
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+	useEffect(() => {
+		const fetch = async () => {
+			setIsLoaded(false)
+			return new Promise<void>((resolve) => {
+				setTimeout(() => {
+					setIsLoaded(true)
+					resolve()
+				}, 900);
+			});
+		}
+
+		fetch();
+	}, [currentPage])
+
+	useEffect(() => {
+		const urlParams = new URLSearchParams(window.location.search);
+		const searchPage = Number.parseInt(urlParams.get("page") ?? "1", 10);
+		setCurrentPage(searchPage);
+	}, []);
+
+	const handleChangePage = (page: number) => {
+		setCurrentPage(page);
+		const urlParams = new URLSearchParams(window.location.search);
+		urlParams.set("page", page.toString());
+		const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+		window.history.replaceState({}, "", newUrl);
+	};
+
 	return (
 		<Container size="container">
-			<section className="flex flex-col justify-between mt-20">
+			<section className="flex flex-col justify-between mt-24">
 				<div className="flex flex-col gap-4">
 					<Text as="h1" size="heading-4">
 						Últimas noticias
@@ -34,20 +67,21 @@ export default function Noticias() {
 							fullWidth
 							className="col-span-2"
 						/>
-						<Button className="py-6" radius="sm" color="primary">
+						<Button isLoading={!isLoaded} className="py-6" radius="sm" color="primary">
 							Buscar
 						</Button>
 					</div>
 
 					<div className="flex gap-4 w-full">
 						<Switch defaultSelected size="sm">
-							Solo las más recientes
+							Solo las mas recientes
 						</Switch>
 						<div className="flex flex-wrap gap-2 py-6">
-							{fruits.map((fruit) => (
+							{isLoaded && fruits.map((fruit, i) => (
 								<Chip
 									color="primary"
-									key={fruit}
+									// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+									key={i}
 									onClose={() => handleClose(fruit)}
 									variant="flat"
 								>
@@ -59,18 +93,30 @@ export default function Noticias() {
 				</div>
 			</section>
 			<section className="flex flex-col gap-8">
-				{Array.from({ length: 20 }, (_, i) => {
-					return (
+				{
+					Array.from({ length: 20 }).map((_, index) => (
 						<News
-							authors={["John", "George", "Linda"]}
-							description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, ipsa."
 							// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-							key={i}
-							title="Lorem ipsum dolor sit."
+							key={index}
+							isLoaded={isLoaded}
+							authors={["John", "George", "Linda"]}
+							title={`${index} - Lorem ipsum dolor sit.`}
 							src="/assets/images/banner/noticias.png"
+							description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem architecto ratione consectetur qui quas quam maiores quod quae doloribus fugiat."
+
 						/>
-					);
-				})}
+					))
+				}
+			</section>
+			<section className="flex flex-center py-16">
+				<Pagination
+					onChange={handleChangePage}
+					total={10}
+					page={currentPage}
+					initialPage={1}
+					showControls
+					isCompact
+				/>
 			</section>
 		</Container>
 	);
