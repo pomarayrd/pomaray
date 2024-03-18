@@ -1,7 +1,7 @@
 import { Container } from "@/components/container";
 import { Text } from "@/components/text";
 import locale from "@/locales/home.json";
-import { Button, Card, Image, Input } from "@nextui-org/react";
+import { Button, Card, Image, Input, Pagination } from "@nextui-org/react";
 import { CloseIcon } from "@nextui-org/shared-icons";
 import Link from "next/link";
 
