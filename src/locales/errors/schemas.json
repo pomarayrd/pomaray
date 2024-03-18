@@ -1,5 +1,5 @@
 {
-	"INJECTION_REGEX": "%s solo puede contener (Aa-Zz, 0-9, ., _, @, #)",
+	"INJECTION_REGEX": "%s solo puede contener (A-Z, a-z, 0-9, ., _, @, #)",
 	"INVALID_VALUE": "%s no es válido",
 	"INVALID_ENUM": "%s solo puede ser \"%v\"",
 	"MIN_LENGTH": "%s debe tener al menos %d caracteres",

@@ -54,7 +54,7 @@ export default function Noticias() {
 			<section className="flex flex-col justify-between mt-24">
 				<div className="flex flex-col gap-4">
 					<Text as="h1" size="heading-4">
-						Ultimas noticias
+						Últimas noticias
 					</Text>
 					<Divider className="sm:hidden h-0.5 bg-primary" />
 				</div>
@@ -62,7 +62,7 @@ export default function Noticias() {
 					<div className="grid grid-cols-3 gap-4 w-full">
 						<Input
 							size="sm"
-							label="Titulo de la noticias"
+							label="Título de la noticias"
 							description="Lorem ipsum dolor sit."
 							fullWidth
 							className="col-span-2"
@@ -73,7 +73,7 @@ export default function Noticias() {
 					</div>
 
 					<div className="flex gap-4 w-full">
-						<Switch isDisabled={!isLoaded} size="sm">
+						<Switch defaultSelected size="sm">
 							Solo las mas recientes
 						</Switch>
 						<div className="flex flex-wrap gap-2 py-6">
