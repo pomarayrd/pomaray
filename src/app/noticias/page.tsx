@@ -3,15 +3,22 @@
 import { Container } from "@/components/container";
 import News from "@/components/news/NewsCard";
 import { Text } from "@/components/text";
-import { Button, Chip, Divider, Input, Pagination, Skeleton, Switch } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import {
+	Button,
+	Chip,
+	Divider,
+	Input,
+	Pagination,
+	Switch,
+} from "@nextui-org/react";
+import { useState } from "react";
 
 const initialFruits = ["Apple", "Banana", "Cherry", "Watermelon", "Orange"];
 
 export default function Noticias() {
 	const [fruits, setFruits] = useState(initialFruits);
 	const [currentPage, setCurrentPage] = useState(1);
-	const [isLoaded, setIsLoaded] = useState(false)
+	const [isLoaded, setIsLoaded] = useState(false);
 
 	const handleClose = (fruitToRemove: string) => {
 		setFruits(fruits.filter((fruit) => fruit !== fruitToRemove));
@@ -23,17 +30,17 @@ export default function Noticias() {
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		const fetch = async () => {
-			setIsLoaded(false)
+			setIsLoaded(false);
 			return new Promise<void>((resolve) => {
 				setTimeout(() => {
-					setIsLoaded(true)
-					resolve()
+					setIsLoaded(true);
+					resolve();
 				}, 900);
 			});
-		}
+		};
 
 		fetch();
-	}, [currentPage])
+	}, [currentPage]);
 
 	useEffect(() => {
 		const urlParams = new URLSearchParams(window.location.search);
@@ -67,7 +74,12 @@ export default function Noticias() {
 							fullWidth
 							className="col-span-2"
 						/>
-						<Button isLoading={!isLoaded} className="py-6" radius="sm" color="primary">
+						<Button
+							isLoading={!isLoaded}
+							className="py-6"
+							radius="sm"
+							color="primary"
+						>
 							Buscar
 						</Button>
 					</div>
@@ -77,36 +89,34 @@ export default function Noticias() {
 							Solo las mas recientes
 						</Switch>
 						<div className="flex flex-wrap gap-2 py-6">
-							{isLoaded && fruits.map((fruit, i) => (
-								<Chip
-									color="primary"
-									// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-									key={i}
-									onClose={() => handleClose(fruit)}
-									variant="flat"
-								>
-									{fruit}
-								</Chip>
-							))}
+							{isLoaded &&
+								fruits.map((fruit, i) => (
+									<Chip
+										color="primary"
+										// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+										key={i}
+										onClose={() => handleClose(fruit)}
+										variant="flat"
+									>
+										{fruit}
+									</Chip>
+								))}
 						</div>
 					</div>
 				</div>
 			</section>
 			<section className="flex flex-col gap-8">
-				{
-					Array.from({ length: 20 }).map((_, index) => (
-						<News
-							// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-							key={index}
-							isLoaded={isLoaded}
-							authors={["John", "George", "Linda"]}
-							title={`${index} - Lorem ipsum dolor sit.`}
-							src="/assets/images/banner/noticias.png"
-							description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem architecto ratione consectetur qui quas quam maiores quod quae doloribus fugiat."
-
-						/>
-					))
-				}
+				{Array.from({ length: 20 }).map((_, index) => (
+					<News
+						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+						key={index}
+						isLoaded={isLoaded}
+						authors={["John", "George", "Linda"]}
+						title={`${index} - Lorem ipsum dolor sit.`}
+						src="/assets/images/banner/noticias.png"
+						description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem architecto ratione consectetur qui quas quam maiores quod quae doloribus fugiat."
+					/>
+				))}
 			</section>
 			<section className="flex flex-center py-16">
 				<Pagination
@@ -118,6 +128,15 @@ export default function Noticias() {
 					isCompact
 				/>
 			</section>
+
+			<Pagination
+				size="sm"
+				showControls
+				radius="sm"
+				className="mx-auto py-10"
+				page={1}
+				total={20}
+			/>
 		</Container>
 	);
 }

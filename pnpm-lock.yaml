@@ -17,6 +17,9 @@ dependencies:
   '@nextui-org/react':
     specifier: ^2.2.10
     version: 2.2.10(@types/react@18.2.65)(framer-motion@11.0.12)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.0)(tailwindcss@3.4.1)
+  '@nextui-org/use-infinite-scroll':
+    specifier: ^2.1.2
+    version: 2.1.2(react@18.2.0)
   '@types/mdx':
     specifier: ^2.0.11
     version: 2.0.11
@@ -35,6 +38,9 @@ dependencies:
   react-dom:
     specifier: ^18
     version: 18.2.0(react@18.2.0)
+  react-stately:
+    specifier: ^3.30.1
+    version: 3.30.1(react@18.2.0)
   tailwind-merge:
     specifier: ^2.2.1
     version: 2.2.1
@@ -1661,6 +1667,16 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@nextui-org/use-infinite-scroll@2.1.2(react@18.2.0):
+    resolution: {integrity: sha512-bZ4oIO9HYsMvISu/8HrDwb3ddn5d09rhQyS0+AwUVxi3vYnrWpdss4EEja+q/t3CTe/+3I9eE1njATJZkySyeA==}
+    peerDependencies:
+      react: '>=18'
+    dependencies:
+      '@types/lodash.debounce': 4.0.9
+      lodash.debounce: 4.0.8
+      react: 18.2.0
+    dev: false
+
   /@nextui-org/use-is-mobile@2.0.6(react@18.2.0):
     resolution: {integrity: sha512-HeglWUoq6Ln8P5n6s1SZvBRatLYMKsiXQM7Mk2l+6jFByzZh3VWtZ05xmuX8te/1rGmeUxjeXtW6x+F7/f/JoA==}
     peerDependencies:
@@ -2219,6 +2235,19 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@react-stately/calendar@3.4.4(react@18.2.0):
+    resolution: {integrity: sha512-f9ZOd096gGGD+3LmU1gkmfqytGyQtrgi+Qjn+70GbM2Jy65pwOR4I9YrobbmeAFov5Tff13mQEa0yqWvbcDLZQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+    dependencies:
+      '@internationalized/date': 3.5.2
+      '@react-stately/utils': 3.9.1(react@18.2.0)
+      '@react-types/calendar': 3.4.4(react@18.2.0)
+      '@react-types/shared': 3.22.1(react@18.2.0)
+      '@swc/helpers': 0.5.2
+      react: 18.2.0
+    dev: false
+
   /@react-stately/checkbox@3.6.3(react@18.2.0):
     resolution: {integrity: sha512-hWp0GXVbMI4sS2NbBjWgOnHNrRqSV4jeftP8zc5JsIYRmrWBUZitxluB34QuVPzrBO29bGsF0GTArSiQZt6BWw==}
     peerDependencies:
@@ -2254,6 +2283,43 @@ packages:
       '@react-stately/select': 3.6.2(react@18.2.0)
       '@react-stately/utils': 3.9.1(react@18.2.0)
       '@react-types/combobox': 3.10.1(react@18.2.0)
+      '@react-types/shared': 3.22.1(react@18.2.0)
+      '@swc/helpers': 0.5.2
+      react: 18.2.0
+    dev: false
+
+  /@react-stately/data@3.11.2(react@18.2.0):
+    resolution: {integrity: sha512-yhK2upk2WbJeiLBRWHrh/4G2CvmmozCzoivLaRAPYu53m1J3MyzVGCLJgnZMbMZvAbNcYWZK6IzO6VqZ2y1fOw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+    dependencies:
+      '@react-types/shared': 3.22.1(react@18.2.0)
+      '@swc/helpers': 0.5.2
+      react: 18.2.0
+    dev: false
+
+  /@react-stately/datepicker@3.9.2(react@18.2.0):
+    resolution: {integrity: sha512-Z6FrK6Af7R5BizqHhJFCj3Hn32mg5iLSDdEgFQAuO043guOXUKFUAnbxfbQUjL6PGE6QwWMfQD7PPGebHn9Ifw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+    dependencies:
+      '@internationalized/date': 3.5.2
+      '@internationalized/string': 3.2.1
+      '@react-stately/form': 3.0.1(react@18.2.0)
+      '@react-stately/overlays': 3.6.5(react@18.2.0)
+      '@react-stately/utils': 3.9.1(react@18.2.0)
+      '@react-types/datepicker': 3.7.2(react@18.2.0)
+      '@react-types/shared': 3.22.1(react@18.2.0)
+      '@swc/helpers': 0.5.2
+      react: 18.2.0
+    dev: false
+
+  /@react-stately/dnd@3.2.8(react@18.2.0):
+    resolution: {integrity: sha512-oSo+2Bzum3Q1/d+3FuaDmpVHqqBB004tycuQDDFtad3N1BKm+fNfmslRK1ioLkPLK4sm1130V+BZBY3JXLe80A==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+    dependencies:
+      '@react-stately/selection': 3.14.3(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
       '@swc/helpers': 0.5.2
       react: 18.2.0
@@ -2313,6 +2379,19 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@react-stately/numberfield@3.9.1(react@18.2.0):
+    resolution: {integrity: sha512-btBIcBEfSVCUm6NwJrMrMygoIu/fQGazzD0RhF7PNsfvkFiWn+TSOyQqSXcsUJVOnBfoS/dVWj6r57KA7zl3FA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+    dependencies:
+      '@internationalized/number': 3.5.1
+      '@react-stately/form': 3.0.1(react@18.2.0)
+      '@react-stately/utils': 3.9.1(react@18.2.0)
+      '@react-types/numberfield': 3.8.1(react@18.2.0)
+      '@swc/helpers': 0.5.2
+      react: 18.2.0
+    dev: false
+
   /@react-stately/overlays@3.6.5(react@18.2.0):
     resolution: {integrity: sha512-U4rCFj6TPJPXLUvYXAcvh+yP/CO2W+7f0IuqP7ZZGE+Osk9qFkT+zRK5/6ayhBDFpmueNfjIEAzT9gYPQwNHFw==}
     peerDependencies:
@@ -2333,6 +2412,17 @@ packages:
       '@react-stately/utils': 3.9.1(react@18.2.0)
       '@react-types/radio': 3.7.1(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
+      '@swc/helpers': 0.5.2
+      react: 18.2.0
+    dev: false
+
+  /@react-stately/searchfield@3.5.1(react@18.2.0):
+    resolution: {integrity: sha512-9A8Wghx1avRHhMpNH1Nj+jFfiF1bhsff2GEC5PZgWYzhCykw3G5bywn3JAuUS4kh7Vpqhbu4KpHAhmWPSv4B/Q==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+    dependencies:
+      '@react-stately/utils': 3.9.1(react@18.2.0)
+      '@react-types/searchfield': 3.5.3(react@18.2.0)
       '@swc/helpers': 0.5.2
       react: 18.2.0
     dev: false
@@ -2487,6 +2577,16 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@react-types/calendar@3.4.4(react@18.2.0):
+    resolution: {integrity: sha512-hV1Thmb/AES5OmfPvvmyjSkmsEULjiDfA7Yyy70L/YKuSNKb7Su+Bf2VnZuDW3ec+GxO4JJNlpJ0AkbphWBvcg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+    dependencies:
+      '@internationalized/date': 3.5.2
+      '@react-types/shared': 3.22.1(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
   /@react-types/checkbox@3.7.1(react@18.2.0):
     resolution: {integrity: sha512-kuGqjQFex0As/3gfWyk+e9njCcad/ZdnYLLiNvhlk15730xfa0MmnOdpqo9jfuFSXBjOcpxoofvEhvrRMtEdUA==}
     peerDependencies:
@@ -2501,6 +2601,18 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
+      '@react-types/shared': 3.22.1(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
+  /@react-types/datepicker@3.7.2(react@18.2.0):
+    resolution: {integrity: sha512-zThqFAdhQL1dqyVDsDSSTdfCjoD6634eyg/B0ZJfQxcLUR/5pch3v/gxBhbyCVDGMNHRWUWIJvY9DVOepuoSug==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+    dependencies:
+      '@internationalized/date': 3.5.2
+      '@react-types/calendar': 3.4.4(react@18.2.0)
+      '@react-types/overlays': 3.8.5(react@18.2.0)
       '@react-types/shared': 3.22.1(react@18.2.0)
       react: 18.2.0
     dev: false
@@ -2552,6 +2664,15 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@react-types/numberfield@3.8.1(react@18.2.0):
+    resolution: {integrity: sha512-GaCjLQgXUGCt40SLjKk3/COMWFlN2vV/3Xs3VSLAEdFZpk99b+Ik1oR21+7ZP5/iMHuQDc1MJRWdFfIjxCvVDQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+    dependencies:
+      '@react-types/shared': 3.22.1(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
   /@react-types/overlays@3.8.5(react@18.2.0):
     resolution: {integrity: sha512-4D7EEBQigD/m8hE68Ys8eloyyZFHHduqykSIgINJ0edmo0jygRbWlTwuhWFR9USgSP4dK54duN0Mvq0m4HEVEw==}
     peerDependencies:
@@ -2576,6 +2697,16 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
       '@react-types/shared': 3.22.1(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
+  /@react-types/searchfield@3.5.3(react@18.2.0):
+    resolution: {integrity: sha512-gBfsT1WpY8UIb74yyYmnjiHpVasph2mdmGj9i8cGF2HUYwx5p+Fr85mtCGDph0uirvRoM5ExMp4snD+ueNAVCg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+    dependencies:
+      '@react-types/shared': 3.22.1(react@18.2.0)
+      '@react-types/textfield': 3.9.1(react@18.2.0)
       react: 18.2.0
     dev: false
 
@@ -2715,6 +2846,16 @@ packages:
 
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+    dev: false
+
+  /@types/lodash.debounce@4.0.9:
+    resolution: {integrity: sha512-Ma5JcgTREwpLRwMM+XwBR7DaWe96nC38uCBDFKZWbNKD+osjVzdpnUSwBcqCptrp16sSOLBAUb50Car5I0TCsQ==}
+    dependencies:
+      '@types/lodash': 4.17.0
+    dev: false
+
+  /@types/lodash@4.17.0:
+    resolution: {integrity: sha512-t7dhREVv6dbNj0q17X12j7yDG4bD/DHYX7o5/DbDxobP0HnGPgpRz2Ej77aL7TZT3DSw13fqUTj8J4mMnqa7WA==}
     dev: false
 
   /@types/mdast@4.0.3:
@@ -3599,6 +3740,10 @@ packages:
     engines: {node: '>=6.11.5'}
     dev: false
 
+  /lodash.debounce@4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: false
+
   /lodash.foreach@4.5.0:
     resolution: {integrity: sha512-aEXTF4d+m05rVOAUG3z4vZZ4xVexLKZGF0lIxuHZ1Hplpk/3B6Z1+/ICICYRLm7c41Z2xiejbkCkJoTlypoXhQ==}
     dev: false
@@ -4317,6 +4462,37 @@ packages:
       tslib: 2.6.2
       use-callback-ref: 1.3.1(@types/react@18.2.65)(react@18.2.0)
       use-sidecar: 1.1.2(@types/react@18.2.65)(react@18.2.0)
+    dev: false
+
+  /react-stately@3.30.1(react@18.2.0):
+    resolution: {integrity: sha512-IEhKHMT7wijtczA5vtw/kdq9CZuOIF+ReoSimydTFiABRQxWO9ESAl/fToXOUM9qmCdhdqjGJgMAhqTnmheh8g==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+    dependencies:
+      '@react-stately/calendar': 3.4.4(react@18.2.0)
+      '@react-stately/checkbox': 3.6.3(react@18.2.0)
+      '@react-stately/collections': 3.10.5(react@18.2.0)
+      '@react-stately/combobox': 3.8.2(react@18.2.0)
+      '@react-stately/data': 3.11.2(react@18.2.0)
+      '@react-stately/datepicker': 3.9.2(react@18.2.0)
+      '@react-stately/dnd': 3.2.8(react@18.2.0)
+      '@react-stately/form': 3.0.1(react@18.2.0)
+      '@react-stately/list': 3.10.3(react@18.2.0)
+      '@react-stately/menu': 3.6.1(react@18.2.0)
+      '@react-stately/numberfield': 3.9.1(react@18.2.0)
+      '@react-stately/overlays': 3.6.5(react@18.2.0)
+      '@react-stately/radio': 3.10.2(react@18.2.0)
+      '@react-stately/searchfield': 3.5.1(react@18.2.0)
+      '@react-stately/select': 3.6.2(react@18.2.0)
+      '@react-stately/selection': 3.14.3(react@18.2.0)
+      '@react-stately/slider': 3.5.2(react@18.2.0)
+      '@react-stately/table': 3.11.6(react@18.2.0)
+      '@react-stately/tabs': 3.6.4(react@18.2.0)
+      '@react-stately/toggle': 3.7.2(react@18.2.0)
+      '@react-stately/tooltip': 3.4.7(react@18.2.0)
+      '@react-stately/tree': 3.7.6(react@18.2.0)
+      '@react-types/shared': 3.22.1(react@18.2.0)
+      react: 18.2.0
     dev: false
 
   /react-style-singleton@2.2.1(@types/react@18.2.65)(react@18.2.0):

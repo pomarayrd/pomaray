@@ -14,20 +14,40 @@ import {
 } from "@nextui-org/react";
 import { ChevronIcon } from "@nextui-org/shared-icons";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { forwardRef } from "react";
 import NavbarItem from "./NavbarItem";
 import type { NavbarProps } from "./types";
 
 const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 	({ className, children, as, ...rest }, ref) => {
+		const path = usePathname();
+
 		return (
 			<header className="fixed w-screen z-50" ref={ref}>
 				{children}
 				<NextNavbar
 					isBordered
 					position="sticky"
-					className={cn("bg-white", className)}
+					isBlurred={false}
+					className={cn("bg-default-100", className)}
 					{...rest}
+					classNames={{
+						item: [
+							"flex",
+							"relative",
+							"h-full",
+							"items-center",
+							"data-[active=true]:after:content-['']",
+							"data-[active=true]:after:absolute",
+							"data-[active=true]:after:bottom-0",
+							"data-[active=true]:after:left-0",
+							"data-[active=true]:after:right-0",
+							"data-[active=true]:after:h-[2px]",
+							"data-[active=true]:after:rounded-[2px]",
+							"data-[active=true]:after:bg-primary",
+						],
+					}}
 				>
 					<NavbarBrand>
 						<Link href="/" type="button" className="flex flex-center">
@@ -40,23 +60,31 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 					<NavbarContent justify="center">
 						{locale.NAVBAR.ITEMS.map((item) => {
 							if (item.LINK) {
+								const itemIsActive = item.LINK === path;
 								return (
-									<Link key={item.LINK} href={item.LINK} scroll={false}>
-										<NavbarItem isImportant={item.IMPORTANT}>
+									<NavbarItem
+										isActive={itemIsActive}
+										isImportant={item.IMPORTANT}
+									>
+										<Link key={item.LINK} href={item.LINK} scroll={false}>
 											{item.TEXT}
-										</NavbarItem>
-									</Link>
+										</Link>
+									</NavbarItem>
 								);
 							}
 
-							if (item.SUB_ITEMS)
+							if (item.SUB_ITEMS) {
+								const itemIsActive = item.SUB_ITEMS?.some(
+									(subItem) => subItem.LINK === path,
+								);
+
 								return (
 									<Dropdown size="sm" key={item.TEXT}>
-										<NavbarItem>
+										<NavbarItem isActive={itemIsActive}>
 											<DropdownTrigger>
 												<Button
 													disableRipple
-													className="p-0 bg-transparent data-[hover=true]:bg-transparent font-medium"
+													className="p-0 bg-transparent data-[hover=true]:bg-transparent font-medium text-md"
 													endContent={<ChevronIcon className="-rotate-90" />}
 													radius="sm"
 													variant="light"
@@ -83,6 +111,7 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 										</DropdownMenu>
 									</Dropdown>
 								);
+							}
 						})}
 					</NavbarContent>
 					<NavbarContent justify="end">

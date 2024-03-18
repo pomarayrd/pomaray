@@ -2,6 +2,7 @@ import { getTokenUser } from "@/app/actions/auth";
 import { type NextRequest, NextResponse } from "next/server";
 
 const middleware = async (request: NextRequest) => {
+	return NextResponse.next();
 	try {
 		const currentUser = await getTokenUser();
 		if (!currentUser.results) {
@@ -14,8 +15,8 @@ const middleware = async (request: NextRequest) => {
 	}
 };
 
-export default middleware;
-
 export const config = {
 	matcher: ["/admin/:path*"],
 };
+
+export default middleware;

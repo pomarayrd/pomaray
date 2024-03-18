@@ -1,13 +1,9 @@
-export type MessageResponse = {
-	message: string;
+export type ServerResponse = {
+	message?: string;
+	error?: string;
 	code: number;
 };
 
-export type ErrorResponse<T> = {
-	results?: T;
-	error?: string;
-};
-
-export interface ResultResponse<T> extends MessageResponse {
+export interface ResultResponse<T> extends ServerResponse {
 	results?: T;
 }
