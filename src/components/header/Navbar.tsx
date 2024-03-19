@@ -63,10 +63,11 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 								const itemIsActive = item.LINK === path;
 								return (
 									<NavbarItem
+										key={item.LINK}
 										isActive={itemIsActive}
 										isImportant={item.IMPORTANT}
 									>
-										<Link key={item.LINK} href={item.LINK} scroll={false}>
+										<Link href={item.LINK} scroll={false}>
 											{item.TEXT}
 										</Link>
 									</NavbarItem>

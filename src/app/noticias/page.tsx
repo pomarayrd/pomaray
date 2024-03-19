@@ -11,7 +11,7 @@ import {
 	Pagination,
 	Switch,
 } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const initialFruits = ["Apple", "Banana", "Cherry", "Watermelon", "Orange"];
 
@@ -27,9 +27,10 @@ export default function Noticias() {
 		}
 	};
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		const fetch = async () => {
+			if (currentPage) {
+			}
 			setIsLoaded(false);
 			return new Promise<void>((resolve) => {
 				setTimeout(() => {
@@ -118,24 +119,16 @@ export default function Noticias() {
 					/>
 				))}
 			</section>
-			<section className="flex flex-center py-16">
-				<Pagination
-					onChange={handleChangePage}
-					total={10}
-					page={currentPage}
-					initialPage={1}
-					showControls
-					isCompact
-				/>
-			</section>
 
 			<Pagination
-				size="sm"
+				onChange={handleChangePage}
+				total={10}
+				page={currentPage}
+				initialPage={1}
+				size="sm" /*  */
 				showControls
 				radius="sm"
 				className="mx-auto py-10"
-				page={1}
-				total={20}
 			/>
 		</Container>
 	);

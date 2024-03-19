@@ -1,9 +1,12 @@
 import { NewsShortBy } from "@/lib/constants";
-import { createEnumScheme, createOptionalStringScheme } from "@/lib/utils";
+import {
+	createEnumScheme,
+	createOptionalStringScheme,
+} from "@/lib/schemas-creator";
 import { z } from "zod";
 
 const ShortByEnumScheme = createEnumScheme(
-	"Organizar por",
+	"organizar noticias por",
 	Object.keys(NewsShortBy),
 );
 

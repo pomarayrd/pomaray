@@ -28,7 +28,7 @@ function UserAvatar({ userId }: UserProps) {
 			className="text-neutral-500"
 			name={user?.username}
 			fallback={<AvatarIcon className="size-4 animate-pulse" />}
-			src={user?.profile.photo}
+			src={user?.profile?.photo}
 		/>
 	);
 }
