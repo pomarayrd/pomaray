@@ -20,7 +20,7 @@
 		"ITEMS": [
 			{
 				"TEXT": "Inicio",
-				"LINK": "/#ubicacion"
+				"LINK": "/"
 			},
 			{
 				"TEXT": "Noticias",
@@ -34,7 +34,7 @@
 			},
 			{
 				"TEXT": "Anuario",
-				"LINK": "/anuario"
+				"LINK": "/estudiantes"
 			},
 			{
 				"TEXT": "Acerca de",

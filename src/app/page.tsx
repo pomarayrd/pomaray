@@ -100,23 +100,22 @@ export default function Home() {
 				</div>
 			</section>
 			<section
-				id="ubicacion"
 				className="flex flex-col flex-center gap-9 w-full"
 			>
-				<Text as="h2" size="heading-4">
+				<Text id="ubicacion" as="h2" size="heading-4">
 					Lorem ipsum dolor sit.
 				</Text>
 				<iframe
 					loading="lazy"
 					aria-label="Ubicacion en el mapa del Politécnico."
-					title="Ubicación"
-					className="aspect-video w-full h-[50vh]"
+					title="Ubicación del Politecnica Madre Rafaela Ybarra"
+					className="aspect-video w-full h-[70vh]"
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.213641194164!2d-69.99740142496333!3d18.473979582610603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8a793d63f471%3A0xf12da92c55cac14b!2sMadre%20Rafaela%20Ybarra%20Polytecniquenic!5e0!3m2!1sen!2sdo!4v1700580333116!5m2!1sen!2sdo"
 					allowFullScreen
 				/>
 			</section>
 			<section className="relative flex flex-center w-full min-h-[50vh]">
-				<div className="absolute flex-col flex-center w-full min-h-[70vh] max-w-5xl bg-primary rounded-xl p-20 -bottom-16 text-white">
+				<div className="absolute flex-col flex-center w-full min-h-[70vh] bg-primary rounded-xl p-20 -bottom-16 text-white">
 					<Text as="h2" size="heading-4" className="text-white">
 						Lorem ipsum dolor sit amet consectetur.
 					</Text>

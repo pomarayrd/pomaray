@@ -59,7 +59,7 @@ export default function Noticias() {
 
 	return (
 		<Container size="container">
-			<section className="flex flex-col justify-between mt-24">
+			<section className="flex flex-col justify-between">
 				<div className="flex flex-col gap-4">
 					<Text as="h1" size="heading-4">
 						Últimas noticias
