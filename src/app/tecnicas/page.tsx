@@ -1,12 +1,11 @@
+import { TechCard } from "@/components/tech/TechCard";
 import { Text } from "@/components/text";
+import { Computer } from "@/icons/techIcons";
 import locale from "@/locales/tech.json";
-import { Card } from "@nextui-org/react";
-import { CloseIcon } from "@nextui-org/shared-icons";
-import Link from "next/link";
 
 export default function Page() {
 	return (
-		<main className="max-w-5xl space-y-12">
+		<main className="max-w-7xl space-y-12">
 			<section className="space-y-7">
 				<Text as="h1" align="center" size="heading-5">
 					{locale.HERO.TITLE}
@@ -16,17 +15,16 @@ export default function Page() {
 				</Text>
 			</section>
 
-			<section className="flex justify-center items-center gap-4">
+			<section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-4 px-6 sm:px-10 md:px-10 xl:px-[15rem]]">
 				{locale.TECHS.map((tech) => (
-					<Card
+					<TechCard
 						key={tech.ID}
-						as={Link}
-						href={`/${tech.ID}`}
-						className="bg-white shadow-sm rounded-md flex flex-col justify-center items-center p-4 w-48 h-48 text-center cursor-pointer"
-					>
-						<CloseIcon className="text-3xl text-primary" />
-						<p className="p-2">{tech.DESCRIPTION}</p>
-					</Card>
+						TechId={tech.ID}
+						dynamicPath={`/${tech.ID}`}
+						TechName={tech.NAME}
+						iconElement={<Computer />}
+						description={tech.DESCRIPTION}
+					/>
 				))}
 			</section>
 		</main>

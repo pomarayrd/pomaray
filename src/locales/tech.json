@@ -7,37 +7,37 @@
 	"TECHS": [
 		{
 			"ID": "DAAI",
-			"COLOR": "#3498db",
+			"NAME": "Desarrollo y administración de aplicaciones informáticas",
 			"DESCRIPTION": "Descubre el mundo de la informática y la programación."
 		},
 		{
 			"ID": "GAT",
-			"COLOR": "#2ecc71",
+			"NAME": "Gestión administrativa y tributaria",
 			"DESCRIPTION": "Aprende los fundamentos de la contabilidad y las finanzas."
 		},
 		{
 			"ID": "CM",
-			"COLOR": "#e74c3c",
+			"NAME": "Comercio y mercadeo",
 			"DESCRIPTION": "Explora el mundo del comercio y los negocios internacionales."
 		},
 		{
 			"ID": "GAS",
-			"COLOR": "#f39c12",
+			"NAME": "Servicios gastronómicos",
 			"DESCRIPTION": "Sumérgete en el arte de la gastronomía y la cocina."
 		},
 		{
 			"ID": "TRO",
-			"COLOR": "#34495e",
+			"NAME": "Electrónica",
 			"DESCRIPTION": "Aprende sobre circuitos y dispositivos electrónicos."
 		},
 		{
 			"ID": "TRI",
-			"COLOR": "#1abc9c",
+			"NAME": "Electricidad",
 			"DESCRIPTION": "Explora los principios de la electricidad y la energía."
 		},
 		{
 			"ID": "RAE",
-			"COLOR": "#95a5a6",
+			"NAME": "Refrigeración y acondicionamiento de aire",
 			"DESCRIPTION": "Conoce los sistemas de refrigeración y climatización."
 		}
 	]

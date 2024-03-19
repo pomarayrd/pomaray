@@ -1,7 +1,7 @@
 import { Container } from "@/components/container";
 import { Text } from "@/components/text";
 import locale from "@/locales/home.json";
-import { Button, Card, Image, Input, Pagination } from "@nextui-org/react";
+import { Button, Card, Image } from "@nextui-org/react";
 import { CloseIcon } from "@nextui-org/shared-icons";
 import Link from "next/link";
 
@@ -37,32 +37,26 @@ export default function Home() {
 			<section className="flex justify-between items-center gap-12 h-[50vh] ">
 				<div className="flex flex-col gap-5 max-w-[40ch]">
 					<Text as="h2" size="heading-4">
-						Lorem ipsum dolor sit.
+						{locale.SECTION1.TITLE}
 					</Text>
-					<Text size="paragraph-lg">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
-						accusantium nulla ratione impedit fugit officiis, possimus pariatur
-						id unde nemo!
-					</Text>
+					<Text size="paragraph-lg">{locale.SECTION1.DESCRIPTION}</Text>
 				</div>
 				<div>
 					<Image
 						loading="lazy"
 						className="aspect-video"
 						width={600}
-						alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-						src="/assets/images/banner/home.png"
+						alt={locale.SECTION1.IMAGE_ALT}
+						src={locale.SECTION1.IMAGE_SRC}
 					/>
 				</div>
 			</section>
 			<section className="flex flex-col justify-between items-center gap-12">
 				<Text as="h2" size="heading-4" align="center">
-					Lorem ipsum dolor sit.
+					{locale.SECTION2.TITLE}
 				</Text>
 				<Text size="paragraph-lg" align="center" className="max-w-[50ch]">
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim a rerum
-					placeat reprehenderit, soluta architecto iure quam error deleniti
-					illo?
+					{locale.SECTION2.DESCRIPTION}
 				</Text>
 				<div className="bg-primary h-full flex flex-col overflow-hidden rounded-xl">
 					{locale.SECTION3.COLLAGE.map((item, index) => (
@@ -85,8 +79,9 @@ export default function Home() {
 								/>
 							</div>
 							<div
-								className={`flex flex-col flex-center p-10  h-full mb-6 ${index % 2 === 0 ? "sm:order-1 order-2" : "order-2"
-									}`}
+								className={`flex flex-col flex-center p-10  h-full mb-6 ${
+									index % 2 === 0 ? "sm:order-1 order-2" : "order-2"
+								}`}
 							>
 								<h3 className="text-xl sm:text-3xl font-bold text-white text-center">
 									{item.TITLE}
@@ -104,25 +99,23 @@ export default function Home() {
 				className="flex flex-col flex-center gap-9 w-full"
 			>
 				<Text as="h2" size="heading-4">
-					Lorem ipsum dolor sit.
+					{locale.SECTION4.TITLE}
 				</Text>
 				<iframe
 					loading="lazy"
-					aria-label="Ubicacion en el mapa del Politécnico."
-					title="Ubicación"
+					aria-label={locale.SECTION4.IFRAME_ARIA_LABEL}
+					title={locale.SECTION4.IFRAME_TITLE}
 					className="aspect-video w-full h-[50vh]"
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.213641194164!2d-69.99740142496333!3d18.473979582610603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8a793d63f471%3A0xf12da92c55cac14b!2sMadre%20Rafaela%20Ybarra%20Polytecniquenic!5e0!3m2!1sen!2sdo!4v1700580333116!5m2!1sen!2sdo"
+					src={locale.SECTION4.IFRAME_SRC}
 					allowFullScreen
 				/>
 			</section>
 			<section className="relative flex flex-center w-full min-h-[50vh]">
 				<div className="absolute flex-col flex-center w-full min-h-[70vh] max-w-5xl bg-primary rounded-xl p-20 -bottom-16 text-white">
 					<Text as="h2" size="heading-4" className="text-white">
-						Lorem ipsum dolor sit amet consectetur.
+						{locale.SECTION5.TITLE}
 					</Text>
-					<Button>
-						Ver las ultimas noticias!
-					</Button>
+					<Button>Ver las ultimas noticias!</Button>
 				</div>
 			</section>
 		</Container>
