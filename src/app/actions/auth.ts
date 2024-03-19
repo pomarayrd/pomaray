@@ -24,9 +24,7 @@ export async function login(formData: FormData): Promise<ResultResponse<User>> {
 		if (!validatedFields.success) {
 			return {
 				code: 404,
-				message:
-					validatedFields.error.errors.at(0)?.message ||
-					"Invalid username or password",
+				error: JSON.stringify(validatedFields.error.flatten().fieldErrors),
 			};
 		}
 
@@ -46,14 +44,14 @@ export async function login(formData: FormData): Promise<ResultResponse<User>> {
 		if (!responseBody.user) {
 			return {
 				code: response.status,
-				message: "No se pudo obtener el usuario, por favor inténtelo de nuevo.",
+				error: "No se pudo obtener el usuario, por favor inténtelo de nuevo.",
 			};
 		}
 
 		if (!responseBody.token) {
 			return {
 				code: response.status,
-				message: "No se pudo obtener el token, por favor inténtelo de nuevo.",
+				error: "No se pudo obtener el token, por favor inténtelo de nuevo.",
 			};
 		}
 

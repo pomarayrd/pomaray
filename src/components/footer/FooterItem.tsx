@@ -1,3 +1,4 @@
+import { Link as NextLink } from "@nextui-org/link";
 import Link from "next/link";
 
 const FooterItem = ({
@@ -8,10 +9,16 @@ const FooterItem = ({
 	href: string;
 }) => {
 	return (
-		<li className="hover:underline hover:opacity-100 hover:text-primary opacity-60 transition-opacity">
-			<Link aria-label={text} href={href}>
+		<li>
+			<NextLink
+				underline="hover"
+				className="hover:opacity-100 hover:text-primary opacity-60 transition-opacity text-foreground"
+				as={Link}
+				aria-label={text}
+				href={href}
+			>
 				{text}
-			</Link>
+			</NextLink>
 		</li>
 	);
 };
