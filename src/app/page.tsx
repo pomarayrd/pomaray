@@ -79,9 +79,8 @@ export default function Home() {
 								/>
 							</div>
 							<div
-								className={`flex flex-col flex-center p-10  h-full mb-6 ${
-									index % 2 === 0 ? "sm:order-1 order-2" : "order-2"
-								}`}
+								className={`flex flex-col flex-center p-10  h-full mb-6 ${index % 2 === 0 ? "sm:order-1 order-2" : "order-2"
+									}`}
 							>
 								<h3 className="text-xl sm:text-3xl font-bold text-white text-center">
 									{item.TITLE}
@@ -97,7 +96,6 @@ export default function Home() {
 			<section
 				className="flex flex-col flex-center gap-9 w-full"
 			>
-<<<<<<< HEAD
 				<Text as="h2" size="heading-4">
 					{locale.SECTION4.TITLE}
 				</Text>
@@ -107,17 +105,6 @@ export default function Home() {
 					title={locale.SECTION4.IFRAME_TITLE}
 					className="aspect-video w-full h-[50vh]"
 					src={locale.SECTION4.IFRAME_SRC}
-=======
-				<Text id="ubicacion" as="h2" size="heading-4">
-					Lorem ipsum dolor sit.
-				</Text>
-				<iframe
-					loading="lazy"
-					aria-label="Ubicacion en el mapa del Politécnico."
-					title="Ubicación del Politecnica Madre Rafaela Ybarra"
-					className="aspect-video w-full h-[70vh]"
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.213641194164!2d-69.99740142496333!3d18.473979582610603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8a793d63f471%3A0xf12da92c55cac14b!2sMadre%20Rafaela%20Ybarra%20Polytecniquenic!5e0!3m2!1sen!2sdo!4v1700580333116!5m2!1sen!2sdo"
->>>>>>> ce9c9eae0cf82420f9916bd5a6c4d7d7a2edfad4
 					allowFullScreen
 				/>
 			</section>
