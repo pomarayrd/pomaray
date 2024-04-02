@@ -21,7 +21,7 @@ export function TechCard({
 			href={`${dynamicPath}/${TechId.toLowerCase()}`}
 			isPressable
 			shadow="none"
-			className="xl:p-6 hover:bg-default-200 bg-default-100 shadow-sm text-foreground transition-colors"
+			className="xl:p-6 hover:bg-default-200 bg-default-100 h-full shadow-sm text-foreground transition-colors"
 		>
 			<CardHeader className="flex items-center justify-center pt-5 sm:pt-10">
 				<div className="p-4 rounded-full border-2 border-primary">
