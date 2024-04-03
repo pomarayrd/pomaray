@@ -3,7 +3,7 @@ import {
 	createEnumScheme,
 	createOptionalStringScheme,
 	createRegexSchema,
-} from "@/lib/utils";
+} from "@/lib/schemas-creator";
 import { z } from "zod";
 
 export const UsernameSchema = createRegexSchema("El nombre de usuario");
