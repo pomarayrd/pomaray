@@ -16,13 +16,13 @@ export default function NotFound() {
 				</Text>
 				<img
 					className="absolute -top-10 right-0 rotate-12"
-					src="/assets/images/not-found.png"
+					src="/images/not-found.png"
 					alt=""
 					width={100}
 				/>
 				<img
 					className="absolute -bottom-10 left-5 -rotate-12"
-					src="/assets/images/not-found.png"
+					src="/images/not-found.png"
 					alt=""
 					width={100}
 				/>

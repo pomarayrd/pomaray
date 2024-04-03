@@ -71,12 +71,12 @@
 
 			"GALLERY_TITLE": "Galería de imágenes",
 			"IMAGES": [
-				"/images/galeriaTecnicas/informatica/daai7.jpg",
-				"/images/galeriaTecnicas/informatica/daai1.jpg",
-				"/images/galeriaTecnicas/informatica/daai5.jpg",
-				"/images/galeriaTecnicas/informatica/daai3.jpg",
-				"/images/galeriaTecnicas/informatica/daai4.jpg",
-				"/images/galeriaTecnicas/informatica/daai6.jpg"
+				"/images/galeria/tecnicas/informatica/daai7.jpg",
+				"/images/galeria/tecnicas/informatica/daai1.jpg",
+				"/images/galeria/tecnicas/informatica/daai5.jpg",
+				"/images/galeria/tecnicas/informatica/daai3.jpg",
+				"/images/galeria/tecnicas/informatica/daai4.jpg",
+				"/images/galeria/tecnicas/informatica/daai6.jpg"
 			]
 		},
 		"gas": {
@@ -141,12 +141,12 @@
 
 			"GALLERY_TITLE": "Galería de imágenes",
 			"IMAGES": [
-				"/images/galeriaTecnicas/gastronomia/gas1.jpg",
-				"/images/galeriaTecnicas/gastronomia/gas2.jpg",
-				"/images/galeriaTecnicas/gastronomia/gas3.jpg",
-				"/images/galeriaTecnicas/gastronomia/gas4.jpg",
-				"/images/galeriaTecnicas/gastronomia/gas5.jpg",
-				"/images/galeriaTecnicas/gastronomia/gas.jpg"
+				"/images/galeria/tecnicas/gastronomia/gas1.jpg",
+				"/images/galeria/tecnicas/gastronomia/gas2.jpg",
+				"/images/galeria/tecnicas/gastronomia/gas3.jpg",
+				"/images/galeria/tecnicas/gastronomia/gas4.jpg",
+				"/images/galeria/tecnicas/gastronomia/gas5.jpg",
+				"/images/galeria/tecnicas/gastronomia/gas.jpg"
 			]
 		},
 		"cm": {
@@ -210,12 +210,12 @@
 
 			"GALLERY_TITLE": "Galería de imágenes",
 			"IMAGES": [
-				"/images/galeriaTecnicas/mercadeo/cm1.jpg",
-				"/images/galeriaTecnicas/mercadeo/cm2.jpg",
-				"/images/galeriaTecnicas/mercadeo/cm3.jpg",
-				"/images/galeriaTecnicas/mercadeo/cm4.jpg",
-				"/images/galeriaTecnicas/mercadeo/cm5.jpg",
-				"/images/galeriaTecnicas/mercadeo/cm6.jpg"
+				"/images/galeria/tecnicas/mercadeo/cm1.jpg",
+				"/images/galeria/tecnicas/mercadeo/cm2.jpg",
+				"/images/galeria/tecnicas/mercadeo/cm3.jpg",
+				"/images/galeria/tecnicas/mercadeo/cm4.jpg",
+				"/images/galeria/tecnicas/mercadeo/cm5.jpg",
+				"/images/galeria/tecnicas/mercadeo/cm6.jpg"
 			]
 		},
 		"gat": {
@@ -278,12 +278,12 @@
 
 			"GALLERY_TITLE": "Galería de imágenes",
 			"IMAGES": [
-				"/images/galeriaTecnicas/contabilidad/GAT8.jpg",
-				"/images/galeriaTecnicas/contabilidad/GAT3.jpg",
-				"/images/galeriaTecnicas/contabilidad/GAT7.jpg",
-				"/images/galeriaTecnicas/contabilidad/GAT4.jpg",
-				"/images/galeriaTecnicas/contabilidad/GAT5.jpg",
-				"/images/galeriaTecnicas/contabilidad/GAT6.jpg"
+				"/images/galeria/tecnicas/contabilidad/GAT8.jpg",
+				"/images/galeria/tecnicas/contabilidad/GAT3.jpg",
+				"/images/galeria/tecnicas/contabilidad/GAT7.jpg",
+				"/images/galeria/tecnicas/contabilidad/GAT4.jpg",
+				"/images/galeria/tecnicas/contabilidad/GAT5.jpg",
+				"/images/galeria/tecnicas/contabilidad/GAT6.jpg"
 			]
 		},
 		"tro": {
@@ -346,12 +346,12 @@
 
 			"GALLERY_TITLE": "Galería de imágenes",
 			"IMAGES": [
-				"/images/galeriaTecnicas/electronica/1.jpg",
-				"/images/galeriaTecnicas/electronica/2.jpg",
-				"/images/galeriaTecnicas/electronica/3.jpg",
-				"/images/galeriaTecnicas/electronica/4.jpg",
-				"/images/galeriaTecnicas/electronica/5.jpg",
-				"/images/galeriaTecnicas/electronica/6.jpg"
+				"/images/galeria/tecnicas/electronica/1.jpg",
+				"/images/galeria/tecnicas/electronica/2.jpg",
+				"/images/galeria/tecnicas/electronica/3.jpg",
+				"/images/galeria/tecnicas/electronica/4.jpg",
+				"/images/galeria/tecnicas/electronica/5.jpg",
+				"/images/galeria/tecnicas/electronica/6.jpg"
 			]
 		},
 		"tri": {
@@ -414,12 +414,12 @@
 
 			"GALLERY_TITLE": "Galería de imágenes",
 			"IMAGES": [
-				"/images/galeriaTecnicas/electricidad/1.jpg",
-				"/images/galeriaTecnicas/electricidad/2.jpg",
-				"/images/galeriaTecnicas/electricidad/3.jpg",
-				"/images/galeriaTecnicas/electricidad/4.jpg",
-				"/images/galeriaTecnicas/electricidad/5.jpg",
-				"/images/galeriaTecnicas/electricidad/6.jpg"
+				"/images/galeria/tecnicas/electricidad/1.jpg",
+				"/images/galeria/tecnicas/electricidad/2.jpg",
+				"/images/galeria/tecnicas/electricidad/3.jpg",
+				"/images/galeria/tecnicas/electricidad/4.jpg",
+				"/images/galeria/tecnicas/electricidad/5.jpg",
+				"/images/galeria/tecnicas/electricidad/6.jpg"
 			]
 		},
 		"rae": {
@@ -482,12 +482,12 @@
 
 			"GALLERY_TITLE": "Galería de imágenes",
 			"IMAGES": [
-				"/images/galeriaTecnicas/refrigeracion/ref1.jpg",
-				"/images/galeriaTecnicas/refrigeracion/ref2.jpg",
-				"/images/galeriaTecnicas/refrigeracion/ref3.jpg",
-				"/images/galeriaTecnicas/refrigeracion/ref4.jpg",
-				"/images/galeriaTecnicas/refrigeracion/ref5.jpg",
-				"/images/galeriaTecnicas/refrigeracion/ref6.jpg"
+				"/images/galeria/tecnicas/refrigeracion/ref1.jpg",
+				"/images/galeria/tecnicas/refrigeracion/ref2.jpg",
+				"/images/galeria/tecnicas/refrigeracion/ref3.jpg",
+				"/images/galeria/tecnicas/refrigeracion/ref4.jpg",
+				"/images/galeria/tecnicas/refrigeracion/ref5.jpg",
+				"/images/galeria/tecnicas/refrigeracion/ref6.jpg"
 			]
 		}
 	}
