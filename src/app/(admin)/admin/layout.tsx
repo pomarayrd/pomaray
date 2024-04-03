@@ -7,7 +7,7 @@ export default function AboutLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<Container size="5xl">
+		<Container size="7xl">
 			<article>{children}</article>
 		</Container>
 	);
