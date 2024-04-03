@@ -1,13 +1,14 @@
 "use server";
 
 import { API, CONNECTION_ERROR, cookiesKeys } from "@/lib/constants";
-import type { ResultResponse } from "@/types/api";
+import type { LoginResponse } from "@/types/actions/auth";
 import { LoginTokenSchema } from "@/types/schemas/auth";
 import type { User } from "@/types/schemas/user";
 import { cookies, headers } from "next/headers";
+import { redirect } from "next/navigation";
 import { UAParser } from "ua-parser-js";
 
-export async function login(formData: FormData): Promise<ResultResponse<User>> {
+export async function login(formData: FormData): Promise<LoginResponse> {
 	try {
 		const ip = headers().get("x-forwarded-for");
 		const ua = headers().get("User-Agent");
@@ -23,8 +24,7 @@ export async function login(formData: FormData): Promise<ResultResponse<User>> {
 
 		if (!validatedFields.success) {
 			return {
-				code: 404,
-				error: JSON.stringify(validatedFields.error.flatten().fieldErrors),
+				error: validatedFields.error.flatten().fieldErrors,
 			};
 		}
 
@@ -43,14 +43,12 @@ export async function login(formData: FormData): Promise<ResultResponse<User>> {
 		const responseBody = await response.json();
 		if (!responseBody.user) {
 			return {
-				code: response.status,
 				error: "No se pudo obtener el usuario, por favor inténtelo de nuevo.",
 			};
 		}
 
 		if (!responseBody.token) {
 			return {
-				code: response.status,
 				error: "No se pudo obtener el token, por favor inténtelo de nuevo.",
 			};
 		}
@@ -61,16 +59,11 @@ export async function login(formData: FormData): Promise<ResultResponse<User>> {
 			maxAge: cookiesKeys.token.time,
 		});
 
-		return {
-			code: response.status,
-			message: responseBody.message || "Login successful",
-			results: responseBody.user as User,
-		};
+		redirect("/admin");
 	} catch (err) {
 		const msg = err instanceof Error ? err.message : CONNECTION_ERROR;
 		return {
-			code: 500,
-			message: msg,
+			error: msg,
 		};
 	}
 }

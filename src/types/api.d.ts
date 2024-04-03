@@ -1,9 +1,8 @@
 export type ServerResponse = {
 	message?: string;
-	error?: string;
-	code: number;
+	status?: number;
 };
 
-export interface ResultResponse<T> extends ServerResponse {
-	results?: T;
-}
+export type API_METHOD = "GET" | "POST" | "DELETE" | "HEAD" | "OPTIONS" | "PUT";
+
+export type ResultResponse<T> = ServerResponse & T;

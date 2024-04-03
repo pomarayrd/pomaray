@@ -1,135 +1,143 @@
 "use client";
 
 import { Container } from "@/components/container";
-import News from "@/components/news/NewsCard";
+import { Message } from "@/components/message";
+import SubmitButton from "@/components/submit-button";
 import { Text } from "@/components/text";
-import {
-	Button,
-	Chip,
-	Divider,
-	Input,
-	Pagination,
-	Switch,
-} from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useDebounce } from "@/hooks/useDebounce";
+import { useFetch } from "@/hooks/useFetch";
+import { usePagination } from "@/hooks/usePagination";
+import { API } from "@/lib/constants";
+import type { Post } from "@/types/scheme/posts";
+import { Divider, Input, Link, Pagination, Switch } from "@nextui-org/react";
+import { type ChangeEvent, useEffect, useState } from "react";
+import PostCard from "./_componentes/PostCard";
+import PostsSkeleton from "./_componentes/PostsSkeleton";
 
-const initialFruits = ["Apple", "Banana", "Cherry", "Watermelon", "Orange"];
+const INITIAL_PAGE = 1;
+const LIMIT = 20;
 
-export default function Noticias() {
-	const [fruits, setFruits] = useState(initialFruits);
-	const [currentPage, setCurrentPage] = useState(1);
-	const [isLoaded, setIsLoaded] = useState(false);
+export default function PostPage() {
+	const [text, setText] = useState("");
+	const [onlyNews, setOnlyNews] = useState(false);
 
-	const handleClose = (fruitToRemove: string) => {
-		setFruits(fruits.filter((fruit) => fruit !== fruitToRemove));
-		if (fruits.length === 1) {
-			setFruits(initialFruits);
-		}
-	};
+	const {
+		currentPage,
+		totalPages,
+		skip,
+		setTotalPages,
+		setCurrentPage,
+		handleChangePage,
+	} = usePagination(INITIAL_PAGE);
 
+	const debounceText = useDebounce(text, 500);
+	const debounceOnlyNews = useDebounce(onlyNews, 500);
+	const debounceSkip = useDebounce(skip, 500);
+
+	const { isLoading, error, refetch, results } = useFetch<{
+		max_results: number;
+		posts: Post[];
+	}>(
+		API.getEndpoint(
+			`/posts/search?limit=${LIMIT}&skip=${debounceSkip}&text=${debounceText}&short_by=${
+				debounceOnlyNews ? "created_at" : "views"
+			}`,
+		),
+		{ onFetch },
+	);
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
-		const fetch = async () => {
-			if (currentPage) {
-			}
-			setIsLoaded(false);
-			return new Promise<void>((resolve) => {
-				setTimeout(() => {
-					setIsLoaded(true);
-					resolve();
-				}, 900);
-			});
-		};
+		setCurrentPage(1);
+	}, [debounceText]);
 
-		fetch();
-	}, [currentPage]);
+	function onFetch(body: { max_results?: number }) {
+		setTotalPages(Math.ceil((body.max_results ?? 1) / LIMIT));
+	}
 
-	useEffect(() => {
-		const urlParams = new URLSearchParams(window.location.search);
-		const searchPage = Number.parseInt(urlParams.get("page") ?? "1", 10);
-		setCurrentPage(searchPage);
-	}, []);
-
-	const handleChangePage = (page: number) => {
-		setCurrentPage(page);
-		const urlParams = new URLSearchParams(window.location.search);
-		urlParams.set("page", page.toString());
-		const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
-		window.history.replaceState({}, "", newUrl);
-	};
+	const handleChangeText = (e: ChangeEvent<HTMLInputElement>) =>
+		setText(e.target.value);
+	const handleOnlyNews = (isSelected: boolean) => setOnlyNews(isSelected);
 
 	return (
-		<Container size="container">
-			<section className="flex flex-col justify-between">
+		<Container size="container" className="gap-8">
+			<section className="flex flex-col justify-between mt-24 gap-6 max-w-[700px]">
 				<div className="flex flex-col gap-4">
 					<Text as="h1" size="heading-4">
 						Últimas noticias
 					</Text>
-					<Divider className="sm:hidden h-0.5 bg-primary" />
+					<Divider className="md:hidden h-0.5 bg-primary" />
 				</div>
-				<div className="flex flex-col justify-start items-start max-w-[800px] py-8">
-					<div className="grid grid-cols-3 gap-4 w-full">
-						<Input
-							size="sm"
-							label="Título de la noticias"
-							description="Lorem ipsum dolor sit."
-							fullWidth
-							className="col-span-2"
-						/>
-						<Button
-							isLoading={!isLoaded}
-							className="py-6"
-							radius="sm"
-							color="primary"
-						>
-							Buscar
-						</Button>
-					</div>
-
-					<div className="flex gap-4 w-full">
-						<Switch defaultSelected size="sm">
-							Solo las mas recientes
-						</Switch>
-						<div className="flex flex-wrap gap-2 py-6">
-							{isLoaded &&
-								fruits.map((fruit, i) => (
-									<Chip
-										color="primary"
-										// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-										key={i}
-										onClose={() => handleClose(fruit)}
-										variant="flat"
-									>
-										{fruit}
-									</Chip>
-								))}
-						</div>
-					</div>
-				</div>
-			</section>
-			<section className="flex flex-col gap-8">
-				{Array.from({ length: 20 }).map((_, index) => (
-					<News
-						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-						key={index}
-						isLoaded={isLoaded}
-						authors={["John", "George", "Linda"]}
-						title={`${index} - Lorem ipsum dolor sit.`}
-						src="/assets/images/banner/noticias.png"
-						description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem architecto ratione consectetur qui quas quam maiores quod quae doloribus fugiat."
+				<form
+					onSubmit={(e) => {
+						e.preventDefault();
+						refetch();
+					}}
+					className="grid sm:grid-cols-3 grid-cols-1 gap-4 w-full sm:pb-0 pb-6"
+				>
+					<Input
+						name="text"
+						size="sm"
+						label="Título de la noticias"
+						description="Lorem ipsum dolor sit."
+						fullWidth
+						className="sm:col-span-2"
+						onChange={handleChangeText}
 					/>
-				))}
+					<SubmitButton>Buscar</SubmitButton>
+
+					<Switch
+						isSelected={onlyNews}
+						onValueChange={handleOnlyNews}
+						name="onlyNews"
+						defaultSelected
+						size="sm"
+					>
+						Solo las más recientes.
+					</Switch>
+				</form>
+				{error && (
+					<div className="flex flex-center min-h-[50vh]">
+						<Message
+							variant="solid"
+							color={error.status >= 500 ? "danger" : "warning"}
+							className="p-10 max-w-[600px]"
+						>
+							{error.message}{" "}
+							<Link
+								color={error.status >= 500 ? "danger" : "warning"}
+								as={"button"}
+								underline="always"
+								onClick={() => refetch()}
+							>
+								Volver a intentarlo.
+							</Link>
+						</Message>
+					</div>
+				)}
+				{isLoading}
+			</section>
+			<section className="flex flex-col sm:gap-8 gap-16">
+				{isLoading ? (
+					<PostsSkeleton />
+				) : (
+					results?.posts?.map((post) => <PostCard key={post.id} post={post} />)
+				)}
 			</section>
 
-			<Pagination
-				onChange={handleChangePage}
-				total={10}
-				page={currentPage}
-				initialPage={1}
-				size="sm" /*  */
-				showControls
-				radius="sm"
-				className="mx-auto py-10"
-			/>
+			{totalPages > 1 && (
+				<Pagination
+					size="sm"
+					radius="sm"
+					className="mx-auto py-10"
+					onChange={handleChangePage}
+					total={totalPages}
+					page={currentPage}
+					initialPage={INITIAL_PAGE}
+					showControls
+					loop
+				/>
+			)}
 		</Container>
 	);
 }

@@ -1,34 +1,16 @@
-"use client";
-
-import { login } from "@/app/actions/auth";
+import { login } from "@/app/_actions/auth";
 import { Container } from "@/components/container";
 import { Message } from "@/components/message";
+import SubmitButton from "@/components/submit-button";
 import { Text } from "@/components/text";
-import { Button, Input, Link } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
+import type { LoginResponse } from "@/types/actions/auth";
+import { Input, Link } from "@nextui-org/react";
 import { useState } from "react";
-import { useFormStatus } from "react-dom";
-
-function SubmitButton() {
-	const { pending } = useFormStatus();
-
-	return (
-		<Button
-			color="primary"
-			size="md"
-			isLoading={pending}
-			type="submit"
-			aria-disabled={pending}
-		>
-			Acceder
-		</Button>
-	);
-}
 
 export default function Login() {
-	const router = useRouter();
 	const [usernameError, setUsernameError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const resetState = () => {
 		setPasswordError("");
@@ -40,13 +22,19 @@ export default function Login() {
 			? setPasswordError("")
 			: setUsernameError("");
 
-	const setErrorsState = (error: string) => {
-		const errorsMessage = JSON.parse(error);
-		if (errorsMessage.username) {
-			setUsernameError(errorsMessage.username);
+	const setErrorsState = (response: LoginResponse) => {
+		const error = response.error;
+
+		if (typeof error === "string") {
+			setErrorMessage(error);
+			return;
 		}
-		if (errorsMessage.password) {
-			setPasswordError(errorsMessage.password);
+
+		if (error.username) {
+			setUsernameError(error.username.at(0) ?? "");
+		}
+		if (error.password) {
+			setPasswordError(error.password.at(0) ?? "");
 		}
 	};
 
@@ -65,13 +53,7 @@ export default function Login() {
 					<form
 						action={async (data: FormData) => {
 							resetState();
-							const { error, results } = await login(data);
-							if (results) {
-								router.push("/admin");
-								return;
-							}
-
-							if (error) setErrorsState(error);
+							setErrorsState(await login(data));
 						}}
 					>
 						<div className="flex flex-col gap-6 py-4">
@@ -91,6 +73,7 @@ export default function Login() {
 								onChange={handleChange}
 								label="Contraseña"
 							/>
+							{errorMessage && <Message color="danger">{errorMessage}</Message>}
 							<SubmitButton />
 						</div>
 					</form>

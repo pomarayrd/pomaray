@@ -1,0 +1,6 @@
+{
+	"ERRORS": {
+		"404": "Lo sentimos, no se encontró ninguna publicación. Intente buscar con palabras referentes.",
+		"500": "Lo sentimos, parece que hubo un error. Por favor, inténtelo más tarde."
+	}
+}

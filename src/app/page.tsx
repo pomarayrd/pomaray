@@ -26,7 +26,7 @@ export default function Home() {
 							href="/card-1"
 							shadow="none"
 							radius="sm"
-							className="bg-white shadow-sm  flex flex-col flex-center gap-4 w-[200px] h-[170px] text-center hover:opacity-55 transition-opacity cursor-pointer"
+							className="bg-default-100 shadow-sm  flex flex-col flex-center gap-4 w-[200px] h-[170px] text-center hover:opacity-55 transition-opacity cursor-pointer"
 						>
 							<CloseIcon className="text-3xl text-primary" />
 							<p className="p-2">{"<Card/>"}</p>
@@ -95,24 +95,26 @@ export default function Home() {
 				</div>
 			</section>
 			<section className="flex flex-col flex-center gap-9 w-full">
-				<Text id="ubicacion" as="h2" size="heading-4">
-					Lorem ipsum dolor sit.
+				<Text as="h2" size="heading-4">
+					{locale.SECTION4.TITLE}
 				</Text>
 				<iframe
 					loading="lazy"
-					aria-label="Ubicacion en el mapa del Politécnico."
-					title="Ubicación del Politecnica Madre Rafaela Ybarra"
-					className="aspect-video w-full h-[70vh]"
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.213641194164!2d-69.99740142496333!3d18.473979582610603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8a793d63f471%3A0xf12da92c55cac14b!2sMadre%20Rafaela%20Ybarra%20Polytecniquenic!5e0!3m2!1sen!2sdo!4v1700580333116!5m2!1sen!2sdo"
+					aria-label={locale.SECTION4.IFRAME_ARIA_LABEL}
+					title={locale.SECTION4.IFRAME_TITLE}
+					className="aspect-video w-full h-[50vh] rounded-2xl"
+					src={locale.SECTION4.IFRAME_SRC}
 					allowFullScreen
 				/>
 			</section>
-			<section className="relative flex flex-center w-full min-h-[50vh]">
-				<div className="absolute flex-col flex-center w-full min-h-[70vh] bg-primary rounded-xl p-20 -bottom-16 text-white">
-					<Text as="h2" size="heading-4" className="text-white">
+			<section className="relative flex flex-center w-full min-h-[30vh]">
+				<div className="absolute flex-col flex-center w-full min-h-[40vh] gap-14 p-20 px-24 -bottom-16 text-white bg-primary rounded-xl">
+					<Text as="h2" size="heading-5" className="text-white mb-8">
 						{locale.SECTION5.TITLE}
 					</Text>
-					<Button>Ver las ultimas noticias!</Button>
+					<Button as={Link} href="/noticias" size="lg" className="bg-white">
+						Ver las ultimas noticias!
+					</Button>
 				</div>
 			</section>
 		</Container>

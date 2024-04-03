@@ -1,6 +1,6 @@
 "use client";
 
-import { getNotify } from "@/app/actions/notify";
+import { getNotify } from "@/app/_actions/notify";
 import { cn } from "@/lib/utils";
 import { Button } from "@nextui-org/button";
 import { CloseIcon } from "@nextui-org/shared-icons";

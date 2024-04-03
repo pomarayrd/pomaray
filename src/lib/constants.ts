@@ -31,9 +31,9 @@ export const NewsShortBy = {
 */
 
 export const API = {
-	url: "https://pomaray-api.onrender.com/api",
+	url: "http://127.0.0.1:8000/v1",
 	getEndpoint(endpoint: string) {
-		return `${this.url}/${endpoint}`;
+		return `${this.url}${endpoint}`;
 	},
 };
 

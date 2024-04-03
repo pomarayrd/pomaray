@@ -5,13 +5,13 @@ export interface usePaginationOptions {
 }
 
 export const usePagination = (
-	total: number,
-	initialPage: number,
-	{ queryParam = "page" }: usePaginationOptions,
-	onPageChange: (page: number) => void,
+	initialPage = 1,
+	limit = 20,
+	{ queryParam = "page" }: usePaginationOptions = {},
+	onPageChange: (page: number) => void = () => {},
 ) => {
 	const [currentPage, setCurrentPage] = useState<number>(initialPage);
-	const [totalPages, setTotalPages] = useState<number>(total);
+	const [totalPages, setTotalPages] = useState<number>(0);
 
 	useEffect(() => {
 		const urlParams = new URLSearchParams(window.location.search);
@@ -31,6 +31,7 @@ export const usePagination = (
 	return {
 		currentPage,
 		totalPages,
+		skip: (currentPage - 1) * limit,
 		handleChangePage,
 		setTotalPages,
 		setCurrentPage,

@@ -3,23 +3,6 @@
 		"TITLE": "Aprende junto al Politécnico Madre Rafaela Ybarra",
 		"SLOGAN": "No se cansen de hacer el bien"
 	},
-	"POLYTECHNIC_TECHNIQUES": [
-		{
-			"id": "1",
-			"title": "Ingeniería de Software",
-			"slug": "ingenieria-de-software"
-		},
-		{
-			"id": "2",
-			"title": "Electrónica Avanzada",
-			"slug": "electronica-avanzada"
-		},
-		{
-			"id": "3",
-			"title": "Inteligencia Artificial",
-			"slug": "inteligencia-artificial"
-		}
-	],
 	"SECTION1": {
 		"TITLE": "Educación de Calidad",
 		"DESCRIPTION": "En el Politécnico Madre Rafaela Ybarra, nos comprometemos a ofrecer educación de calidad que prepara a nuestros estudiantes para enfrentar los desafíos del mundo actual.",
