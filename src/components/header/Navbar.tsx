@@ -80,7 +80,14 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 								);
 
 								return (
-									<Dropdown size="sm" key={item.TEXT}>
+									<Dropdown
+										showArrow
+										shouldCloseOnBlur
+										radius="sm"
+										size="sm"
+										key={item.TEXT}
+										className="bg-default-100"
+									>
 										<NavbarItem isActive={itemIsActive}>
 											<DropdownTrigger>
 												<Button
@@ -106,7 +113,9 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 													key={sub.LINK}
 													href={sub.LINK}
 												>
-													{sub.TEXT}
+													<span className="text-primary font-semibold capitalize text-ellipsis overflow-hidden text-nowrap">
+														{sub.TEXT}
+													</span>
 												</DropdownItem>
 											)}
 										</DropdownMenu>
