@@ -20,7 +20,7 @@ export const PostScheme = z.object({
 
 export const PostShortEnum = z.enum(["views", "created_at"]);
 
-export const GetPostsRequestSchema = z.object({
+export const SearchPostsRequestSchema = z.object({
 	text: z.string().max(128),
 	skip: z.number(),
 	limit: z.number(),
@@ -28,5 +28,5 @@ export const GetPostsRequestSchema = z.object({
 });
 
 export type PostShort = z.infer<typeof PostShortEnum>;
-export type GetPostsRequest = z.infer<typeof GetPostsRequestSchema>;
+export type SearchPostsRequest = z.infer<typeof SearchPostsRequestSchema>;
 export type Post = z.infer<typeof PostScheme>;

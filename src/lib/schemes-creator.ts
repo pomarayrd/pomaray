@@ -3,21 +3,21 @@ import locale from "@/locales/errors/schemas.json";
 import { z } from "zod";
 import { stringReplaceCharacter, valueReplaceCharacter } from "./constants";
 
-export type createRegexSchemaOptions = {
+export type createRegexSchemeOptions = {
 	min_length?: number;
 	max_length?: number;
 	regex?: RegExp;
 	description?: string;
 };
 
-export const createRegexSchema = (
+export const createRegexScheme = (
 	fieldName: string,
 	{
 		min_length = 2,
 		max_length = 32,
 		regex = injectionRegex,
 		...opts
-	}: Partial<createRegexSchemaOptions> = {},
+	}: Partial<createRegexSchemeOptions> = {},
 ) =>
 	z
 		.string({

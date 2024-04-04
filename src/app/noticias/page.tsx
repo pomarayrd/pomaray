@@ -1,25 +1,20 @@
 "use client";
 
+import GiphyMeme from "@/components/Giphy";
 import { Container } from "@/components/container";
 import { Message } from "@/components/message";
 import SubmitButton from "@/components/submit-button";
 import { Text } from "@/components/text";
+import usePostsStore, { INITIAL_PAGE } from "@/hooks/custom/usePosts";
 import { useDebounce } from "@/hooks/useDebounce";
-import { useFetch } from "@/hooks/useFetch";
 import { usePagination } from "@/hooks/usePagination";
-import { API } from "@/lib/constants";
-import type { Post } from "@/types/scheme/posts";
 import { Divider, Input, Link, Pagination, Switch } from "@nextui-org/react";
 import { type ChangeEvent, useEffect, useState } from "react";
 import PostCard from "./_componentes/PostCard";
 import PostsSkeleton from "./_componentes/PostsSkeleton";
 
-const INITIAL_PAGE = 1;
-const LIMIT = 20;
-
 export default function PostPage() {
-	const [text, setText] = useState("");
-	const [onlyNews, setOnlyNews] = useState(false);
+	const store = usePostsStore();
 
 	const {
 		currentPage,
@@ -30,34 +25,31 @@ export default function PostPage() {
 		handleChangePage,
 	} = usePagination(INITIAL_PAGE);
 
-	const debounceText = useDebounce(text, 500);
-	const debounceOnlyNews = useDebounce(onlyNews, 500);
+	const debounceText = useDebounce(store.request.text, 500);
+	const debounceShortBy = useDebounce(store.request.short_by, 500);
 	const debounceSkip = useDebounce(skip, 500);
-
-	const { isLoading, error, refetch, results } = useFetch<{
-		max_results: number;
-		posts: Post[];
-	}>(
-		API.getEndpoint(
-			`/posts/search?limit=${LIMIT}&skip=${debounceSkip}&text=${debounceText}&short_by=${
-				debounceOnlyNews ? "created_at" : "views"
-			}`,
-		),
-		{ onFetch },
-	);
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
+		const fetchEffect = async () => {
+			const total = await store.fetchData();
+			setTotalPages(total ?? 0);
+		};
+
+		fetchEffect();
+	}, [debounceText, debounceShortBy, debounceSkip]);
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+	useEffect(() => {
+		store.setSkip(0);
 		setCurrentPage(1);
-	}, [debounceText]);
+	}, [store.request.text]);
 
-	function onFetch(body: { max_results?: number }) {
-		setTotalPages(Math.ceil((body.max_results ?? 1) / LIMIT));
-	}
-
-	const handleChangeText = (e: ChangeEvent<HTMLInputElement>) =>
-		setText(e.target.value);
-	const handleOnlyNews = (isSelected: boolean) => setOnlyNews(isSelected);
+	const handleChangeText = (e: ChangeEvent<HTMLInputElement>) => {
+		store.setText(e.target.value);
+	};
+	const handleOnlyNews = (isSelected: boolean) =>
+		store.setOnlyNews(Boolean(isSelected));
 
 	return (
 		<Container size="container" className="gap-8">
@@ -71,11 +63,12 @@ export default function PostPage() {
 				<form
 					onSubmit={(e) => {
 						e.preventDefault();
-						refetch();
+						store.fetchData();
 					}}
 					className="grid sm:grid-cols-3 grid-cols-1 gap-4 w-full sm:pb-0 pb-6"
 				>
 					<Input
+						value={store.request.text}
 						name="text"
 						size="sm"
 						label="Título de la noticias"
@@ -87,7 +80,7 @@ export default function PostPage() {
 					<SubmitButton>Buscar</SubmitButton>
 
 					<Switch
-						isSelected={onlyNews}
+						isSelected={store.request.short_by === "created_at"}
 						onValueChange={handleOnlyNews}
 						name="onlyNews"
 						defaultSelected
@@ -96,32 +89,28 @@ export default function PostPage() {
 						Solo las más recientes.
 					</Switch>
 				</form>
-				{error && (
-					<div className="flex flex-center min-h-[50vh]">
-						<Message
-							variant="solid"
-							color={error.status >= 500 ? "danger" : "warning"}
-							className="p-10 max-w-[600px]"
-						>
-							{error.message}{" "}
+				{store.error?.message && (
+					<div className="flex flex-col flex-center min-h-[50vh]">
+						{store.request.text === ":meme" && <GiphyMeme />}
+						<Message variant="ghost" color="danger" className="p-10">
+							{store.error.message}
 							<Link
-								color={error.status >= 500 ? "danger" : "warning"}
+								color="danger"
 								as={"button"}
 								underline="always"
-								onClick={() => refetch()}
+								onClick={() => store.fetchData()}
 							>
 								Volver a intentarlo.
 							</Link>
 						</Message>
 					</div>
 				)}
-				{isLoading}
 			</section>
 			<section className="flex flex-col sm:gap-8 gap-16">
-				{isLoading ? (
+				{store.isLoading ? (
 					<PostsSkeleton />
 				) : (
-					results?.posts?.map((post) => <PostCard key={post.id} post={post} />)
+					store?.posts?.map((post) => <PostCard key={post.id} post={post} />)
 				)}
 			</section>
 

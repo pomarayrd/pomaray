@@ -41,6 +41,9 @@ dependencies:
   react-dom:
     specifier: ^18
     version: 18.2.0(react@18.2.0)
+  react-giphy:
+    specifier: ^0.0.1
+    version: 0.0.1(react@18.2.0)
   react-stately:
     specifier: ^3.30.1
     version: 3.30.1(react@18.2.0)
@@ -4975,6 +4978,14 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-giphy@0.0.1(react@18.2.0):
+    resolution: {integrity: sha512-YuwvJz8AoVXzVJ+zMqxhcoLuLvm9s9old+LLgVXriIEKK83VnlOi9nFna8kaaR8tZuYgYgpGT7DTBTngV1tb4A==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-remove-scroll-bar@2.3.5(@types/react@18.2.65)(react@18.2.0):

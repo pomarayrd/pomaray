@@ -35,7 +35,7 @@ export function objectToUrlParams(obj: {
 }
 
 export function fastFetch(endpoint: string, method: API_METHOD) {
-	return fetch(API.getEndpoint(endpoint), {
+	return fetch(endpoint, {
 		method: method,
 		headers: {
 			"Content-Type": "application/json",
@@ -59,4 +59,16 @@ export function truncateText(text: string, maxWords: number) {
 		return `${words.slice(0, maxWords).join(" ")}...`;
 	}
 	return text;
+}
+
+export async function getStatusError(file: string, status: number) {
+	const locale = (await import(`@/locales/${file}`)) as {
+		readonly ERRORS: { DEFAULT: string; [key: string]: string };
+	};
+	const statusError = locale.ERRORS[status.toString()];
+	if (statusError) {
+		return statusError;
+	}
+
+	return locale.ERRORS.DEFAULT;
 }

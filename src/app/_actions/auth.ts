@@ -1,9 +1,9 @@
 "use server";
 
 import { API, CONNECTION_ERROR, cookiesKeys } from "@/lib/constants";
+import { LoginTokenScheme } from "@/types/Schemes/auth";
+import type { User } from "@/types/Schemes/user";
 import type { LoginResponse } from "@/types/actions/auth";
-import { LoginTokenSchema } from "@/types/schemas/auth";
-import type { User } from "@/types/schemas/user";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { UAParser } from "ua-parser-js";
@@ -20,7 +20,7 @@ export async function login(formData: FormData): Promise<LoginResponse> {
 			username: formData.get("username"),
 			password: formData.get("password"),
 		};
-		const validatedFields = LoginTokenSchema.safeParse(rawFormData);
+		const validatedFields = LoginTokenScheme.safeParse(rawFormData);
 
 		if (!validatedFields.success) {
 			return {

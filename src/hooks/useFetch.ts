@@ -28,6 +28,7 @@ export const useFetch = <T>(path: string, options: UseFetchOptions<T> = {}) => {
 		try {
 			setIsLoading(true);
 			resetsState();
+			await new Promise((resolve) => setTimeout(resolve, 1000));
 			const response = await fetch(buildUrl(path, options.searchParams), {
 				method: "GET",
 				headers: {

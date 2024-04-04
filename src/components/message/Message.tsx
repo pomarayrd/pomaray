@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { tv } from "tailwind-variants";
 
 const containerVariant = tv({
-	base: "inline-flex items-center justify-center border-1 rounded-lg w-full gap-2",
+	base: "border-1 rounded-lg w-full gap-2",
 	variants: {
 		color: {
 			success: "border-success bg-success/20 text-success",
@@ -14,9 +14,9 @@ const containerVariant = tv({
 			secondary: "border-secondary bg-secondary/20 text-secondary",
 		},
 		variant: {
-			bordered: "border-1 px-unit-2 py-unit-1",
-			ghost: "border-0 bg-transparent",
-			solid: "border-0 px-unit-2 py-unit-1",
+			bordered: "px-unit-2 py-unit-1",
+			ghost: "border-transparent bg-transparent",
+			solid: "border-transparent px-unit-2 py-unit-1",
 		},
 	},
 	defaultVariants: {

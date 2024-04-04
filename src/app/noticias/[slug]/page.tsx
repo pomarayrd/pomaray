@@ -1,32 +1,29 @@
 import { Container } from "@/components/container";
 import { Text } from "@/components/text";
 import { API } from "@/lib/constants";
-import { cn, numberParser } from "@/lib/utils";
+import { numberParser } from "@/lib/utils";
 import type { Post } from "@/types/scheme/posts";
-import {
-	Avatar,
-	AvatarGroup,
-	Divider,
-	Image,
-	Link,
-	Tooltip,
-} from "@nextui-org/react";
+import { Avatar, AvatarGroup, Image, Tooltip } from "@nextui-org/react";
 import { EyeIcon } from "@nextui-org/shared-icons";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import NextLink from "next/link";
 import { notFound } from "next/navigation";
+import MarkdownArticle from "./_components/MarkdownRender";
 import TitleSkeleton from "./_components/TitleSkeleton";
 
-export default async function RemoteMdxPage({
+export default async function PostSlugPage({
 	params,
 }: { params: { slug: string } }) {
-	const res = await fetch(API.getEndpoint(`/posts/${params.slug}`));
+	let post: Post;
+	try {
+		const res = await fetch(API.getEndpoint(`/posts/${params.slug}`));
 
-	if (!res.ok) {
+		if (!res.ok) {
+			notFound();
+		}
+
+		post = (await res.json()) as Post;
+	} catch (err) {
 		notFound();
 	}
-
-	const post = (await res.json()) as Post;
 
 	return (
 		<Container>
@@ -54,8 +51,20 @@ export default async function RemoteMdxPage({
 						/>
 					</div>
 				)}
-				<div className="flex justify-between items-center py-10">
-					<div className="opacity-55 w-full">
+				<div className="grid grid-cols-3 justify-between items-center py-10">
+					{post.last_updated_at && (
+						<div className="flex flex-col gap-2 w-full">
+							<span className="text-sm opacity-60">Ultima actualización:</span>
+							<span>
+								{new Intl.DateTimeFormat("es-DO", {
+									dateStyle: "medium",
+									timeStyle: "short",
+									timeZone: "America/Santo_Domingo",
+								}).format(new Date(post.last_updated_at))}
+							</span>
+						</div>
+					)}
+					<div className="flex flex-center opacity-55 w-full">
 						<Tooltip
 							disableAnimation
 							showArrow
@@ -67,9 +76,9 @@ export default async function RemoteMdxPage({
 							</div>
 						</Tooltip>
 					</div>
-					<div className="flex gap-4 items-center">
+					<div className="flex gap-4 justify-end items-center w-full">
 						<Text size="label-base" className="sm:block hidden">
-							Autores de esta noticia:
+							Autores:
 						</Text>
 						<AvatarGroup isBordered>
 							{post.authors.map((author) => (
@@ -102,99 +111,8 @@ export default async function RemoteMdxPage({
 					</Text>
 				</div>
 			</section>
-			<article className="flex flex-col gap-4">
-				<MDXRemote
-					source={post.content}
-					components={{
-						h1: ({ children, className, ...props }) => (
-							<Text
-								as="h1"
-								className={cn("text-primary", className)}
-								size="heading-4"
-								{...props}
-							>
-								{children}
-							</Text>
-						),
-						h2: ({ children, ...props }) => (
-							<>
-								<Text as="h2" size="heading-3" {...props}>
-									{children}
-								</Text>
-								<Divider className="bg-primary" style={{ height: "1.3px" }} />
-							</>
-						),
-						h3: ({ children, className, ...props }) => (
-							<Text
-								as="h3"
-								className={cn("font-bold", className)}
-								size="paragraph-base"
-								{...props}
-							>
-								{children}
-							</Text>
-						),
-						h5: ({ children, className, ...props }) => (
-							<Text
-								as="h5"
-								className={cn("font-bold lea", className)}
-								size="paragraph-lg"
-								{...props}
-							>
-								{children}
-							</Text>
-						),
-						h4: ({ children, ...props }) => (
-							<Text as="h3" size="heading-3" {...props}>
-								{children}
-							</Text>
-						),
-						p: ({ children, ...props }) => {
-							if (typeof children !== "string") {
-								return children;
-							}
-							return <Text {...props}>{children}</Text>;
-						},
-						a: ({ children, className, href }) => (
-							<Link
-								as={NextLink}
-								href={href}
-								className={className}
-								isExternal
-								showAnchorIcon
-							>
-								{children}
-							</Link>
-						),
-						blockquote: ({ children }) => (
-							<Text
-								as={"blockquote"}
-								style={{
-									margin: 0,
-									padding: 10,
-									backgroundColor: "#f9f9f9",
-									borderLeftWidth: 5,
-									borderLeftColor: "#ccc",
-									fontStyle: "italic",
-									opacity: 0.2,
-								}}
-								size="label-xs"
-							>
-								{children}
-							</Text>
-						),
-						img: ({ src, width, height, className, alt }) => (
-							<Image
-								className={cn("aspect-video max-w-sm w-full", className)}
-								width={width}
-								height={height}
-								src={src}
-								alt={alt}
-							/>
-						),
-					}}
-				/>
-			</article>
+
+			<MarkdownArticle source={post.content} />
 		</Container>
 	);
 }

@@ -92,6 +92,5 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 				alt={alt}
 			/>
 		),
-		...components,
 	};
 }

@@ -44,6 +44,12 @@ const Footer = () => {
 								Ver en G3deon
 							</Text>
 						</Button>
+						{/* <small className="text-sm">
+							Icon by{" "}
+							<a rel="noreferrer" target="_blank" href="https://icons8.com">
+								Icons8
+							</a>
+						</small> */}
 					</div>
 				</div>
 				<div className="grid sm:place-content-start sm:grid-cols-2 lg:place-content-center lg:grid-cols-3">

@@ -21,6 +21,7 @@
 		"next-mdx-remote": "^4.4.1",
 		"react": "^18",
 		"react-dom": "^18",
+		"react-giphy": "^0.0.1",
 		"react-stately": "^3.30.1",
 		"tailwind-merge": "^2.2.1",
 		"tailwind-variants": "^0.2.0",
