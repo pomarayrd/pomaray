@@ -1,9 +1,9 @@
 "use server";
 
 import { API, CONNECTION_ERROR, cookiesKeys } from "@/lib/constants";
-import { LoginTokenScheme } from "@/types/Schemes/auth";
-import type { User } from "@/types/Schemes/user";
 import type { LoginResponse } from "@/types/actions/auth";
+import { LoginTokenScheme } from "@/types/scheme/auth";
+import type { User } from "@/types/scheme/user";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { UAParser } from "ua-parser-js";
@@ -68,13 +68,10 @@ export async function login(formData: FormData): Promise<LoginResponse> {
 	}
 }
 
-export async function getTokenUser(): Promise<ResultResponse<User>> {
+export async function getTokenUser(): Promise<User | undefined> {
 	const token = cookies().get(cookiesKeys.token.key);
 	if (!token) {
-		return {
-			code: 404,
-			message: "El token es requerid.",
-		};
+		return;
 	}
 
 	try {
@@ -85,16 +82,8 @@ export async function getTokenUser(): Promise<ResultResponse<User>> {
 		});
 
 		const body = await response.json();
-		return {
-			code: response.status,
-			message: body.message || "Se obtuvo el usuario con éxito.",
-			results: body.user || undefined,
-		};
+		return body.user as User;
 	} catch (err) {
-		const msg = err instanceof Error ? err.message : CONNECTION_ERROR;
-		return {
-			code: 500,
-			message: msg,
-		};
+		return;
 	}
 }

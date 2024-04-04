@@ -1,3 +1,5 @@
+"use client";
+
 import { login } from "@/app/_actions/auth";
 import { Container } from "@/components/container";
 import { Message } from "@/components/message";

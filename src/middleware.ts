@@ -5,7 +5,7 @@ const middleware = async (request: NextRequest) => {
 	return NextResponse.next();
 	try {
 		const currentUser = await getTokenUser();
-		if (!currentUser.results) {
+		if (!currentUser) {
 			throw new Error("Is not logged in");
 		}
 
