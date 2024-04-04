@@ -1,7 +1,7 @@
 "use client";
 
-import GiphyMeme from "@/components/Giphy";
 import { Container } from "@/components/container";
+import GiphyMeme from "@/components/giphy";
 import { Message } from "@/components/message";
 import SubmitButton from "@/components/submit-button";
 import { Text } from "@/components/text";
