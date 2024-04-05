@@ -11,6 +11,7 @@
 	"cSpell.language": "en,es-ES",
 	"cSpell.enabled": true,
 	"cSpell.words": [
+		"biomejs",
 		"clsx",
 		"giphy",
 		"Giphy",
@@ -20,6 +21,9 @@
 		"Pomaray",
 		"Rafaela",
 		"Rafela",
+		"tailwindcss",
+		"tiptap",
+		"Tiptap",
 		"Ybarra",
 		"zustand"
 	],

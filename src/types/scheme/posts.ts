@@ -15,7 +15,7 @@ export const PostScheme = z.object({
 	content: z.string().min(100).max(6000),
 	authors: z.array(PostAuthorScheme).min(1),
 	views: z.number(),
-	last_updated_at: z.string().optional(),
+	last_updated_at: z.string(),
 });
 
 export const PostShortEnum = z.enum(["views", "created_at"]);
