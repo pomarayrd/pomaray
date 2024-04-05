@@ -17,6 +17,7 @@
 		"BANNER": "assets/images/banner/home.png"
 	},
 	"NAVBAR": {
+		"BUTTON": "Enviar excusas",
 		"ITEMS": [
 			{
 				"TEXT": "Inicio",
@@ -28,13 +29,26 @@
 				"IMPORTANT": true
 			},
 			{
-				"TEXT": "Técnicas",
-				"LINK": "/tecnicas",
+				"TEXT": "Estudiantes",
+				"SUB_ITEMS": [
+					{
+						"TEXT": "Anuario",
+						"LINK": "/estudiantes",
+						"DESCRIPTION": "Conéctate con nosotros para cualquier pregunta, comentario o colaboración.",
+						"IS_DISABLED": false
+					},
+					{
+						"TEXT": "Boletín",
+						"LINK": "/estudiantes/boletin",
+						"DESCRIPTION": "Próximamente, descargue su boletin de calificaciones.",
+						"IS_DISABLED": true
+					}
+				],
 				"IMPORTANT": true
 			},
 			{
-				"TEXT": "Anuario",
-				"LINK": "/estudiantes"
+				"TEXT": "Técnicas",
+				"LINK": "/tecnicas"
 			},
 			{
 				"TEXT": "Acerca de",
@@ -42,22 +56,26 @@
 					{
 						"TEXT": "Nosotros",
 						"LINK": "/nosotros",
-						"DESCRIPTION": "Historia, misión, visión y valores del politécnico."
+						"DESCRIPTION": "Historia, misión, visión y valores del politécnico.",
+						"IS_DISABLED": false
 					},
 					{
 						"TEXT": "Contacto",
 						"LINK": "/contacto",
-						"DESCRIPTION": "Conéctate con nosotros para cualquier pregunta, comentario o colaboración."
+						"DESCRIPTION": "Conéctate con nosotros para cualquier pregunta, comentario o colaboración.",
+						"IS_DISABLED": false
 					},
 					{
 						"TEXT": "Descargas",
 						"LINK": "/descargas",
-						"DESCRIPTION": "Documentos vitales y recursos del politécnico."
+						"DESCRIPTION": "Documentos vitales y recursos del politécnico.",
+						"IS_DISABLED": false
 					},
 					{
 						"TEXT": "Contribuidores",
 						"LINK": "/contribuidores",
-						"DESCRIPTION": "Grupo de desarrolladores de la aplicación del politécnico."
+						"DESCRIPTION": "Grupo de desarrolladores de la aplicación del politécnico.",
+						"IS_DISABLED": false
 					}
 				]
 			}

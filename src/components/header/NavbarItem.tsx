@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { NavbarItem as NextNavbarItem } from "@nextui-org/navbar";
+import { Tooltip } from "@nextui-org/react";
 import { forwardRef } from "react";
 import type { NavbarItemProps } from "./types.d";
 
@@ -15,7 +16,10 @@ const NavbarItem = forwardRef<HTMLDivElement, NavbarItemProps>(
 			>
 				{children}
 				{isImportant && (
-					<span className="size-1.5 bg-primary-500 rounded-full animate-pulse" />
+					<span
+						aria-label="Nuevo contenido!"
+						className="size-1.5 bg-primary-500 rounded-full animate-pulse"
+					/>
 				)}
 			</NextNavbarItem>
 		);

@@ -1,10 +1,18 @@
-import { create } from "zustand";
-import type { NotifyStore } from "./types";
+"use client";
 
-const useNotify = create<NotifyStore>()((set) => ({
-	isOpen: false,
-	close: () => set({ isOpen: false }),
-	open: () => set({ isOpen: true }),
-}));
+import { useState } from "react";
+
+const useNotify = (initial = false) => {
+	const [isOpen, setIsOpen] = useState(initial);
+
+	const open = () => setIsOpen(true);
+	const close = () => setIsOpen(false);
+
+	return {
+		isOpen,
+		close,
+		open,
+	};
+};
 
 export default useNotify;

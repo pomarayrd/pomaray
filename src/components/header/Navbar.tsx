@@ -105,6 +105,9 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 											aria-label={item.TEXT}
 											items={item.SUB_ITEMS}
 											className="max-w-[300px]"
+											disabledKeys={item.SUB_ITEMS.filter(
+												(sub) => sub.IS_DISABLED === true,
+											).map((sub) => sub.LINK)}
 										>
 											{(sub) => (
 												<DropdownItem
@@ -126,7 +129,7 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 					</NavbarContent>
 					<NavbarContent justify="end">
 						<Button size="sm" variant="bordered" color="primary">
-							Enviar excusa.
+							{locale.NAVBAR.BUTTON}
 						</Button>
 					</NavbarContent>
 				</NextNavbar>
