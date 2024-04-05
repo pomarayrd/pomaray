@@ -1,6 +1,6 @@
 import { Text } from "@/components/text";
 import locale from "@/locales/home.json";
-import { EyeIcon } from "@nextui-org/shared-icons";
+import { SunIcon, PetBoldIcon, PlusFilledIcon } from "@nextui-org/shared-icons";
 import HeroCard from "./hero-card";
 
 async function HeroSection() {
@@ -15,16 +15,16 @@ async function HeroSection() {
 				</Text>
 			</div>
 			<HeroCard vertical="center" horizontal="left" rotate={-10}>
-				<EyeIcon className="text-3xl" />
-				<p className="p-2">Lorem ipsum dolor sit.</p>
+				<PetBoldIcon className="text-3xl" />
+				<p className="p-2">Atención Individualizada</p>
 			</HeroCard>
 			<HeroCard vertical="top" horizontal="right" rotate={5}>
-				<EyeIcon className="text-3xl" />
-				<p className="p-2">Lorem ipsum dolor sit amet consectetur.</p>
+				<SunIcon className="text-3xl" />
+				<p className="p-2">Educación Integral</p>
 			</HeroCard>
 			<HeroCard vertical="bottom" horizontal="right" rotate={-5}>
-				<EyeIcon className="text-3xl" />
-				<p className="p-2">Lorem ipsum dolor sit amet.</p>
+				<PlusFilledIcon className="text-3xl" />
+				<p className="p-2">Diversidad e Inclusión</p>
 			</HeroCard>
 		</section>
 	);
