@@ -11,7 +11,7 @@ function TechsPage() {
 					{locale.HERO.TITLE}
 				</Text>
 				<Text
-					className="mt-6 mx-auto max-w-[120vh] text-gray-700"
+					className="mt-6 mx-auto max-w-[90ch] text-gray-700"
 					size="paragraph-lg"
 					align="center"
 				>
@@ -23,9 +23,8 @@ function TechsPage() {
 				{locale.TECHS.map((tech) => (
 					<TechCard
 						key={tech.ID}
-						TechId={tech.ID}
-						dynamicPath="/tecnicas"
-						TechName={tech.NAME}
+						techId={tech.ID}
+						techName={tech.NAME}
 						iconElement={<Computer />}
 						description={tech.DESCRIPTION}
 					/>

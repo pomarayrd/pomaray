@@ -12,9 +12,8 @@ export default function TechniquePage() {
 	const mailTo = () => {
 		const subject = i18n.SEND_MAIL.SUBJECT.replace("%s", technique.NAME);
 		const body = i18n.SEND_MAIL.MESSAGE.replace("%s", technique.NAME);
-		const mailtoLink = `mailto:${
-			i18n.SEND_MAIL.MAIL
-		}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+		const mailtoLink = `mailto:${i18n.SEND_MAIL.MAIL
+			}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 		window.location.href = mailtoLink;
 	};
 
@@ -83,7 +82,7 @@ export default function TechniquePage() {
 									{technique.GALLERY_TITLE}
 								</Text>
 								<Divider className="h-1 mt-2 bg-primary rounded-full" />
-								<div className="grid grid-cols-12 gap-4">
+								<div className="grid grid-cols-12 gap-4 pt-6">
 									{technique.IMAGES.map((image, imageIndex) => (
 										<Card
 											shadow="none"
@@ -111,13 +110,13 @@ export default function TechniquePage() {
 								{item.TITLE}
 							</Text>
 							<Divider className="h-1 mt-2 bg-primary rounded-full" />
-							{item.PARAGRAPHS.map((parag) => (
+							{item.PARAGRAPHS.map((paragraph) => (
 								<Text
-									key={parag}
+									key={paragraph}
 									size="paragraph-base"
-									className="mb-4 text-pretty"
+									className="my-4 text-pretty"
 								>
-									{parag}
+									{paragraph}
 								</Text>
 							))}
 						</section>

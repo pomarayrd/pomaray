@@ -11,7 +11,7 @@ function MapSection() {
 				loading="lazy"
 				aria-label={locale.SECTION4.IFRAME_ARIA_LABEL}
 				title={locale.SECTION4.IFRAME_TITLE}
-				className="aspect-video w-full h-[50vh] rounded-2xl"
+				className="aspect-video w-full h-[50vh] rounded-2xl border-primary"
 				src={locale.SECTION4.IFRAME_SRC}
 				allowFullScreen
 			/>

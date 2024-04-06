@@ -92,5 +92,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 				alt={alt}
 			/>
 		),
+		li: ({ children }) => (
+			<li style={{
+				padding: ".6rem",
+				listStyleType: "disc"
+			}}>
+				{children}
+			</li>
+		)
 	};
 }

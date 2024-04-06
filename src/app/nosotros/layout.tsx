@@ -8,7 +8,7 @@ export default function AboutLayout({
 }>) {
 	return (
 		<Container size="5xl">
-			<article className="mt-12 py-12 space-y-8">{children}</article>
+			<article className="mt-12 py-12 space-y-6">{children}</article>
 		</Container>
 	);
 }

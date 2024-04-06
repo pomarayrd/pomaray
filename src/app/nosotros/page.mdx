@@ -1,57 +1,68 @@
+import AboutCard from "./_components/AboutCard.tsx"
+import TechSection from "./_components/TechSection.tsx"
+
+
 # Nuestra Historia
 
 En el Politécnico Madre Rafaela Ybarra, en el corazón de la República Dominicana, nos preocupamos profundamente por brindar educación de calidad. Fundado bajo la visión de la Hermana Rafaela Ybarra, nuestro instituto es un faro de excelencia académica que se preocupa no solo por impartir conocimientos, sino también por cultivar valores fundamentales. En nuestras aulas, la dedicación a la educación de calidad es más que una misión; es nuestro compromiso con el desarrollo integral de cada estudiante.
 
-<ol class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <li class="relative flex flex-col items-center">
-            <div class="z-10 flex items-center justify-center w-12 h-12 bg-white rounded-full ring-4 ring-primary">
-                <svg class="w-6 h-6 text-primary dark:text-primary-dark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                </svg>
-            </div>
-            <div class="mt-4">
-                <h3 class="text-lg font-semibold text-primary mb-2">Fundadores del centro educativo </h3>
-                <time class="block text-sm font-normal text-gray-500 mb-2">Inicio del Politécnico Las Caobas en 1978.</time>
-                <p class="text-base font-normal text-gray-700 ">Establecimiento de la filosofía y adaptación a la necesidad de una escuela primaria para un impacto educativo más significativo en la comunidad.</p>
-            </div>
-        </li>
-        <li class="relative flex flex-col items-center">
-            <div class="z-10 flex items-center justify-center w-12 h-12 bg-white rounded-full ring-4 ring-primary ">
-                <svg class="w-6 h-6 text-primary dark:text-primary-dark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                </svg>
-            </div>
-            <div class="mt-4">
-                <h3 class="text-lg font-semibold text-primary mb-2">Acuerdo entre el Estado y la Compañía de Jesús</h3>
-                <time class="block text-sm font-normal text-gray-500 mb-2">Cambios importantes en 2008.</time>
-                <p class="text-base font-normal text-gray-700 ">Inicio del funcionamiento como Liceo bajo el nombre POMARAY.</p>
-            </div>
-        </li>
-        <li class="relative flex flex-col items-center">
-            <div class="z-10 flex items-center justify-center w-12 h-12 bg-white rounded-full ring-4 ring-primary">
-                <svg class="w-6 h-6 text-primary dark:text-primary-dark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                </svg>
-            </div>
-            <div class="mt-4">
-                <h3 class="text-lg font-semibold text-primary  mb-2">Cambio de Categoría (2010-2011)</h3>
-                <time class="block text-sm font-normal text-gray-500 dark:text-gray-400 mb-2">Cambio de nombre abreviado a POMARAY en 2010-2011.</time>
-                <p class="text-base font-normal text-gray-700 ">Para evitar redundancias y repeticiones en el proyecto de centro.</p>
-            </div>
-        </li>
-        <li class="relative flex flex-col items-center">
-            <div class="z-10 flex items-center justify-center w-12 h-12 bg-white rounded-full ring-4 ring-primary">
-                <svg class="w-6 h-6 text-primary dark:text-primary-dark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                </svg>
-            </div>
-            <div class="mt-4">
-                <h3 class="text-lg font-semibold text-primary mb-2">Educación Técnico Profesional (2024)</h3>
-                <time class="block text-sm font-normal text-gray-500 dark:text-gray-400 mb-2">Aniversario número 46 del Instituto Politécnico Madre Rafaela Ybarra.</time>
-                <p class="text-base font-normal text-gray-700">Lanzamiento de la página web simbolizando la adaptación a la era digital.</p>
-            </div>
-        </li>
-    </ol>
+<ol className="grid grid-cols-1 sm:grid-cols-2 gap-12 py-12">
+    <AboutCard
+        title="Fundadores del centro educativo"
+        label="Inicio del Politécnico Las Caobas en 1978."
+        description="Establecimiento de la filosofía y adaptación a la necesidad de una escuela primaria para un impacto educativo más significativo en la comunidad."
+        icon={
+            <svg
+                className="w-6 h-6 text-primary dark:text-primary-dark"
+                aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 20 20">
+                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+            </svg>
+        }
+    />
+
+    <AboutCard
+        title="Acuerdo entre el Estado y la Compañía de Jesús"
+        label="Cambios importantes en 2008."
+        description="Inicio del funcionamiento como Liceo bajo el nombre POMARAY."
+        icon={
+            <svg
+                className="w-6 h-6 text-primary dark:text-primary-dark"
+                aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 20 20">
+                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+            </svg>
+        }
+    />
+
+    <AboutCard
+        title="Cambio de Categoría (2010-2011)"
+        label="Cambio de nombre abreviado a POMARAY en 2010-2011."
+        description="Para evitar redundancias y repeticiones en el proyecto de centro."
+        icon={
+            <svg
+                className="w-6 h-6 text-primary dark:text-primary-dark"
+                aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 20 20">
+                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+            </svg>
+        }
+    />
+
+    <AboutCard
+        title="Educación Técnico Profesional (2024)"
+        label="Aniversario número 46 del Instituto Politécnico Madre Rafaela Ybarra."
+        description="Lanzamiento de la página web simbolizando la adaptación a la era digital."
+        icon={
+            <svg
+                className="w-6 h-6 text-primary dark:text-primary-dark"
+                aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 20 20">
+                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+            </svg>
+        }
+    />
+</ol>
 
 ## Un Legado de Compromiso y Transformación
 
@@ -65,21 +76,16 @@ La institución ha mantenido a lo largo de los años su firme compromiso con la 
 
 Como parte de los más significativos aportes que ha hecho el Politécnico a la sociedad dominicana se pueden señalar:
 
-- **- Desarrollo de Programas Educativos:** Hemos contribuido a la formación de profesionales altamente calificados en diversas áreas a través de programas educativos innovadores.
-- **- Proyectos de Investigación:** Nuestra institución ha impulsado el avance científico y tecnológico en el país a través de la implementación de proyectos de investigación.
-- **- Colaboración con Empresas e Instituciones:** Fomentamos la inserción laboral de nuestros egresados a través de una estrecha colaboración con empresas e instituciones.
-- **- Promoción de Valores Éticos:** Formamos líderes comprometidos con el desarrollo sostenible al promover valores éticos y ciudadanos.
-- **- Participación en Iniciativas Sociales:** Contribuimos al bienestar general de la sociedad dominicana mediante nuestra participación activa en iniciativas comunitarias y sociales.
+- **Desarrollo de Programas Educativos:** Hemos contribuido a la formación de profesionales altamente calificados en diversas áreas a través de programas educativos innovadores.
+- **Proyectos de Investigación:** Nuestra institución ha impulsado el avance científico y tecnológico en el país a través de la implementación de proyectos de investigación.
+- **Colaboración con Empresas e Instituciones:** Fomentamos la inserción laboral de nuestros egresados a través de una estrecha colaboración con empresas e instituciones.
+- **Promoción de Valores Éticos:** Formamos líderes comprometidos con el desarrollo sostenible al promover valores éticos y ciudadanos.
+- **Participación en Iniciativas Sociales:** Contribuimos al bienestar general de la sociedad dominicana mediante nuestra participación activa en iniciativas comunitarias y sociales.
 
 ## Carreras Precursoras
 
 Las carreras en las que el Politécnico fue precursora son:
 
-- [Finanzas y Mercadeo](tecnicas/cm)
-- [Contabilidad y Gestión Administrativa](tecnicas/gat)
-- [Contabilidad y Finanzas](tecnicas/gat)
-- [Servicios Turísticos](tecnicas)
-- [Hostelería](tecnicas)
-- [Informática](tecnicas/informatica)
+<TechSection />
 
 Estas pioneras carreras no solo marcaron la diferencia en el ámbito educativo, sino que también respondieron a las necesidades cambiantes de la sociedad, contribuyendo al desarrollo integral del país.

@@ -1,46 +1,46 @@
 {
-    "METADATA": {
-      "TITLE": "Contacto",
-      "BANNER": "/images/banner/contacto.png",
-      "DESCRIPTION": "Conéctate con nosotros en el Politécnico Madre Rafaela Ybarra. Estamos aquí para responder a tus preguntas, colaborar en proyectos y fortalecer nuestra comunidad educativa. ¡Contáctanos y sé parte de nuestro camino técnico!"
-    },
-    "HERO": {
-      "TITULO": "Contáctenos",
-      "DESCRIPCION": "¡Estamos aquí para ayudarte! Ponte en contacto con nosotros completando el formulario o utilizando la información de contacto a continuación."
-    },
-    "FORMULARIO": {
-      "TITULO": "Envíanos un mensaje",
-      "CAMPOS": [
-        {
-          "ID": "nombre",
-          "TITULO": "Nombre",
-          "TIPO": "texto",
-          "REQUERIDO": true
-        },
-        {
-          "ID": "correo",
-          "TITULO": "Correo Electrónico",
-          "TIPO": "correo",
-          "REQUERIDO": true
-        },
-        {
-          "ID": "contenido",
-          "TITULO": "Contenido",
-          "TIPO": "areaTexto",
-          "REQUERIDO": true
-        }
-      ],
-      "BOTON_ENVIAR": {
-        "TEXTO": "Enviar",
-        "COLOR": "verde"
-      }
-    },
-    "INFORMACION_ADICIONAL": {
-      "HORARIOS": "Lunes a Viernes: 9am - 5pm",
-      "DIRECCION": "Prolongación 27 de Febrero, #796, Santo Domingo  Oeste.",
-      "SOPORTE": {
-        "CORREO": "support@pomaray.com",
-        "TELEFONO": "+809-560-0495"
-      }
-    }
-  }
+	"METADATA": {
+		"TITLE": "Contact",
+		"BANNER": "/images/banner/contacto.png",
+		"DESCRIPTION": "Connect with us at the Polytechnic Mother Rafaela Ybarra. We are here to answer your questions, collaborate on projects, and strengthen our educational community. Contact us and be part of our technical journey!"
+	},
+	"HERO": {
+		"TITLE": "Contact Us",
+		"DESCRIPTION": "We're here to help! Get in touch with us by completing the form or using the contact information below."
+	},
+	"FORM": {
+		"TITLE": "Send us a message",
+		"FIELDS": [
+			{
+				"ID": "name",
+				"TITLE": "Name",
+				"TYPE": "text",
+				"PLACEHOLDER": "Nombre completo",
+				"REQUIRED": true
+			},
+			{
+				"ID": "email",
+				"TITLE": "Email",
+				"TYPE": "email",
+				"PLACEHOLDER": "Correo electrónico",
+				"REQUIRED": true
+			},
+			{
+				"ID": "content",
+				"TITLE": "Content",
+				"TYPE": "textarea",
+				"PLACEHOLDER": "Mensaje",
+				"REQUIRED": true
+			}
+		],
+		"SEND_BUTTON": "Enviar"
+	},
+	"ADDITIONAL_INFO": {
+		"HOURS": "Monday to Friday: 9am - 5pm",
+		"ADDRESS": "Prolongación 27 de Febrero, #796, Santo Domingo Oeste.",
+		"SUPPORT": {
+			"EMAIL": "support@pomaray.com",
+			"PHONE": "+809-560-0495"
+		}
+	}
+}

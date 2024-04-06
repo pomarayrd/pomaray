@@ -13,7 +13,7 @@ function CollageSection() {
 			</Text>
 			<div className="bg-primary h-full flex flex-col overflow-hidden rounded-xl">
 				{locale.SECTION3.COLLAGE.map((item, index) => (
-					<aside key={item.IMAGE} className={"grid grid-cols-1 sm:grid-cols-2"}>
+					<aside key={item.IMAGE} className={"grid grid-cols-1 md:grid-cols-2"}>
 						<div
 							className={`h-full ${index % 2 === 0 ? "order-2" : "order-1"}`}
 						>
@@ -23,15 +23,14 @@ function CollageSection() {
 								src={item.IMAGE}
 								alt={item.TITLE}
 								classNames={{
-									img: "w-full h-full object-cover",
-									wrapper: "!max-w-full h-ful",
+									img: "w-full h-full object-cover !rounded-none",
+									wrapper: "!max-w-full h-full !rounded-none",
 								}}
 							/>
 						</div>
 						<div
-							className={`flex flex-col flex-center p-10  h-full mb-6 ${
-								index % 2 === 0 ? "sm:order-1 order-2" : "order-2"
-							}`}
+							className={`flex flex-col flex-center p-10  h-full mb-6 ${index % 2 === 0 ? "md:order-1 order-2" : "order-2"
+								}`}
 						>
 							<h3 className="text-xl sm:text-3xl font-bold text-white text-center">
 								{item.TITLE}

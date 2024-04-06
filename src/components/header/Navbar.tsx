@@ -57,7 +57,7 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 							</p>
 						</Link>
 					</NavbarBrand>
-					<NavbarContent justify="center">
+					<NavbarContent justify="center" className="hidden md:flex">
 						{locale.NAVBAR.ITEMS.map((item) => {
 							if (item.LINK) {
 								const itemIsActive = item.LINK === path;

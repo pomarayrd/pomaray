@@ -5,7 +5,7 @@
 		"source.organizeImports.biome": "explicit"
 	},
 	"files.associations": {
-		"*.mdx": "markdown"
+		"*.mdx": "mdx"
 	},
 
 	"cSpell.language": "en,es-ES",
@@ -19,6 +19,7 @@
 		"nextui",
 		"pomaray",
 		"Pomaray",
+		"Pressable",
 		"Rafaela",
 		"Rafela",
 		"tailwindcss",
@@ -29,5 +30,8 @@
 	],
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
+	"[mdx]": {
+		"editor.defaultFormatter": "unifiedjs.vscode-mdx"
 	}
 }
