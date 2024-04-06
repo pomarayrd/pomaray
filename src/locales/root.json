@@ -18,6 +18,7 @@
 	},
 	"NAVBAR": {
 		"BUTTON": "Enviar excusas",
+		"LINK": "/excusa",
 		"ITEMS": [
 			{
 				"TEXT": "Inicio",

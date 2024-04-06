@@ -1,7 +1,12 @@
 {
 	"SEO": {
 		"TITLE": "Aprende junto al Politécnico Madre Rafaela Ybarra",
-		"SLOGAN": "No se cansen de hacer el bien"
+		"SLOGAN": "No se cansen de hacer el bien",
+		"DESCRIPTION": "Descubre una educación de calidad en el Politécnico Madre Rafaela Ybarra. Ofrecemos una amplia gama de programas educativos para tu desarrollo personal y profesional.",
+		"BUTTON_1": "Explora nuestros programas",
+		"BUTTON_2": "Contáctanos",
+		"IMAGE_SRC": "/images/gallery/school/plantel.png",
+		"IMAGE_ALT": "Educación de Calidad en el Politécnico Madre Rafaela Ybarra"
 	},
 	"SECTION1": {
 		"TITLE": "Educación de Calidad",

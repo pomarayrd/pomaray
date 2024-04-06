@@ -1,0 +1,22 @@
+{
+	"METADATA": {
+		"TITLE": "Descargas",
+		"BANNER": "/images/banner/pages/descargas.png",
+		"DESCRIPTION": "Obtén acceso a recursos educativos, documentos informativos y material técnico exclusivo."
+	},
+	"HERO": {
+		"TITLE": "Descargas",
+		"SUB_TITLE": "Explora nuestra sección de descargas en el Politécnico para acceder a documentos vitales, incluyendo reglas, normativas y recursos académicos esenciales."
+	},
+	"TABLE": {
+		"FILES_PATH": "/archivos",
+		"LOADING": "Cargando archivos...",
+		"COLUMNS": {
+			"FILE_NAME": "Nombre",
+			"FILE_TYPE": "Tipo",
+			"FILE_SIZE": "Tamaño",
+			"FILE_DATE": "Date",
+			"DOWNLOAD_FILE": "Descargar"
+		}
+	}
+}

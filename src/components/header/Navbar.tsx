@@ -128,10 +128,13 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 						})}
 					</NavbarContent>
 					<NavbarContent justify="end">
-						<Button size="sm" variant="bordered" color="primary">
-							{locale.NAVBAR.BUTTON}
-						</Button>
+						<Link href={locale.NAVBAR.LINK}>
+							<Button size="sm" variant="bordered" color="primary">
+								{locale.NAVBAR.BUTTON}
+							</Button>
+						</Link>
 					</NavbarContent>
+
 				</NextNavbar>
 			</header>
 		);
