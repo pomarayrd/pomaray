@@ -1,67 +1,65 @@
-import { getFiles } from "@/app/_actions/file";
-import { FILE_ICONS } from "@/app/descargas/_components/FileIcons";
-import { TableEmpty } from "@/components/table/TableEmpty";
-import DownloadIcon from "@/icons/downloads/download";
-import i18n from "@/locales/download.json";
-import type { File } from "@/types/general";
-import {
-    Button,
-    Table,
-    TableBody,
-    TableCell,
-    TableHeader,
-    TableRow,
-} from "@nextui-org/react";
-import { cloneElement, useCallback, useEffect, useState } from "react";
+"use client";
 
-function handleDownload(filePath: string) {
-    const link = document.createElement("a");
-    link.href = filePath;
-    link.download = filePath.split("/").pop() as string;
-    link.click();
+import { getFiles } from "@/app/_actions/file";
+import { TableEmpty } from "@/components/table/TableEmpty";
+import locale from "@/locales/download.json"
+import type { FilesResponse } from "@/types/actions/files";
+import type { DownloadFile } from "@/types/scheme/download";
+import { Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
+import { type Key, cloneElement, useCallback, useEffect, useState } from "react";
+import { AiOutlineReload } from "react-icons/ai";
+import { PiDownloadSimpleFill } from "react-icons/pi";
+import { FileIcons } from "./FileIcons";
+
+
+const columns = locale.TABLE.COLUMNS
+
+const initSate = {
+    files: [],
+    isError: false,
+    isNotFound: false,
 }
 
 export function DownloadsTable() {
-    const [isError, setIsError] = useState(false);
-    const [isNotFound, setIsNotFound] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const [files, setFiles] = useState<File[]>([]);
+    const [state, setState] = useState<FilesResponse>(initSate)
+    const [isLoading, setIsLoading] = useState(true)
 
-    const fetchData = useCallback(async () => {
+    const fetchData = async () => {
         setIsLoading(true);
-        setIsError(false);
-        setIsNotFound(false);
-        try {
-            const filesData = await getFiles();
-            setFiles(filesData.files);
-            setIsNotFound(filesData.isNotFound);
-        } catch (error) {
-            setIsError(true);
-        } finally {
-            setIsLoading(false);
-        }
-    }, []);
+        setState(initSate);
+        const response = await getFiles()
+        setState(response)
+        setIsLoading(false);
+    }
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
-        fetchData();
-    }, [fetchData]);
+        fetchData()
+    }, [])
 
-    const renderCell = useCallback((file: File, columnKey: string) => {
-        const cellValue = file[columnKey];
-        const defaultFileIcon = FILE_ICONS.find(
+    function handleDownload(filePath: string) {
+        const link = document.createElement("a");
+        link.href = filePath;
+        link.download = filePath.split("/").pop() as string;
+        link.click();
+    }
+
+    const renderCell = useCallback((file: DownloadFile, columnKey: Key) => {
+        const cellValue = file[columnKey as keyof DownloadFile];
+        const defaultFileIcon = FileIcons.find(
             (icon) => Object.keys(icon)[0] === "default",
         )?.default as { icon: JSX.Element; color: string };
 
         switch (columnKey) {
             case "type": {
                 const iconElement =
-                    FILE_ICONS.find((icon) => Object.keys(icon)[0] === cellValue)?.[
+                    FileIcons.find((icon) => Object.keys(icon)[0] === cellValue)?.[
                     cellValue as string
                     ] || defaultFileIcon;
 
                 return (
                     <div
-                        className={`bg-${iconElement.color} w-fit p-1 flex items-center justify-center rounded-lg text-white`}
+                        className={`bg-${iconElement.color} w-fit p-1 flex items-center justify-center rounded-md text-white`}
                     >
                         {cloneElement(iconElement.icon, {
                             size: 20,
@@ -76,13 +74,14 @@ export function DownloadsTable() {
                         aria-label="Descargar archivo"
                         variant="light"
                         isIconOnly
-                        className="group hover:opacity-100 opacity-70 transition-opacity"
+                        className="group hover:opacity-100 opacity-70 transition-opacity mx-auto"
                         onClick={() => {
                             console.log(file.path);
+
                             handleDownload(file.path);
                         }}
                     >
-                        <DownloadIcon />
+                        <PiDownloadSimpleFill className="group-hover:translate-y-0 -translate-y-0.5 t transition-transform text-lg text-foreground" />
                     </Button>
                 );
             case "size":
@@ -93,7 +92,7 @@ export function DownloadsTable() {
                 );
             default:
                 return (
-                    <span className="font-bold capitalize sm:text-lg text-md opacity-90 text-nowrap">
+                    <span className="font font-medium capitalize opacity-90 text-nowrap">
                         {cellValue}
                     </span>
                 );
@@ -101,38 +100,36 @@ export function DownloadsTable() {
     }, []);
 
     return (
-        <Table
-            shadow="none"
+        <Table shadow="none"
             className="py-6"
             aria-label="Tabla de descargas."
             classNames={{
-                wrapper: "min-h-screen bg-transparent px-0",
+                wrapper: "bg-transparent px-0",
                 thead: "[&>tr]:first:shadow-sm",
             }}
+            bottomContent={
+                !isLoading && <div className="flex flex-center w-full">
+                    <Button endContent={(<AiOutlineReload />)} variant="flat" isLoading={isLoading} onPress={fetchData} size="sm" radius="sm">
+                        Recargar
+                    </Button>
+                </div>
+            }
         >
-            <TableHeader className="bg-blue-600">
-                <TableCell>{i18n.TABLE.COLUMNS.FILE_TYPE}</TableCell>
-                <TableCell>{i18n.TABLE.COLUMNS.FILE_NAME}</TableCell>
-                <TableCell>{i18n.TABLE.COLUMNS.FILE_SIZE}</TableCell>
-                <TableCell>{i18n.TABLE.COLUMNS.DOWNLOAD_FILE}</TableCell>
+            <TableHeader columns={columns}>
+                {(column) => <TableColumn key={column.KEY}>{column.TEXT}</TableColumn>}
             </TableHeader>
-
             <TableBody
                 emptyContent={
                     <TableEmpty
-                        isError={isError}
+                        isError={state.isError}
                         isLoading={isLoading}
-                        isNotFound={isNotFound}
+                        isNotFound={state.isNotFound}
                         onTry={fetchData}
                     />
-                }
-                items={files}
-            >
+                } items={state.files}>
                 {(file) => (
-                    <TableRow key={file.name}>
-                        {(columnKey) => (
-                            <TableCell>{renderCell(file, columnKey.toString())}</TableCell>
-                        )}
+                    <TableRow key={file.path}>
+                        {(columnKey) => <TableCell>{renderCell(file, columnKey)}</TableCell>}
                     </TableRow>
                 )}
             </TableBody>

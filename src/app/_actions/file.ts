@@ -1,31 +1,62 @@
-import type { File } from "@/types/general";
-import { AxiosError } from "axios";
+"use server";
 
-const fetchFiles = async (): Promise<File[]> => {
-	const response = await fetch("/api/files");
-	if (!response.ok) {
-		throw new Error("Error fetching files");
-	}
-	const data = await response.json();
-	if (!data || data.length === 0) {
-		throw new Error("Files not found");
-	}
-	return data;
-};
+import fs from "node:fs/promises";
+import path from "node:path";
+import { formatDate, formatFileSize } from "@/lib/format";
+import type { FilesResponse } from "@/types/actions/files";
+import type { DownloadFile } from "@/types/scheme/download";
 
-export const getFiles = async (): Promise<{
-	isError: boolean;
-	isNotFound: boolean;
-	isLoading: boolean;
-	files: File[];
-}> => {
+async function getFilesFolder(): Promise<string> {
+	const rootFolder = process.cwd();
+	const relativeFolderPath = "/public/files";
+	return path.join(rootFolder, relativeFolderPath);
+}
+
+export async function getFiles(): Promise<FilesResponse> {
 	try {
-		const files = await fetchFiles();
-		return { isError: false, isNotFound: false, isLoading: false, files };
+		const absoluteFolderPath = await getFilesFolder();
+		const files: string[] = await fs.readdir(absoluteFolderPath);
+
+		const filesInfo: DownloadFile[] = await Promise.all(
+			files.map(async (fileName) => {
+				const filePath = path.join(absoluteFolderPath, fileName);
+
+				try {
+					const fileStats = await fs.stat(filePath);
+					const extension = path.extname(fileName);
+					return {
+						name: fileName.replace(extension, ""),
+						type: extension.toLowerCase(),
+						size: formatFileSize(fileStats.size),
+						date: formatDate(fileStats.mtime, {
+							onlyDate: true,
+						}),
+						path: `/files/${fileName}`,
+					};
+				} catch (error) {
+					console.error(
+						`Error processing file ${fileName}: ${
+							error instanceof Error && error.message
+						}`,
+					);
+					return {
+						name: "unknown",
+						type: "unknown",
+						size: "unknown",
+						date: "unknown",
+						path: "unknown",
+					} as DownloadFile;
+				}
+			}),
+		);
+
+		return {
+			files: filesInfo,
+			isError: false,
+			isNotFound: filesInfo.length === 0,
+		};
 	} catch (error) {
-		if (error instanceof AxiosError) {
-			console.log("bueno miop hubo un error");
-		}
-		return { isError: true, isNotFound: false, isLoading: false, files: [] };
+		console.error("Error reading files:", error);
+		return { isNotFound: false, isError: true, files: [] };
 	}
-};
+}

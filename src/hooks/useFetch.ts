@@ -28,7 +28,6 @@ export const useFetch = <T>(path: string, options: UseFetchOptions<T> = {}) => {
 		try {
 			setIsLoading(true);
 			resetsState();
-			await new Promise((resolve) => setTimeout(resolve, 1000));
 			const response = await fetch(buildUrl(path, options.searchParams), {
 				method: "GET",
 				headers: {
@@ -52,8 +51,6 @@ export const useFetch = <T>(path: string, options: UseFetchOptions<T> = {}) => {
 			options.onFetch?.(body);
 		} catch (error) {
 			setResults(undefined);
-			console.log(error);
-
 			setError({
 				status: 500,
 				message: "Hubo un error, por favor inténtelo de nuevo.",

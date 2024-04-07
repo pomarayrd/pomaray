@@ -1,5 +1,5 @@
 import { Text } from "@/components/text";
-import { truncateText } from "@/lib/utils";
+import { truncateText } from "@/lib/format";
 import type { Post } from "@/types/scheme/posts";
 import { Avatar, AvatarGroup, Image, Tooltip } from "@nextui-org/react";
 

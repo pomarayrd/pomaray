@@ -3,23 +3,23 @@ import locale from "@/locales/errors/schemas.json";
 import { z } from "zod";
 import { stringReplaceCharacter, valueReplaceCharacter } from "./constants";
 
-export type createRegexSchemeOptions = {
+export type createStringSchemeOptions = {
 	min_length?: number;
 	max_length?: number;
 	regex?: RegExp;
 	description?: string;
 };
 
-export const createRegexScheme = (
+export const createStringScheme = (
 	fieldName: string,
 	{
 		min_length = 2,
 		max_length = 32,
 		regex = injectionRegex,
 		...opts
-	}: Partial<createRegexSchemeOptions> = {},
-) =>
-	z
+	}: Partial<createStringSchemeOptions> = {},
+) => {
+	return z
 		.string({
 			description: opts.description,
 			invalid_type_error: locale.INVALID_VALUE.replace(
@@ -42,13 +42,21 @@ export const createRegexScheme = (
 				stringReplaceCharacter,
 				fieldName,
 			).replace(numberReplaceCharacter, max_length.toString()),
-		})
-		.regex(injectionRegex, {
-			message: locale.INJECTION_REGEX.replace(
-				stringReplaceCharacter,
-				fieldName,
-			),
 		});
+};
+
+export const createRegexScheme = (
+	fieldName: string,
+	{
+		min_length = 2,
+		max_length = 32,
+		regex = injectionRegex,
+		...opts
+	}: Partial<createStringSchemeOptions> = {},
+) =>
+	createStringScheme(fieldName, opts).regex(injectionRegex, {
+		message: locale.INJECTION_REGEX.replace(stringReplaceCharacter, fieldName),
+	});
 
 export const createOptionalStringScheme = () => z.string().optional();
 

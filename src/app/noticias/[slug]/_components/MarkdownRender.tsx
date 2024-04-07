@@ -9,7 +9,7 @@ interface MarkdownArticleProps {
 }
 function MarkdownArticle({ source }: MarkdownArticleProps) {
 	return (
-		<article className="flex flex-col gap-4">
+		<article>
 			<MDXRemote
 				source={source}
 				components={{
@@ -56,11 +56,11 @@ function MarkdownArticle({ source }: MarkdownArticleProps) {
 							{children}
 						</Text>
 					),
-					p: ({ children, ...props }) => {
+					p: ({ children, className, ...props }) => {
 						if (typeof children !== "string") {
 							return children;
 						}
-						return <Text {...props}>{children}</Text>;
+						return <Text className={cn("py-6", className)} {...props}>{children}</Text>;
 					},
 					a: ({ children, className, href }) => (
 						<Link
@@ -92,7 +92,7 @@ function MarkdownArticle({ source }: MarkdownArticleProps) {
 					),
 					img: ({ src, width, height, className, alt }) => (
 						<Image
-							className={cn("aspect-video max-w-sm w-full", className)}
+							className={cn("aspect-auto w-full", className)}
 							width={width}
 							height={height}
 							src={src}

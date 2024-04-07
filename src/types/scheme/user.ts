@@ -8,6 +8,7 @@ import { z } from "zod";
 
 export const UsernameScheme = createRegexScheme("El nombre de usuario");
 export const PasswordScheme = createRegexScheme("La contraseña", {
+	min_length: 8,
 	max_length: 50,
 });
 export const RoleScheme = createEnumScheme("Rol", Object.keys(Role));

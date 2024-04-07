@@ -1,6 +1,6 @@
 import { TechCard } from "@/components/tech/TechCard";
 import { Text } from "@/components/text";
-import { Computer } from "@/icons/techIcons";
+import { TechIcons } from "@/icons/TechniqueIcons";
 import locale from "@/locales/tech.json";
 
 function TechsPage() {
@@ -20,15 +20,21 @@ function TechsPage() {
 			</section>
 
 			<section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-4 px-6 sm:px-10 md:px-10 xl:px-[15rem]]">
-				{locale.TECHS.map((tech) => (
-					<TechCard
-						key={tech.ID}
-						techId={tech.ID}
-						techName={tech.NAME}
-						iconElement={<Computer />}
-						description={tech.DESCRIPTION}
-					/>
-				))}
+				{locale.TECHS.map((tech) => {
+					const iconElement = TechIcons.find(
+						(icon) => Object.keys(icon)[0] === tech.ID,
+					)?.[tech.ID];
+
+					return (
+						<TechCard
+							key={tech.ID}
+							techId={tech.ID}
+							techName={tech.NAME}
+							iconElement={iconElement}
+							description={tech.DESCRIPTION}
+						/>
+					);
+				})}
 			</section>
 		</main>
 	);

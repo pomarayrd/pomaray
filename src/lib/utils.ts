@@ -7,14 +7,6 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
-export const formatMessage = (
-	message: string,
-	value: string,
-	replace?: string,
-) => {
-	return message.replaceAll(replace ?? stringReplaceCharacter, value);
-};
-
 export const buildUrl = (path: string, searchParams?: URLSearchParams) => {
 	if (!searchParams) return path;
 	const queryString = searchParams.toString();
@@ -34,31 +26,14 @@ export function objectToUrlParams(obj: {
 	return params;
 }
 
-export function fastFetch(endpoint: string, method: API_METHOD) {
+export function fastFetch(endpoint: string, method: API_METHOD, body?: string) {
 	return fetch(endpoint, {
 		method: method,
 		headers: {
 			"Content-Type": "application/json",
 		},
+		body,
 	});
-}
-
-export function numberParser(value: number) {
-	if (value >= 1000000) {
-		return `${value / 1000000}M`;
-	}
-	if (value >= 1000) {
-		return `${value / 1000}K`;
-	}
-	return value;
-}
-
-export function truncateText(text: string, maxWords: number) {
-	const words = text.split(" ");
-	if (words.length > maxWords) {
-		return `${words.slice(0, maxWords).join(" ")}...`;
-	}
-	return text;
 }
 
 export async function getStatusError(file: string, status: number) {

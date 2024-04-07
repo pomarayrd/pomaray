@@ -11,12 +11,27 @@
 	"TABLE": {
 		"FILES_PATH": "/archivos",
 		"LOADING": "Cargando archivos...",
-		"COLUMNS": {
-			"FILE_NAME": "Nombre",
-			"FILE_TYPE": "Tipo",
-			"FILE_SIZE": "Tamaño",
-			"FILE_DATE": "Date",
-			"DOWNLOAD_FILE": "Descargar"
-		}
+		"COLUMNS": [
+			{
+				"KEY": "type",
+				"TEXT": "tipo"
+			},
+			{
+				"KEY": "name",
+				"TEXT": "Nombre"
+			},
+			{
+				"KEY": "date",
+				"TEXT": "Fecha"
+			},
+			{
+				"KEY": "size",
+				"TEXT": "Tamaño"
+			},
+			{
+				"KEY": "download",
+				"TEXT": "Descargar"
+			}
+		]
 	}
 }

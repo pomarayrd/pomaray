@@ -1,54 +1,26 @@
 "use client";
 
-import { EditorContent, useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
+import "@uiw/react-markdown-preview/markdown.css";
+import MDEditor from "@uiw/react-md-editor";
+import "@uiw/react-md-editor/markdown-editor.css";
+import { type ChangeEvent, useState } from "react";
 
-const Tiptap = () => {
-	const editor = useEditor({
-		extensions: [StarterKit],
-		content: "<h1>Hola mundo!</h1>",
-		editorProps: {
-			attributes: {
-				class:
-					"border border-1 p-2 outline-none min-h-[150px] rounded-xl shadow-sm",
-			},
-		},
-	});
-
-	return <EditorContent editor={editor} />;
-};
-
-export default Tiptap;
-
-/* 
-"use client";
-
-import { EditorContent, useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
-
-interface TiptapProps {
-	description?: string;
-	onChange?: (richText: string) => void;
+interface MarkdownEditorProps {
+	onChange: (value: string) => void;
+	value: string;
 }
 
-const Tiptap = ({ description, onChange }: TiptapProps) => {
-	const editor = useEditor({
-		extensions: [StarterKit],
-		content: description,
-		editorProps: {
-			attributes: {
-				class: "border border-1 py-6 px-2 min-h-[150px] rounded-xl shadow-sm",
-			},
-		},
-		onUpdate({ editor }) {
-			onChange?.(editor.getHTML());
-			console.log(editor.getHTML());
-		},
-	});
+function MarkdownEditor({
+	onChange,
+	value
+}: MarkdownEditorProps) {
 
-	return <EditorContent editor={editor} />;
-};
+	const handleChange = (newValue = "", e?: ChangeEvent<HTMLTextAreaElement>) => onChange(newValue);
+	return (
+		<div>
+			<MDEditor className="min-h-[400px]" data-color-mode="light" value={value} onChange={handleChange} />
+		</div>
+	);
+}
 
-export default Tiptap;
-
-*/
+export default MarkdownEditor;

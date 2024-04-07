@@ -13,7 +13,6 @@ export function TableEmpty({
     isNotFound: boolean;
     onTry: () => void;
 }) {
-    console.log(isLoading, isError, isNotFound);
 
     if (isLoading && !isError) {
         return (

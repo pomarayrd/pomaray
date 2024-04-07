@@ -24,7 +24,7 @@ export default function TechniquePage() {
 			<article className="max-w-5xl mx-auto overflow-hidden px-6 sm:px-12 py-6">
 				<section className="flex flex-col items-center">
 					<div>
-						<Image src={technique.BANNER} alt={technique.TITLE} />
+						<Image src={technique.BANNER} width={1440} alt={technique.TITLE} />
 					</div>
 					<div className="flex flex-col justify-center items-start py-8 w-full">
 						<Chip

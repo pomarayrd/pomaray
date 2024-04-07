@@ -8,6 +8,36 @@
 		"IMAGE_SRC": "/images/gallery/school/plantel.png",
 		"IMAGE_ALT": "Educación de Calidad en el Politécnico Madre Rafaela Ybarra"
 	},
+	"TESTIMONIALS": [
+		{
+			"ID": "TESTIMONIALS-1",
+			"NAME": "Sophia Martinez",
+			"TITLE": "Lead designer, Avalon",
+			"IMAGE": "https://images.generated.photos/TdA_3xKb49DtgqfPPu5REnQFiALErCu6i3M2I_1AqIA/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDAwNTU5LmpwZw.jpg",
+			"TEXT": "I've been in the design game for a while now and this kit is one of the best. It's made me fall in love with designing all over again. It's just brilliant."
+		},
+		{
+			"ID": "TESTIMONIALS-2",
+			"NAME": "Caroline Lee",
+			"TITLE": "Senior Graphic Designer, Echo",
+			"IMAGE": "https://images.generated.photos/mp3gkB9z2wwhyySWzQJMegNbvvLV6HbKQX1_h6BEYAc/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDAwOTI5LmpwZw.jpg",
+			"TEXT": "I'm a newbie designer and this kit is just perfect. I've learnt so much and my work looks amazing now. A big thumbs up!"
+		},
+		{
+			"ID": "TESTIMONIALS-3",
+			"NAME": "Tyler Otwell",
+			"TITLE": "CTO, Apple",
+			"IMAGE": "https://images.generated.photos/vOkveSlBohR880A8z67aLHImhPr7UHdnXg06pifYvZ4/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDAyNjg4LmpwZw.jpg",
+			"TEXT": "This design kit is a game changer! My designs look better and I get things done faster. Totally recommending it to my mates!"
+		},
+		{
+			"ID": "TESTIMONIALS-4",
+			"NAME": "Jake Harris",
+			"TITLE": "Thompson Creative",
+			"IMAGE": "https://images.generated.photos/d_r3VzW3lO5ZsdaHhoVX7msWku7YIrqP4Qn1yozJU54/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDAyMTQ4LmpwZw.jpg",
+			"TEXT": "I'm a newbie designer and this kit is just perfect. I've learnt so much and my work looks amazing now. A big thumbs up!"
+		}
+	],
 	"SECTION1": {
 		"TITLE": "Educación de Calidad",
 		"DESCRIPTION": "En el Politécnico Madre Rafaela Ybarra, nos comprometemos a ofrecer educación de calidad que prepara a nuestros estudiantes para enfrentar los desafíos del mundo actual.",

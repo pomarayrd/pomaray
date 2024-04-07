@@ -14,7 +14,6 @@ function GiphyMeme(): JSX.Element {
 		fetchRandomGif();
 	}, []);
 
-	console.log(gifData);
 
 	return (
 		<div>{gifData && <Image src={gifData.url} alt={gifData.title} />}</div>

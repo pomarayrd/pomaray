@@ -2,13 +2,14 @@ import { cn } from "@/lib/utils";
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import Link from "next/link";
 import { cloneElement } from "react";
+import { BsLaptop } from "react-icons/bs";
 import type { PomarayComponent } from "../types";
 
 interface TechCardProps extends PomarayComponent {
 	dynamicPath?: string;
 	techId: string;
 	techName: string;
-	iconElement: JSX.Element;
+	iconElement?: JSX.Element;
 	description: string;
 }
 export function TechCard({
@@ -16,12 +17,13 @@ export function TechCard({
 	dynamicPath = "/tecnicas",
 	techId,
 	techName,
-	iconElement,
+	iconElement = (<BsLaptop size={60} />),
 	description,
 }: TechCardProps) {
 	return (
 		<Card
 			as={Link}
+			scroll={true}
 			href={`${dynamicPath}/${techId.toLowerCase()}`}
 			isPressable
 			shadow="none"

@@ -1,6 +1,7 @@
 "use server";
 
 import { API, CONNECTION_ERROR, cookiesKeys } from "@/lib/constants";
+import { fastFetch } from "@/lib/utils";
 import type { LoginResponse } from "@/types/actions/auth";
 import { LoginTokenScheme } from "@/types/scheme/auth";
 import type { User } from "@/types/scheme/user";
@@ -28,17 +29,15 @@ export async function login(formData: FormData): Promise<LoginResponse> {
 			};
 		}
 
-		const response = await fetch(API.getEndpoint("/auth/login"), {
-			method: "POST",
-			body: JSON.stringify({
+		const response = await fastFetch(
+			API.getEndpoint("/auth/login"),
+			"POST",
+			JSON.stringify({
 				ip: ip,
 				device: `${userAgentInfo.browser}, ${userAgentInfo.os.name}`,
 				...rawFormData,
 			}),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
+		);
 
 		const responseBody = await response.json();
 		if (!responseBody.user) {
@@ -63,7 +62,7 @@ export async function login(formData: FormData): Promise<LoginResponse> {
 	} catch (err) {
 		const msg = err instanceof Error ? err.message : CONNECTION_ERROR;
 		return {
-			error: msg,
+			error: "Hubo un error, por favor inténtelo de nuevo.",
 		};
 	}
 }

@@ -17,6 +17,7 @@ export default function Login() {
 	const resetState = () => {
 		setPasswordError("");
 		setUsernameError("");
+		setErrorMessage("");
 	};
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -59,6 +60,7 @@ export default function Login() {
 						}}
 					>
 						<div className="flex flex-col gap-6 py-4">
+							{errorMessage && <Message variant="solid" color="danger">{errorMessage}</Message>}
 							<Input
 								isRequired
 								size="sm"
@@ -75,8 +77,9 @@ export default function Login() {
 								onChange={handleChange}
 								label="Contraseña"
 							/>
-							{errorMessage && <Message color="danger">{errorMessage}</Message>}
-							<SubmitButton />
+							<SubmitButton >
+								Acceder al panel
+							</SubmitButton>
 						</div>
 					</form>
 					<Text size="paragraph-sm" align="center">
