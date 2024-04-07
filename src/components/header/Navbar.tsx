@@ -10,23 +10,34 @@ import {
 	DropdownTrigger,
 	NavbarBrand,
 	NavbarContent,
+	NavbarMenuToggle,
 	Navbar as NextNavbar,
 } from "@nextui-org/react";
 import { ChevronIcon } from "@nextui-org/shared-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useMemo, useState } from "react";
 import NavbarItem from "./NavbarItem";
+import NavbarMenu from "./NavbarMenu";
 import type { NavbarProps } from "./types";
 
 const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 	({ className, children, as, ...rest }, ref) => {
 		const path = usePathname();
+		const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+		// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+		useMemo(() => {
+			if (isMenuOpen) setIsMenuOpen(false);
+
+		}, [path])
 
 		return (
 			<header className="fixed w-screen z-50" ref={ref}>
 				{children}
 				<NextNavbar
+					isMenuOpen={isMenuOpen}
+					onMenuOpenChange={setIsMenuOpen}
 					isBordered
 					position="sticky"
 					isBlurred={false}
@@ -57,6 +68,7 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 							</p>
 						</Link>
 					</NavbarBrand>
+					<NavbarMenu />
 					<NavbarContent justify="center" className="hidden md:flex">
 						{locale.NAVBAR.ITEMS.map((item) => {
 							if (item.LINK) {
@@ -128,13 +140,14 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 						})}
 					</NavbarContent>
 					<NavbarContent justify="end">
-						<Link href={locale.NAVBAR.LINK}>
-							<Button size="sm" variant="bordered" color="primary">
-								{locale.NAVBAR.BUTTON}
-							</Button>
-						</Link>
+						<NavbarMenuToggle
+							aria-label={isMenuOpen ? "Cerrar menu" : "Abrir menu"}
+							className="sm:hidden"
+						/>
+						<Button as={Link} href={locale.NAVBAR.LINK} className="hidden sm:inline-flex" size="sm" variant="bordered" color="primary">
+							{locale.NAVBAR.BUTTON}
+						</Button>
 					</NavbarContent>
-
 				</NextNavbar>
 			</header>
 		);

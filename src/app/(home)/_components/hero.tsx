@@ -6,7 +6,7 @@ import Link from "next/link";
 async function HeroSection() {
 	return (
 		<section className="w-full py-12">
-			<div className="container px-4 md:px-6 grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] items-center mt-32">
+			<div className="container px-4 md:px-6 grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] items-center mt-14">
 				<div className="flex flex-col gap-6 ">
 					<Text as="h1" size="heading-5" className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
 						{locale.SEO.TITLE}

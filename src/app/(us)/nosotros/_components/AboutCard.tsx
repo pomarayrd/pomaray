@@ -17,7 +17,7 @@ function AboutCard({
 }: AboutCardProps) {
     return (
         <li className={cn("relative flex flex-col items-start justify-center min-h-[200px] max-h-[220px]", className)}>
-            <div className="z-10 flex items-center justify-center w-12 h-12 bg-white rounded-full ring-4 ring-primary">
+            <div className="z-10 flex items-center justify-center w-12 h-12 rounded-full ring-4 ring-primary">
                 {icon}
             </div>
             <div className="mt-4">

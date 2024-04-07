@@ -4,7 +4,7 @@ import locale from "@/locales/home.json";
 function MapSection() {
 	return (
 		<section className="flex flex-col flex-center gap-9 w-full">
-			<Text as="h2" size="heading-4">
+			<Text as="h2" align="center" size="heading-4">
 				{locale.SECTION4.TITLE}
 			</Text>
 			<iframe
