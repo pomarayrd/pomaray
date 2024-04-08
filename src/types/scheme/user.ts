@@ -1,4 +1,4 @@
-import { Role, Sex } from "@/lib/constants";
+import { Sex } from "@/lib/constants";
 import {
 	createEnumScheme,
 	createOptionalStringScheme,
@@ -11,18 +11,14 @@ export const PasswordScheme = createRegexScheme("La contraseña", {
 	min_length: 8,
 	max_length: 50,
 });
-export const RoleScheme = createEnumScheme("Rol", Object.keys(Role));
 export const SexScheme = createEnumScheme("Sexo", Object.keys(Sex));
 
 export const User = z.object({
 	id: createOptionalStringScheme(),
 	username: UsernameScheme,
-	profile: z.object({
-		photo: z.string().url(),
-		display_name: createRegexScheme("El nombre a mostrar"),
-	}),
-	password: createOptionalStringScheme(),
-	role: RoleScheme,
+	photo_url: z.string().url(),
+	display_name: createRegexScheme("El nombre a mostrar"),
+	role: z.number(),
 	sex: SexScheme,
 });
 

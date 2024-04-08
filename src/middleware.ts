@@ -2,7 +2,6 @@ import { getTokenUser } from "@/app/_actions/auth";
 import { type NextRequest, NextResponse } from "next/server";
 
 const middleware = async (request: NextRequest) => {
-	return NextResponse.next();
 	try {
 		const currentUser = await getTokenUser();
 		if (!currentUser) {

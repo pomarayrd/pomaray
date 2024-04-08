@@ -10,10 +10,10 @@ export const valueReplaceCharacter = "%v";
 	# Enums
 */
 export const Role = {
-	READER: "Lector",
-	WRITER: "Escritor",
-	ADMIN: "Administrador",
-	DEVELOPER: "Desarrollador",
+	3: "Lector",
+	2: "Escritor",
+	1: "Administrador",
+	0: "Desarrollador",
 };
 
 export const Sex = {

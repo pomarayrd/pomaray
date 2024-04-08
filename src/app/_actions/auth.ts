@@ -1,7 +1,7 @@
 "use server";
 
-import { API, CONNECTION_ERROR, cookiesKeys } from "@/lib/constants";
-import { fastFetch } from "@/lib/utils";
+import { API, cookiesKeys } from "@/lib/constants";
+import { fastFetch, getStatusError } from "@/lib/utils";
 import type { LoginResponse } from "@/types/actions/auth";
 import { LoginTokenScheme } from "@/types/scheme/auth";
 import type { User } from "@/types/scheme/user";
@@ -9,9 +9,17 @@ import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { UAParser } from "ua-parser-js";
 
-export async function login(formData: FormData): Promise<LoginResponse> {
+const localeFile = "auth";
+
+function getBearer(token: string) {
+	return `Bearer ${token}`;
+}
+
+export async function login(
+	formData: FormData,
+): Promise<LoginResponse | undefined> {
 	try {
-		const ip = headers().get("x-forwarded-for");
+		const ip = (headers().get("x-forwarded-for") ?? "127.0.0.1").split(",")[0];
 		const ua = headers().get("User-Agent");
 
 		const parser = new UAParser();
@@ -29,22 +37,23 @@ export async function login(formData: FormData): Promise<LoginResponse> {
 			};
 		}
 
-		const response = await fastFetch(
-			API.getEndpoint("/auth/login"),
-			"POST",
-			JSON.stringify({
+		const url = API.getEndpoint("/auth/login");
+		const response = await fastFetch(url, "POST", {
+			body: {
 				ip: ip,
 				device: `${userAgentInfo.browser}, ${userAgentInfo.os.name}`,
 				...rawFormData,
-			}),
-		);
+			},
+		});
 
-		const responseBody = await response.json();
-		if (!responseBody.user) {
+		if (!response.ok) {
+			const status = response.status;
 			return {
-				error: "No se pudo obtener el usuario, por favor inténtelo de nuevo.",
+				error: await getStatusError(localeFile, status),
 			};
 		}
+
+		const responseBody = await response.json();
 
 		if (!responseBody.token) {
 			return {
@@ -57,32 +66,67 @@ export async function login(formData: FormData): Promise<LoginResponse> {
 			secure: process.env.NODE_ENV === "production",
 			maxAge: cookiesKeys.token.time,
 		});
-
-		redirect("/admin");
 	} catch (err) {
-		const msg = err instanceof Error ? err.message : CONNECTION_ERROR;
+		console.log(err);
+
 		return {
 			error: "Hubo un error, por favor inténtelo de nuevo.",
 		};
 	}
 }
 
-export async function getTokenUser(): Promise<User | undefined> {
+export async function logout() {
 	const token = cookies().get(cookiesKeys.token.key);
 	if (!token) {
 		return;
 	}
 
 	try {
-		const response = await fetch(API.getEndpoint("/auth/token"), {
+		const url = API.getEndpoint("/auth/logout");
+		const response = await fastFetch(url, "DELETE", {
 			headers: {
-				authorization: `Bearer ${token.value}`,
+				authorization: getBearer(token.value),
+			},
+		});
+
+		if (!response.ok) {
+			console.log(`Felid to logout: ${response.json()}`);
+		}
+	} catch (err) {
+	} finally {
+		cookies().delete(cookiesKeys.token.key);
+		redirect("/acceder");
+	}
+}
+
+export async function getTokenUser(): Promise<User | undefined> {
+	const token = cookies().get(cookiesKeys.token.key);
+	if (!token?.value) {
+		throw Error("Token not found");
+	}
+
+	try {
+		const url = API.getEndpoint("/auth");
+		const response = await fastFetch(url, "GET", {
+			headers: {
+				authorization: getBearer(token.value),
 			},
 		});
 
 		const body = await response.json();
 		return body.user as User;
 	} catch (err) {
+		console.log(err);
+
+		return redirect("/acceder");
+	}
+}
+
+export async function getToken(): Promise<string | undefined> {
+	const token = cookies().get(cookiesKeys.token.key);
+	if (!token) {
 		return;
 	}
+
+	return token.value;
 }
