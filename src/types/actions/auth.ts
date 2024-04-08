@@ -1,5 +1,5 @@
 export type LoginResponse = {
-	error:
+	error?:
 		| string
 		| {
 				username?: string[];

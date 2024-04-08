@@ -1,34 +1,32 @@
-"use client";
 
-import { Avatar } from "@nextui-org/react";
-import { AvatarIcon } from "@nextui-org/shared-icons";
-import { useEffect, useState } from "react";
+import { Role } from "@/lib/constants";
+import type { User } from "@/types/scheme/user";
+import { User as NextUser } from "@nextui-org/react";
 
-export interface UserProps {
-	userId: string;
+export interface UserAvatarProps {
+	user?: User;
 }
 
-function UserAvatar({ userId }: UserProps) {
-	const [user, setUser] = useState();
-
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-	useEffect(() => {
-		const getUser = async () => {
-			const { results } = { results: undefined };
-			setUser(results);
-		};
-
-		getUser();
-	}, [userId]);
+function UserAvatar({ user }: UserAvatarProps) {
 
 	return (
-		<Avatar
-			size="sm"
-			className="text-neutral-500"
-			/* name={user?.username}
-			fallback={<AvatarIcon className="size-4 animate-pulse" />}
-			src={user?.profile?.photo} */
-		/>
+		<NextUser
+			avatarProps={{ radius: "sm", src: user?.photo_url }}
+			name={user?.display_name}
+			description={(
+				<div className="flex flex-center gap-2">
+					<span>
+						{user?.username}
+					</span>
+					{" - "}
+					<span>
+						{Role[user?.role as keyof typeof Role]}
+					</span>
+				</div>
+			)}
+		>
+
+		</NextUser>
 	);
 }
 

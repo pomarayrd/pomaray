@@ -7,13 +7,14 @@ import SubmitButton from "@/components/submit-button";
 import { Text } from "@/components/text";
 import type { LoginResponse } from "@/types/actions/auth";
 import { Input, Link } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Login() {
 	const [usernameError, setUsernameError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
-
+	const router = useRouter()
 	const resetState = () => {
 		setPasswordError("");
 		setUsernameError("");
@@ -25,8 +26,17 @@ export default function Login() {
 			? setPasswordError("")
 			: setUsernameError("");
 
-	const setErrorsState = (response: LoginResponse) => {
-		const error = response.error;
+	const setErrorsState = (response?: LoginResponse) => {
+		const error = response?.error;
+		console.log(error);
+
+		if (!error) {
+			console.log("Push!");
+
+			router.push("/admin")
+			return
+		}
+
 
 		if (typeof error === "string") {
 			setErrorMessage(error);
@@ -56,7 +66,7 @@ export default function Login() {
 					<form
 						action={async (data: FormData) => {
 							resetState();
-							setErrorsState(await login(data));
+							setErrorsState(await login(data))
 						}}
 					>
 						<div className="flex flex-col gap-6 py-4">

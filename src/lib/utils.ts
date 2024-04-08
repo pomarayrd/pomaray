@@ -1,7 +1,11 @@
 import type { API_METHOD } from "@/types/api";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { API, stringReplaceCharacter } from "./constants";
+
+type fastFetchOptions = {
+	headers?: HeadersInit;
+	body?: object;
+};
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -26,13 +30,18 @@ export function objectToUrlParams(obj: {
 	return params;
 }
 
-export function fastFetch(endpoint: string, method: API_METHOD, body?: string) {
+export function fastFetch(
+	endpoint: string,
+	method: API_METHOD,
+	opts?: fastFetchOptions,
+) {
 	return fetch(endpoint, {
 		method: method,
 		headers: {
 			"Content-Type": "application/json",
+			...opts?.headers,
 		},
-		body,
+		body: opts?.body ? JSON.stringify(opts.body) : undefined,
 	});
 }
 

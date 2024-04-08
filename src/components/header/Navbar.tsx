@@ -16,7 +16,7 @@ import {
 import { ChevronIcon } from "@nextui-org/shared-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { forwardRef, useEffect, useMemo, useState } from "react";
+import { forwardRef, useMemo, useState } from "react";
 import NavbarItem from "./NavbarItem";
 import NavbarMenu from "./NavbarMenu";
 import type { NavbarProps } from "./types";

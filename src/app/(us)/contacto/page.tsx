@@ -1,5 +1,5 @@
 import { Container } from "@/components/container";
-import locale from "@/locales/contacto.json";
+import locale from "@/locales/contact.json";
 import { Button, Input, Textarea } from "@nextui-org/react";
 
 export default function ContactoPage() {
