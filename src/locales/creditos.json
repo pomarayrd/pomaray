@@ -1,0 +1,86 @@
+{
+	"HERO": {
+		"TITLE": "Créditos",
+		"DESCRIPTION": "En el Politécnico Madre Rafaela Ybarra, reconocemos y valoramos el esfuerzo y la dedicación de todas las personas que han contribuIDo al crecimiento y éxito de nuestra institución. Nuestra página de Créditos es un espacio dedicado a honrar y reconocer a aquellos que han dejado su huella en nuestra comunIDad académica."
+	},
+	"FRONTEND_TEAM": {
+		"TITLE": "Equipo de Front-End",
+		"MEMBERS": [
+			{
+				"ID": "daniel_rosario",
+				"NAME": "Daniel Rosario",
+				"AVATAR": ""
+			},
+			{
+				"ID": "katia_pujols",
+				"NAME": "Katia Pujols",
+				"AVATAR": ""
+			},
+			{
+				"ID": "alexander_jimenez",
+				"NAME": "Alexander Jiménez",
+				"AVATAR": ""
+			}
+		]
+	},
+	"BACKEND_TEAM": {
+		"TITLE": "Equipo de Back-End",
+		"MEMBERS": [
+			{
+				"ID": "daniel_rosario",
+				"NAME": "Daniel Rosario",
+				"AVATAR": ""
+			},
+			{
+				"ID": "aethan_franco",
+				"NAME": "Aethan Franco",
+				"AVATAR": ""
+			},
+			{
+				"ID": "adiel_santos",
+				"NAME": "Adiel Santos",
+				"AVATAR": ""
+			},
+			{
+				"ID": "nahuel_ramirez",
+				"NAME": "Nahuel Ramírez",
+				"AVATAR": ""
+			}
+		]
+	},
+
+	"CONTRIBUTORS_TEAM": {
+		"TITLE": "Contribuidores",
+		"MEMBERS": []
+	},
+	"TEACHERS": {
+		"TITLE": "Docentes responsables del proyecto",
+		"MEMBERS": [
+			{
+				"ID": "jose_luis_almarante",
+				"NAME": "Jose Luis Almarante",
+				"AVATAR": ""
+			},
+      {
+				"ID": "isis_feliz",
+				"NAME": "Isis Féliz",
+				"AVATAR": ""
+			},
+			{
+				"ID": "pedro_reyes",
+				"NAME": "Pedro Reyes",
+				"AVATAR": ""
+			},
+			{
+				"ID": "juan_andres_moreno",
+				"NAME": "Juan Andrés Moreno",
+				"AVATAR": ""
+			},
+			{
+				"ID": "margarito_mercado",
+				"NAME": "Margarita Mercado",
+				"AVATAR": ""
+			}
+		]
+	}
+}
