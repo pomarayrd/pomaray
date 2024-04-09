@@ -1,9 +1,7 @@
-"use client";
-
 import "@uiw/react-markdown-preview/markdown.css";
 import MDEditor from "@uiw/react-md-editor";
 import "@uiw/react-md-editor/markdown-editor.css";
-import { type ChangeEvent, useState } from "react";
+import type { ChangeEvent } from "react";
 
 interface MarkdownEditorProps {
 	onChange: (value: string) => void;

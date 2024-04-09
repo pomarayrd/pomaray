@@ -20,7 +20,7 @@ interface ConfirmModalProps extends PomarayComponent {
     intensity?: "medium" | "hard"
 }
 
-export default function ConfirmModal({
+export default function ConfettiMo({
     triggerVariants = {
         color: "primary",
         radius: "sm",
@@ -54,6 +54,7 @@ export default function ConfirmModal({
                                     onSubmit={async (e) => {
                                         e.preventDefault();
                                         await onConfirm();
+                                        console.log("Se hizo un post!");
                                         onClose();
                                     }}
                                     className="flex w-full gap-4"

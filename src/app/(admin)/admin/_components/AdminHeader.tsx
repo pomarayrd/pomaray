@@ -20,9 +20,9 @@ function AdminHeader() {
         fetchData();
     }, [])
     return (
-        <div className="flex items-center justify-between w-full mt-20">
+        <div className="flex items-center justify-between w-full mt-24">
             <div>
-                {!user ? (<UserAvatar user={user} />
+                {user ? (<UserAvatar user={user} />
                 ) : (
                     <div className="max-w-[300px] w-full flex items-center gap-3">
                         <div>

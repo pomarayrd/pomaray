@@ -108,7 +108,7 @@ export function DownloadsTable() {
                 thead: "[&>tr]:first:shadow-sm",
             }}
             bottomContent={
-                !isLoading && <div className="flex flex-center w-full">
+                (!isLoading && !state.isError) && <div className="flex flex-center w-full">
                     <Button endContent={(<AiOutlineReload />)} variant="flat" isLoading={isLoading} onPress={fetchData} size="sm" radius="sm">
                         Recargar
                     </Button>

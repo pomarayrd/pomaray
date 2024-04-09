@@ -1,32 +1,23 @@
 "use client";
 
 import { savePost } from "@/app/_actions/posts";
+import ConfettiModal from "@/components/confetti-modal";
 import ConfirmModal from "@/components/confirm-modal";
-import { Container } from "@/components/container";
 import Editor from "@/components/editor";
 import { Message } from "@/components/message";
 import { Text } from "@/components/text";
+import useSession from "@/hooks/custom/useSessions";
 import type { SavePostResponse } from "@/types/actions/posts";
 import type { Post } from "@/types/scheme/posts";
-import type { User } from "@/types/scheme/user";
-import { Image, Input, Modal, ModalContent, Textarea, User as UserUI } from "@nextui-org/react";
+import { Image, Input, Spinner, Textarea, User as UserUI, useDisclosure } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 import { type ChangeEvent, useState } from "react";
 
 function NewPostsPage() {
-	const { user } = {
-		user: {
-			id: "a-id-hex-example",
-			username: "Me Example",
-			profile: {
-				display_name: "Test",
-				photo: "https://dummyimage.com/500x500/23a630/fff.jpg",
-			},
-			role: "developer",
-			sex: "Male",
-		},
-	} as {
-		user: User;
-	}; // useSession();
+	const router = useRouter()
+
+	const { user } = useSession();
+	const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
 	const [response, setResponse] = useState<SavePostResponse>()
 	const [editPost, setEditPost] = useState<Post>({
@@ -38,13 +29,20 @@ function NewPostsPage() {
 		last_updated_at: new Date(),
 		authors: [
 			{
-				author_id: user.id || "Unknown",
-				author_name: user.profile.display_name,
-				author_photo_url: user.profile.photo,
+				author_id: user?.id ?? "Uknow",
+				author_name: user?.display_name ?? "Unknow",
+				author_photo_url: user?.photo_url ?? "Unknow",
 				is_creator: true,
 			},
 		],
 	});
+
+	if (!user) {
+		return <div className="flex flex-center min-h-[80vh]">
+			<Spinner label="Cargando formulario" />
+		</div>
+
+	}
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -62,15 +60,17 @@ function NewPostsPage() {
 	const handleConfirm = async () => {
 		const response = await savePost(editPost)
 		setResponse(response)
+		if (response.isSuccess) {
+			onOpen()
+		}
 	}
 
 	return (
-		<Container>
-			<section className="mt-24">
+		<>
+			<section className="py-12">
 				<Text size="heading-5" as="h1">
 					Crear una nueva noticia
 				</Text>
-
 
 
 				<div className="flex flex-col gap-12 py-10">
@@ -137,15 +137,23 @@ function NewPostsPage() {
 						<small>Creador por:</small>
 						<UserUI
 							name={user.username}
-							description={user.profile.display_name}
+							description={user.display_name}
 							avatarProps={{
-								src: user.profile.photo,
+								src: user.photo_url,
 							}}
 						/>
 					</div>
 				</div>
 			</section>
-		</Container >
+			<ConfettiModal
+				isOpen={isOpen}
+				onConfirm={() => {
+					router.push("/noticias")
+				}}
+				onOpenChange={onOpenChange}
+				title="Se creo la noticia exitosamente"
+				buttonLabel="Ir a la pagina de noticias." />
+		</>
 	);
 }
 

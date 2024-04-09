@@ -9,7 +9,7 @@ interface MarkdownArticleProps {
 }
 function MarkdownArticle({ source }: MarkdownArticleProps) {
 	return (
-		<article>
+		<article className="flex flex-col gap-4">
 			<MDXRemote
 				source={source}
 				components={{
@@ -60,7 +60,7 @@ function MarkdownArticle({ source }: MarkdownArticleProps) {
 						if (typeof children !== "string") {
 							return children;
 						}
-						return <Text className={cn("py-6", className)} {...props}>{children}</Text>;
+						return <Text className={className} {...props}>{children}</Text>;
 					},
 					a: ({ children, className, href }) => (
 						<Link
