@@ -1,15 +1,15 @@
 {
 	"METADATA": {
-		"TITLE": "Contact",
+		"TITLE": "Contacto",
 		"BANNER": "/images/banner/contacto.png",
-		"DESCRIPTION": "Connect with us at the Polytechnic Mother Rafaela Ybarra. We are here to answer your questions, collaborate on projects, and strengthen our educational community. Contact us and be part of our technical journey!"
+		"DESCRIPTION": "Conéctate con nosotros en el Politécnico Madre Rafaela Ybarra. Estamos aquí para responder tus preguntas, colaborar con proyectos, y fortalecer nuestra comunidad educativa. Contáctanos para ser parte de este viaje!"
 	},
 	"HERO": {
-		"TITLE": "Contact Us",
-		"DESCRIPTION": "We're here to help! Get in touch with us by completing the form or using the contact information below."
+		"TITLE": "Contactanos",
+		"DESCRIPTION": "Estamos aquí para ayudar! Ponte en contacto con nosotros a través del formulario o utilizando la información de contacto debajo."
 	},
 	"FORM": {
-		"TITLE": "Send us a message",
+		"TITLE": "Envíanos un mensaje!",
 		"FIELDS": [
 			{
 				"ID": "name",
@@ -27,7 +27,7 @@
 			},
 			{
 				"ID": "content",
-				"TITLE": "Content",
+				"TITLE": "Contenido",
 				"TYPE": "textarea",
 				"PLACEHOLDER": "Mensaje",
 				"REQUIRED": true
@@ -36,7 +36,7 @@
 		"SEND_BUTTON": "Enviar"
 	},
 	"ADDITIONAL_INFO": {
-		"HOURS": "Monday to Friday: 9am - 5pm",
+		"HOURS": "Lunes a viernes: 9am - 5pm",
 		"ADDRESS": "Prolongación 27 de Febrero, #796, Santo Domingo Oeste.",
 		"SUPPORT": {
 			"EMAIL": "support@pomaray.com",
