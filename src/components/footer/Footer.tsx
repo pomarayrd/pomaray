@@ -27,7 +27,7 @@ const Footer = () => {
 
 						<Button
 							as={Link}
-							href="https://g3deon.com/envarioment/pomaray"
+							href="https://g3deon.com/environment/pomaray"
 							referrerPolicy="no-referrer"
 							target="_blank"
 							disableAnimation

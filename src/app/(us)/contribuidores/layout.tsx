@@ -5,7 +5,7 @@ export default function AboutLayout({
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<Container className="max-w-5xl pb-12 ">
-			<article className="mx-auto space-y-8 pt-24 text-end">{children}</article>
+			<article className="mx-auto space-y-8 pt-24 text-start">{children}</article>
 		</Container>
 	);
 }
