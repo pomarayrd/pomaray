@@ -1,10 +1,7 @@
 import { Sex } from "@/lib/constants";
-import {
-	createEnumScheme,
-	createOptionalStringScheme,
-	createRegexScheme,
-} from "@/lib/schemes-creator";
+import { createEnumScheme, createRegexScheme } from "@/lib/schemes-creator";
 import { z } from "zod";
+import ObjectIdScheme from "./objectid";
 
 export const UsernameScheme = createRegexScheme("El nombre de usuario");
 export const PasswordScheme = createRegexScheme("La contraseña", {
@@ -14,7 +11,7 @@ export const PasswordScheme = createRegexScheme("La contraseña", {
 export const SexScheme = createEnumScheme("Sexo", Object.keys(Sex));
 
 export const User = z.object({
-	id: createOptionalStringScheme(),
+	id: ObjectIdScheme,
 	username: UsernameScheme,
 	photo_url: z.string().url(),
 	display_name: createRegexScheme("El nombre a mostrar"),

@@ -142,9 +142,9 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 					<NavbarContent justify="end">
 						<NavbarMenuToggle
 							aria-label={isMenuOpen ? "Cerrar menu" : "Abrir menu"}
-							className="sm:hidden"
+							className="md:hidden"
 						/>
-						<Button as={Link} href={locale.NAVBAR.LINK} className="hidden sm:inline-flex" size="sm" variant="bordered" color="primary">
+						<Button as={Link} href={locale.NAVBAR.LINK} className="hidden md:inline-flex" size="sm" variant="bordered" color="primary">
 							{locale.NAVBAR.BUTTON}
 						</Button>
 					</NavbarContent>

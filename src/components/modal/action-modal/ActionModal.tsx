@@ -1,24 +1,17 @@
 "use client";
+import useModal from "@/components/modal/useModal";
 import { cn } from "@/lib/utils";
 import {
     Button,
-    type ButtonVariantProps,
     Modal,
     ModalBody,
     ModalContent,
     ModalFooter,
     ModalHeader,
-    useDisclosure
 } from "@nextui-org/react";
-import type { PomarayComponent } from "./types";
+import type { ChangeEvent } from "react";
+import type { ConfirmModalProps } from "./types";
 
-interface ConfirmModalProps extends PomarayComponent {
-    buttonLabel?: string;
-    onConfirm: (() => void) | (() => Promise<void>);
-    title: string;
-    triggerVariants?: ButtonVariantProps
-    intensity?: "medium" | "hard"
-}
 
 export default function ConfettiMo({
     triggerVariants = {
@@ -33,7 +26,13 @@ export default function ConfettiMo({
     children,
     className,
 }: ConfirmModalProps) {
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const { isOpen, onOpen, onClose, onOpenChange } = useModal();
+
+    const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        await onConfirm();
+        onClose();
+    }
 
     return (
         <>
@@ -51,12 +50,7 @@ export default function ConfettiMo({
                             </ModalBody>
                             <ModalFooter>
                                 <form
-                                    onSubmit={async (e) => {
-                                        e.preventDefault();
-                                        await onConfirm();
-                                        console.log("Se hizo un post!");
-                                        onClose();
-                                    }}
+                                    onSubmit={handleSubmit}
                                     className="flex w-full gap-4"
                                 >
                                     <Button type="submit" fullWidth radius="sm" variant="solid" color={intensity === "hard" ? "danger" : "warning"} onPress={onClose}>

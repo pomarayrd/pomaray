@@ -7,6 +7,7 @@ import SubmitButton from "@/components/submit-button";
 import { Text } from "@/components/text";
 import type { LoginResponse } from "@/types/actions/auth";
 import { Input, Link } from "@nextui-org/react";
+import { EyeFilledIcon, EyeSlashFilledIcon } from "@nextui-org/shared-icons";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -14,6 +15,7 @@ export default function Login() {
 	const [usernameError, setUsernameError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
+	const [isVisiblePassword, setIsVisiblePassword] = useState(false);
 	const router = useRouter()
 	const resetState = () => {
 		setPasswordError("");
@@ -21,18 +23,19 @@ export default function Login() {
 		setErrorMessage("");
 	};
 
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (event.target.name === "email") {
+			throw new Error("Email is not allowed, you are a bot?");
+		}
+
 		event.target.name === "password"
 			? setPasswordError("")
 			: setUsernameError("");
-
+	}
 	const setErrorsState = (response?: LoginResponse) => {
 		const error = response?.error;
-		console.log(error);
 
 		if (!error) {
-			console.log("Push!");
-
 			router.push("/admin")
 			return
 		}
@@ -50,6 +53,9 @@ export default function Login() {
 			setPasswordError(error.password.at(0) ?? "");
 		}
 	};
+
+	const toggleVisibility = () => setIsVisiblePassword(!isVisiblePassword);
+
 
 	return (
 		<Container className="flex-center">
@@ -84,8 +90,20 @@ export default function Login() {
 								isRequired
 								size="sm"
 								name="password"
+								endContent={
+									<button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+										{isVisiblePassword ? (
+											<EyeFilledIcon className="text-xl text-default-400 pointer-events-none" />
+										) : (
+											<EyeSlashFilledIcon className="text-xl text-default-400 pointer-events-none" />
+										)}
+									</button>
+								}
+								type={isVisiblePassword ? "text" : "password"}
 								onChange={handleChange}
 								label="Contraseña"
+							/>
+							<input name="email" type="text" className="hidden" onChange={handleChange}
 							/>
 							<SubmitButton >
 								Acceder al panel

@@ -1,19 +1,16 @@
-import {
-	createOptionalStringScheme,
-	createRegexScheme,
-	createStringScheme,
-} from "@/lib/schemes-creator";
+import { createStringScheme } from "@/lib/schemes-creator";
 import { z } from "zod";
+import ObjectIdScheme from "./objectid";
 
 export const PostAuthorScheme = z.object({
-	author_id: z.string(),
+	author_id: ObjectIdScheme,
 	author_name: z.string().min(1).max(256),
 	author_photo_url: z.string(),
 	is_creator: z.boolean().optional(),
 });
 
 export const PostScheme = z.object({
-	id: createOptionalStringScheme(),
+	id: ObjectIdScheme,
 	title: createStringScheme("El titulo", {
 		min_length: 16,
 		max_length: 128,

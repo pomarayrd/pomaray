@@ -1,5 +1,5 @@
 "use client";
-import { createConfetti } from "@/lib/confetti";
+
 import { cn } from "@/lib/utils";
 import {
     Button,
@@ -9,33 +9,29 @@ import {
     ModalFooter,
     ModalHeader,
 } from "@nextui-org/react";
-import type { PomarayComponent } from "./types";
-
-interface ConfirmModalProps extends PomarayComponent {
-    buttonLabel?: string;
-    title: string;
-    isOpen: boolean;
-    onOpen: () => void;
-    onClose: () => void;
-    onOpenChange: () => void;
-    onConfirm: () => void;
-}
+import type { ConfirmModalProps } from "./type";
 
 
 export default function ConfettiModal({
-    title,
+    title = "Acción realizada exitosamente",
     buttonLabel = "Ok",
     children,
     className,
     isOpen,
-    onOpenChange,
-    onConfirm
+    onConfirm,
+    onOpenChange
 }: ConfirmModalProps) {
+    const handleOpenChange = onOpenChange
+
+    const handleClose = () => {
+        onConfirm?.();
+    };
+
     return (
         <>
             <Modal
                 isOpen={isOpen}
-                onOpenChange={onOpenChange}
+                onOpenChange={handleOpenChange}
             >
                 <ModalContent>
                     {(onClose) => (
@@ -48,21 +44,15 @@ export default function ConfettiModal({
                                 <form
                                     onSubmit={async (e) => {
                                         e.preventDefault();
-                                        onConfirm?.();
-                                        Array.from({ length }, () => {
-                                            // Agregar un temporizador de 500ms antes de llamar a createConfetti
-                                            setTimeout(() => {
-                                                createConfetti(1000);
-                                            }, 500);
-                                        });
+                                        handleClose();
                                         onClose();
                                     }}
                                     className="flex w-full gap-4"
                                 >
-                                    <Button type="submit" fullWidth radius="sm" variant="solid" color="primary" onPress={onClose}>
+                                    <Button type="submit" fullWidth radius="sm" variant="solid" color="primary">
                                         {buttonLabel}
                                     </Button>
-                                    <Button fullWidth radius="sm" onPress={onClose}>
+                                    <Button fullWidth radius="sm" onClick={onClose}>
                                         Volver
                                     </Button>
                                 </form>
@@ -70,7 +60,7 @@ export default function ConfettiModal({
                         </>
                     )}
                 </ModalContent>
-            </Modal >
+            </Modal>
         </>
     );
 }

@@ -7,16 +7,9 @@ import { type Post, PostScheme } from "@/types/scheme/posts";
 
 export async function savePost(post: Post): Promise<SavePostResponse> {
 	try {
-		console.log("Entramos en la funcion");
-
 		const validation = PostScheme.safeParse(post);
 		if (!validation.success) {
 			const validationErrors = validation.error.flatten().fieldErrors;
-			console.log(
-				`Hubo otro error: ${JSON.stringify(
-					validationErrors,
-				)} , ${JSON.stringify(post)}`,
-			);
 			return {
 				errors: {
 					title: validationErrors.title?.at(0),
@@ -34,20 +27,15 @@ export async function savePost(post: Post): Promise<SavePostResponse> {
 		});
 
 		if (!response.ok) {
-			console.log("No se subio");
 			return {
 				isSuccess: false,
 			};
 		}
 
-		console.log("Se subio un post");
-
 		return {
 			isSuccess: true,
 		};
 	} catch (err) {
-		console.log(err);
-
 		return {
 			isSuccess: false,
 		};

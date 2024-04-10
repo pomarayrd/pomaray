@@ -32,8 +32,6 @@ export function formatNumber(value: number) {
 }
 
 export function formatDate(date: Date, options = { onlyDate: false }) {
-	console.log(date);
-
 	return new Intl.DateTimeFormat("es-DO", {
 		dateStyle: options.onlyDate ? "medium" : "medium",
 		timeStyle: options.onlyDate ? undefined : "short",

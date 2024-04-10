@@ -1,48 +1,25 @@
 "use client";
 
 import { savePost } from "@/app/_actions/posts";
-import ConfettiModal from "@/components/confetti-modal";
-import ConfirmModal from "@/components/confirm-modal";
 import Editor from "@/components/editor";
 import { Message } from "@/components/message";
+import { ActionModal, SuccessModal, useSuccessModal } from "@/components/modal";
 import { Text } from "@/components/text";
 import useSession from "@/hooks/custom/useSessions";
 import type { SavePostResponse } from "@/types/actions/posts";
-import type { Post } from "@/types/scheme/posts";
 import { Image, Input, Spinner, Textarea, User as UserUI, useDisclosure } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { type ChangeEvent, useState } from "react";
+import useEditPost from "./_hooks/useEditPost";
 
 function NewPostsPage() {
 	const router = useRouter()
 
 	const { user } = useSession();
-	const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+	const { isSuccessOpen, openSuccessModal, openSuccessModalChange } = useSuccessModal();
 
 	const [response, setResponse] = useState<SavePostResponse>()
-	const [editPost, setEditPost] = useState<Post>({
-		title: "Una noticia!",
-		content: "**Cuerpo de la noticia***",
-		short_description: "",
-		banner_url: "https://dummyimage.com/1920x1080/dddddd/000000",
-		views: 0,
-		last_updated_at: new Date(),
-		authors: [
-			{
-				author_id: user?.id ?? "Uknow",
-				author_name: user?.display_name ?? "Unknow",
-				author_photo_url: user?.photo_url ?? "Unknow",
-				is_creator: true,
-			},
-		],
-	});
-
-	if (!user) {
-		return <div className="flex flex-center min-h-[80vh]">
-			<Spinner label="Cargando formulario" />
-		</div>
-
-	}
+	const [editPost, setEditPost] = useEditPost()
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -52,17 +29,30 @@ function NewPostsPage() {
 		}));
 	};
 
-	const handleEditorChange = (value: string) => setEditPost((prevState) => ({
-		...prevState,
-		content: value,
-	}));
+	const handleContentChange = (value: string) => {
+		return setEditPost((prevState) => ({
+			...prevState,
+			content: value,
+		}));
+	};
 
-	const handleConfirm = async () => {
+	const handleConfirmButton = async () => {
 		const response = await savePost(editPost)
 		setResponse(response)
 		if (response.isSuccess) {
-			onOpen()
+			openSuccessModal()
 		}
+	}
+
+	const handleSuccessButton = () => {
+		router.push("/noticias")
+	}
+
+	if (!user) {
+		return <div className="flex flex-center min-h-[80vh]">
+			<Spinner label="Cargando formulario" />
+		</div>
+
 	}
 
 	return (
@@ -71,7 +61,6 @@ function NewPostsPage() {
 				<Text size="heading-5" as="h1">
 					Crear una nueva noticia
 				</Text>
-
 
 				<div className="flex flex-col gap-12 py-10">
 					<Input
@@ -122,16 +111,18 @@ function NewPostsPage() {
 						<Message className="min-w-full text-xs" color="danger">{response?.errors?.content}</Message>}
 
 					<div className="pt-4">
-						<Editor value={editPost.content} onChange={handleEditorChange} />
+						<Editor value={editPost.content} onChange={handleContentChange} />
 					</div>
 
 				</div>
 				<div className="py-4">
-					<ConfirmModal intensity="hard" title="Publicar una nueva noticia" onConfirm={handleConfirm} >
+					<ActionModal intensity="hard" title="Publicar una nueva noticia" onConfirm={handleConfirmButton} >
 						<Text>Estas seguro que desea publicar esta noticia a todo el publico.</Text>
 						<Text as="small" size="label-xs">Puede ser editada después de su publicación.</Text>
-					</ConfirmModal>
+					</ActionModal>
 				</div>
+				{response?.isSuccess === false &&
+					<Message className="min-w-full text-xs" color="danger">Hubo un error al subir la noticia, por favor inténtelo de nuevo.</Message>}
 				<div className="flex justify-between items-center gap-6 py-6">
 					<div className="flex flex-center gap-4">
 						<small>Creador por:</small>
@@ -145,14 +136,19 @@ function NewPostsPage() {
 					</div>
 				</div>
 			</section>
-			<ConfettiModal
-				isOpen={isOpen}
-				onConfirm={() => {
-					router.push("/noticias")
-				}}
-				onOpenChange={onOpenChange}
-				title="Se creo la noticia exitosamente"
-				buttonLabel="Ir a la pagina de noticias." />
+			<SuccessModal
+				isOpen={isSuccessOpen}
+				onConfirm={handleSuccessButton}
+				onOpenChange={openSuccessModalChange}
+				title="Se creo la noticia exitosamente."
+				buttonLabel="Ir a noticias."
+				children={(
+					<>
+						<Text>Se ha publicado la noticia correctamente. Disfrute del confetti!</Text>
+						<Text size="label-sm">Quiere navegar a la pagina de noticias?</Text>
+					</>
+				)}
+			/>
 		</>
 	);
 }

@@ -2,6 +2,11 @@
     # Regex 
 */
 export const injectionRegex = /^[A-Za-z0-9.,_@#]+$/;
+export const ObjectIdRegex = /\b[0-9a-fA-F]{24}\b/g;
+
+/*  
+	# Char's
+*/
 export const stringReplaceCharacter = "%s";
 export const numberReplaceCharacter = "%d";
 export const valueReplaceCharacter = "%v";

@@ -47,12 +47,7 @@ export const createStringScheme = (
 
 export const createRegexScheme = (
 	fieldName: string,
-	{
-		min_length = 2,
-		max_length = 32,
-		regex = injectionRegex,
-		...opts
-	}: Partial<createStringSchemeOptions> = {},
+	opts: Partial<createStringSchemeOptions> = {},
 ) =>
 	createStringScheme(fieldName, opts).regex(injectionRegex, {
 		message: locale.INJECTION_REGEX.replace(stringReplaceCharacter, fieldName),

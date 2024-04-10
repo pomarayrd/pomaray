@@ -76,8 +76,6 @@ export function DownloadsTable() {
                         isIconOnly
                         className="group hover:opacity-100 opacity-70 transition-opacity mx-auto"
                         onClick={() => {
-                            console.log(file.path);
-
                             handleDownload(file.path);
                         }}
                     >

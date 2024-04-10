@@ -67,8 +67,6 @@ export async function login(
 			maxAge: cookiesKeys.token.time,
 		});
 	} catch (err) {
-		console.log(err);
-
 		return {
 			error: "Hubo un error, por favor inténtelo de nuevo.",
 		};
@@ -116,9 +114,7 @@ export async function getTokenUser(): Promise<User | undefined> {
 		const body = await response.json();
 		return body.user as User;
 	} catch (err) {
-		console.log(err);
-
-		return redirect("/acceder");
+		return;
 	}
 }
 
