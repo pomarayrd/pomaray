@@ -9,7 +9,7 @@ export interface UseFetchOptions<T> {
 }
 
 export const useFetch = <T>(path: string, options: UseFetchOptions<T> = {}) => {
-	const [results, setResults] = useState<T | undefined>(options.initialState);
+	const [results, setResults] = useState(options.initialState);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [error, setError] = useState<
 		| {

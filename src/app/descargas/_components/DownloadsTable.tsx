@@ -1,12 +1,12 @@
 "use client";
 
-import { getFiles } from "@/app/_actions/file";
-import { TableEmpty } from "@/components/table/TableEmpty";
+import { TableEmpty } from "@/components/table";
+import { useFetch } from "@/hooks/useFetch";
 import locale from "@/locales/download.json"
 import type { FilesResponse } from "@/types/actions/files";
 import type { DownloadFile } from "@/types/scheme/download";
 import { Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
-import { type Key, cloneElement, useCallback, useEffect, useState } from "react";
+import { type Key, cloneElement, useCallback } from "react";
 import { AiOutlineReload } from "react-icons/ai";
 import { PiDownloadSimpleFill } from "react-icons/pi";
 import { FileIcons } from "./FileIcons";
@@ -16,26 +16,10 @@ const columns = locale.TABLE.COLUMNS
 
 const initSate = {
     files: [],
-    isError: false,
-    isNotFound: false,
 }
 
 export function DownloadsTable() {
-    const [state, setState] = useState<FilesResponse>(initSate)
-    const [isLoading, setIsLoading] = useState(true)
-
-    const fetchData = async () => {
-        setIsLoading(true);
-        setState(initSate);
-        const response = await getFiles()
-        setState(response)
-        setIsLoading(false);
-    }
-
-    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-    useEffect(() => {
-        fetchData()
-    }, [])
+    const { results: state, isLoading, error, refetch } = useFetch<FilesResponse>("/api/files")
 
     function handleDownload(filePath: string) {
         const link = document.createElement("a");
@@ -106,8 +90,8 @@ export function DownloadsTable() {
                 thead: "[&>tr]:first:shadow-sm",
             }}
             bottomContent={
-                (!isLoading && !state.isError) && <div className="flex flex-center w-full">
-                    <Button endContent={(<AiOutlineReload />)} variant="flat" isLoading={isLoading} onPress={fetchData} size="sm" radius="sm">
+                (!isLoading && !error) && <div className="flex flex-center w-full">
+                    <Button endContent={(<AiOutlineReload />)} variant="flat" isLoading={isLoading} onPress={refetch} size="sm" radius="sm">
                         Recargar
                     </Button>
                 </div>
@@ -119,12 +103,11 @@ export function DownloadsTable() {
             <TableBody
                 emptyContent={
                     <TableEmpty
-                        isError={state.isError}
                         isLoading={isLoading}
-                        isNotFound={state.isNotFound}
-                        onTry={fetchData}
+                        isNotFound={Boolean(state?.isNotFound)}
+                        onTry={refetch}
                     />
-                } items={state.files}>
+                } items={state?.files ?? []}>
                 {(file) => (
                     <TableRow key={file.path}>
                         {(columnKey) => <TableCell>{renderCell(file, columnKey)}</TableCell>}

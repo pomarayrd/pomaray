@@ -3,7 +3,7 @@ import { Container } from "@/components/container";
 import { Text } from "@/components/text";
 import locale from "@/locales/download.json";
 
-export default function DescargasPage() {
+export default async function DescargasPage() {
 	return (
 		<Container
 			size="7xl"
