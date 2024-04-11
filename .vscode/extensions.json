@@ -3,6 +3,7 @@
 		"biomejs.biome",
 		"bradlc.vscode-tailwindcss",
 		"yoavbls.pretty-ts-errors",
-		"aaron-bond.better-comments"
+		"aaron-bond.better-comments",
+		"unifiedjs.vscode-mdx"
 	]
 }

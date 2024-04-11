@@ -7,10 +7,10 @@ import { ActionModal, SuccessModal, useSuccessModal } from "@/components/modal";
 import { Text } from "@/components/text";
 import useSession from "@/hooks/custom/useSessions";
 import type { SavePostResponse } from "@/types/actions/posts";
-import { Image, Input, Spinner, Textarea, User as UserUI, useDisclosure } from "@nextui-org/react";
+import type { Post } from "@/types/scheme/posts";
+import { Image, Input, Spinner, Textarea, User as UserUI } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { type ChangeEvent, useState } from "react";
-import useEditPost from "./_hooks/useEditPost";
 
 function NewPostsPage() {
 	const router = useRouter()
@@ -19,7 +19,24 @@ function NewPostsPage() {
 	const { isSuccessOpen, openSuccessModal, openSuccessModalChange } = useSuccessModal();
 
 	const [response, setResponse] = useState<SavePostResponse>()
-	const [editPost, setEditPost] = useEditPost()
+	const [editPost, setEditPost] = useState<Post>({
+		title: "Una noticia!",
+		content: "**Cuerpo de la noticia***",
+		short_description: "",
+		banner_url: "https://dummyimage.com/1920x1080/dddddd/000000",
+		views: 0,
+		last_updated_at: new Date(),
+		authors: user
+			? [
+				{
+					author_id: user.id,
+					author_name: user.display_name,
+					author_photo_url: user.photo_url,
+					is_creator: true,
+				},
+			]
+			: [],
+	});
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -123,8 +140,8 @@ function NewPostsPage() {
 				</div>
 				{response?.isSuccess === false &&
 					<Message className="min-w-full text-xs" color="danger">Hubo un error al subir la noticia, por favor inténtelo de nuevo.</Message>}
-				<div className="flex justify-between items-center gap-6 py-6">
-					<div className="flex flex-center gap-4">
+				<div className="flex flex-col gap-4 py-6 w-full">
+					<div className="flex gap-4">
 						<small>Creador por:</small>
 						<UserUI
 							name={user.username}
@@ -134,6 +151,8 @@ function NewPostsPage() {
 							}}
 						/>
 					</div>
+					{response?.errors?.authors &&
+						<Message className="min-w-full text-xs" color="danger">{response?.errors?.authors}</Message>}
 				</div>
 			</section>
 			<SuccessModal

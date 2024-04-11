@@ -85,7 +85,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 		),
 		img: ({ src, width, height, className, alt }) => (
 			<Image
-				className={cn("aspect-video max-w-sm w-full", className)}
+				className={cn("aspect-auto max-w-sm w-full", className)}
 				width={width}
 				height={height}
 				src={src}
