@@ -10,7 +10,7 @@ import type { SavePostResponse } from "@/types/actions/posts";
 import type { Post } from "@/types/scheme/posts";
 import { Image, Input, Spinner, Textarea, User as UserUI } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
-import { type ChangeEvent, useState } from "react";
+import { type ChangeEvent, useEffect, useState } from "react";
 
 function NewPostsPage() {
 	const router = useRouter()
@@ -19,7 +19,7 @@ function NewPostsPage() {
 	const { isSuccessOpen, openSuccessModal, openSuccessModalChange } = useSuccessModal();
 
 	const [response, setResponse] = useState<SavePostResponse>()
-	const [editPost, setEditPost] = useState<Post>({
+	const [editPost, setEditPost] = useState({
 		title: "Una noticia!",
 		content: "**Cuerpo de la noticia***",
 		short_description: "",
@@ -37,6 +37,22 @@ function NewPostsPage() {
 			]
 			: [],
 	});
+
+	useEffect(() => {
+		if (user) {
+			setEditPost(prevEditPost => ({
+				...prevEditPost,
+				authors: [
+					{
+						author_id: user.id,
+						author_name: user.display_name,
+						author_photo_url: user.photo_url,
+						is_creator: true,
+					},
+				],
+			}));
+		}
+	}, [user]);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -138,11 +154,19 @@ function NewPostsPage() {
 						<Text as="small" size="label-xs">Puede ser editada después de su publicación.</Text>
 					</ActionModal>
 				</div>
-				{response?.isSuccess === false &&
-					<Message className="min-w-full text-xs" color="danger">Hubo un error al subir la noticia, por favor inténtelo de nuevo.</Message>}
+				{
+					response?.isSuccess === false &&
+					<Message
+						className="w-full"
+						variant="solid"
+						color="danger"
+					>
+						Hubo un error al subir la noticia, por favor inténtelo de nuevo.
+					</Message>
+				}
 				<div className="flex flex-col gap-4 py-6 w-full">
 					<div className="flex gap-4">
-						<small>Creador por:</small>
+						<small>Creador {String(response?.isSuccess)}:</small>
 						<UserUI
 							name={user.username}
 							description={user.display_name}
@@ -151,8 +175,6 @@ function NewPostsPage() {
 							}}
 						/>
 					</div>
-					{response?.errors?.authors &&
-						<Message className="min-w-full text-xs" color="danger">{response?.errors?.authors}</Message>}
 				</div>
 			</section>
 			<SuccessModal

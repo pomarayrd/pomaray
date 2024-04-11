@@ -12,6 +12,7 @@ export async function savePost(post: Post): Promise<SavePostResponse> {
 				errors: {
 					authors: "El post parce no tener autores.",
 				},
+				isSuccess: false,
 			};
 		}
 

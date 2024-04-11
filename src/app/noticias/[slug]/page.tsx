@@ -72,7 +72,7 @@ export default async function PostSlugPage({
 						</div>
 					)}
 					{post.authors.length > 0 && (
-						<div className="flex gap-4 justify-end items-center w-full">
+						<div className="flex gap-8 justify-end items-center w-full">
 							<Text size="label-base" className="sm:block hidden">
 								Autores:
 							</Text>
