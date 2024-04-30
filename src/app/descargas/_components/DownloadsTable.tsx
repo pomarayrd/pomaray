@@ -46,7 +46,7 @@ export function DownloadsTable() {
 			case "type": {
 				const iconElement =
 					FileIcons.find((icon) => Object.keys(icon)[0] === cellValue)?.[
-					cellValue as string
+						cellValue as string
 					] || defaultFileIcon;
 
 				return (

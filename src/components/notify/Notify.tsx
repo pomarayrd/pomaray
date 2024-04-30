@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@nextui-org/button";
 import { Link as NextLink } from "@nextui-org/react";
 import { CloseIcon } from "@nextui-org/shared-icons";
-import Link from "next/link"
+import Link from "next/link";
 import { forwardRef, useEffect, useState } from "react";
 import type { PomarayComponent } from "../types";
 import useNotify from "./useNotify";
@@ -14,13 +14,15 @@ const NavbarNotify = forwardRef<HTMLDivElement, PomarayComponent>(
 	({ className, children, ...rest }, ref) => {
 		const { isOpen, close, open } = useNotify();
 		const handleClose = () => close();
-		const [message, setMessage] = useState({
-			value: "",
-			link: {
-				href: "",
+		const [message, setMessage] = useState(
+			{
 				value: "",
-			},
-		} || undefined);
+				link: {
+					href: "",
+					value: "",
+				},
+			} || undefined,
+		);
 
 		// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 		useEffect(() => {
@@ -33,9 +35,9 @@ const NavbarNotify = forwardRef<HTMLDivElement, PomarayComponent>(
 			updateMessage();
 		}, []);
 
-
 		return (
-			isOpen && message && (
+			isOpen &&
+			message && (
 				<div
 					ref={ref}
 					className={cn(
@@ -44,10 +46,15 @@ const NavbarNotify = forwardRef<HTMLDivElement, PomarayComponent>(
 					)}
 					{...rest}
 				>
-
 					<span className="inline-flex gap-2">
 						{message.value}
-						<NextLink as={Link} href={message.link.href} underline="hover" size="sm" className="text-white">
+						<NextLink
+							as={Link}
+							href={message.link.href}
+							underline="hover"
+							size="sm"
+							className="text-white"
+						>
 							{message.link.value}
 						</NextLink>
 					</span>

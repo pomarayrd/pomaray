@@ -7,7 +7,6 @@ import { ActionModal, SuccessModal, useSuccessModal } from "@/components/modal";
 import { Text } from "@/components/text";
 import useSession from "@/hooks/custom/useSessions";
 import type { SavePostResponse } from "@/types/actions/posts";
-import type { Post } from "@/types/scheme/posts";
 import {
 	Image,
 	Input,
