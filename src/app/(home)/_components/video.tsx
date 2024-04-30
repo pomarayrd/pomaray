@@ -16,7 +16,6 @@ function VideoSection() {
 			<Image
 				loading="lazy"
 				className="aspect-video"
-
 				width={600}
 				alt={locale.SECTION1.IMAGE_ALT}
 				src={locale.SECTION1.IMAGE_SRC}

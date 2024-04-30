@@ -45,6 +45,8 @@ export const API = {
 export const CONNECTION_ERROR =
 	"No se pudo establecer la conexión. Por favor, verifique si tiene conexión a internet.";
 
+export const FILES_FOLDER = "public/files";
+
 /* 
 	# COOKIES KEYS
 */

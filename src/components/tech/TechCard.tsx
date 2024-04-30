@@ -17,7 +17,7 @@ export function TechCard({
 	dynamicPath = "/tecnicas",
 	techId,
 	techName,
-	iconElement = (<BsLaptop size={60} />),
+	iconElement = <BsLaptop size={60} />,
 	description,
 }: TechCardProps) {
 	return (
@@ -27,7 +27,10 @@ export function TechCard({
 			href={`${dynamicPath}/${techId.toLowerCase()}`}
 			isPressable
 			shadow="none"
-			className={cn("xl:p-6 hover:bg-default-200 bg-default-100 h-full shadow-sm text-foreground transition-colors", className)}
+			className={cn(
+				"xl:p-6 hover:bg-default-200 bg-default-100 h-full shadow-sm text-foreground transition-colors",
+				className,
+			)}
 		>
 			<CardHeader className="flex items-center justify-center pt-5 sm:pt-10">
 				<div className="p-4 rounded-full border-2 border-primary aspect-square">
@@ -41,6 +44,6 @@ export function TechCard({
 				<h3 className="md:text-md text-lg font-bold mt-4 mb-2">{techName}</h3>
 				<p className="text-sm">{description}</p>
 			</CardBody>
-		</Card >
+		</Card>
 	);
 }

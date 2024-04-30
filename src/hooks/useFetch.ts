@@ -10,7 +10,7 @@ export interface UseFetchOptions<T> {
 
 export const useFetch = <T>(path: string, options: UseFetchOptions<T> = {}) => {
 	const [results, setResults] = useState(options.initialState);
-	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [error, setError] = useState<
 		| {
 				status: number;

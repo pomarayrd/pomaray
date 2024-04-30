@@ -29,8 +29,9 @@ function CollageSection() {
 							/>
 						</div>
 						<div
-							className={`flex flex-col flex-center p-10  h-full mb-6 ${index % 2 === 0 ? "md:order-1 order-2" : "order-2"
-								}`}
+							className={`flex flex-col flex-center p-10  h-full mb-6 ${
+								index % 2 === 0 ? "md:order-1 order-2" : "order-2"
+							}`}
 						>
 							<h3 className="text-xl sm:text-3xl font-bold text-white text-center">
 								{item.TITLE}

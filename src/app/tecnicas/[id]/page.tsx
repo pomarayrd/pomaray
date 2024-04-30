@@ -12,8 +12,9 @@ export default function TechniquePage() {
 	const mailTo = () => {
 		const subject = i18n.SEND_MAIL.SUBJECT.replace("%s", technique.NAME);
 		const body = i18n.SEND_MAIL.MESSAGE.replace("%s", technique.NAME);
-		const mailtoLink = `mailto:${i18n.SEND_MAIL.MAIL
-			}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+		const mailtoLink = `mailto:${
+			i18n.SEND_MAIL.MAIL
+		}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 		window.location.href = mailtoLink;
 	};
 

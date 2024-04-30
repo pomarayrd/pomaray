@@ -16,7 +16,7 @@ export default function Login() {
 	const [passwordError, setPasswordError] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const [isVisiblePassword, setIsVisiblePassword] = useState(false);
-	const router = useRouter()
+	const router = useRouter();
 	const resetState = () => {
 		setPasswordError("");
 		setUsernameError("");
@@ -31,15 +31,14 @@ export default function Login() {
 		event.target.name === "password"
 			? setPasswordError("")
 			: setUsernameError("");
-	}
+	};
 	const setErrorsState = (response?: LoginResponse) => {
 		const error = response?.error;
 
 		if (!error) {
-			router.push("/admin")
-			return
+			router.push("/admin");
+			return;
 		}
-
 
 		if (typeof error === "string") {
 			setErrorMessage(error);
@@ -56,7 +55,6 @@ export default function Login() {
 
 	const toggleVisibility = () => setIsVisiblePassword(!isVisiblePassword);
 
-
 	return (
 		<Container className="flex-center">
 			<section className="max-w-[320px]">
@@ -72,11 +70,15 @@ export default function Login() {
 					<form
 						action={async (data: FormData) => {
 							resetState();
-							setErrorsState(await login(data))
+							setErrorsState(await login(data));
 						}}
 					>
 						<div className="flex flex-col gap-6 py-4">
-							{errorMessage && <Message variant="solid" color="danger">{errorMessage}</Message>}
+							{errorMessage && (
+								<Message variant="solid" color="danger">
+									{errorMessage}
+								</Message>
+							)}
 							<Input
 								isRequired
 								size="sm"
@@ -91,7 +93,11 @@ export default function Login() {
 								size="sm"
 								name="password"
 								endContent={
-									<button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+									<button
+										className="focus:outline-none"
+										type="button"
+										onClick={toggleVisibility}
+									>
 										{isVisiblePassword ? (
 											<EyeFilledIcon className="text-xl text-default-400 pointer-events-none" />
 										) : (
@@ -103,11 +109,13 @@ export default function Login() {
 								onChange={handleChange}
 								label="Contraseña"
 							/>
-							<input name="email" type="text" className="hidden" onChange={handleChange}
+							<input
+								name="email"
+								type="text"
+								className="hidden"
+								onChange={handleChange}
 							/>
-							<SubmitButton >
-								Acceder al panel
-							</SubmitButton>
+							<SubmitButton>Acceder al panel</SubmitButton>
 						</div>
 					</form>
 					<Text size="paragraph-sm" align="center">

@@ -8,15 +8,17 @@ interface MarkdownEditorProps {
 	value: string;
 }
 
-function MarkdownEditor({
-	onChange,
-	value
-}: MarkdownEditorProps) {
-
-	const handleChange = (newValue = "", e?: ChangeEvent<HTMLTextAreaElement>) => onChange(newValue);
+function MarkdownEditor({ onChange, value }: MarkdownEditorProps) {
+	const handleChange = (newValue = "", e?: ChangeEvent<HTMLTextAreaElement>) =>
+		onChange(newValue);
 	return (
 		<div>
-			<MDEditor className="min-h-[400px]" data-color-mode="light" value={value} onChange={handleChange} />
+			<MDEditor
+				className="min-h-[400px]"
+				data-color-mode="light"
+				value={value}
+				onChange={handleChange}
+			/>
 		</div>
 	);
 }

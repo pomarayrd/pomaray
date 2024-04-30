@@ -60,7 +60,11 @@ function MarkdownArticle({ source }: MarkdownArticleProps) {
 						if (typeof children !== "string") {
 							return children;
 						}
-						return <Text className={className} {...props}>{children}</Text>;
+						return (
+							<Text className={className} {...props}>
+								{children}
+							</Text>
+						);
 					},
 					a: ({ children, className, href }) => (
 						<Link

@@ -21,7 +21,7 @@ import NavbarItem from "./NavbarItem";
 import NavbarMenu from "./NavbarMenu";
 import type { NavbarProps } from "./types";
 
-const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
+const Header = forwardRef<HTMLDivElement, NavbarProps>(
 	({ className, children, as, ...rest }, ref) => {
 		const path = usePathname();
 		const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,11 +29,10 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 		// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 		useMemo(() => {
 			if (isMenuOpen) setIsMenuOpen(false);
-
-		}, [path])
+		}, [path]);
 
 		return (
-			<header className="fixed w-screen z-50" ref={ref}>
+			<div className="fixed w-screen z-50" ref={ref}>
 				{children}
 				<NextNavbar
 					isMenuOpen={isMenuOpen}
@@ -42,7 +41,6 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 					position="sticky"
 					isBlurred={false}
 					className={cn("bg-default-100", className)}
-					{...rest}
 					classNames={{
 						item: [
 							"flex",
@@ -59,6 +57,7 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 							"data-[active=true]:after:bg-primary",
 						],
 					}}
+					{...rest}
 				>
 					<NavbarBrand>
 						<Link href="/" type="button" className="flex flex-center">
@@ -69,7 +68,7 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 						</Link>
 					</NavbarBrand>
 					<NavbarMenu />
-					<NavbarContent justify="center" className="hidden md:flex">
+					<NavbarContent justify="center" className="hidden lg:flex">
 						{locale.NAVBAR.ITEMS.map((item) => {
 							if (item.LINK) {
 								const itemIsActive = item.LINK === path;
@@ -142,18 +141,25 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
 					<NavbarContent justify="end">
 						<NavbarMenuToggle
 							aria-label={isMenuOpen ? "Cerrar menu" : "Abrir menu"}
-							className="md:hidden"
+							className="lg:hidden"
 						/>
-						<Button as={Link} href={locale.NAVBAR.LINK} className="hidden md:inline-flex" size="sm" variant="bordered" color="primary">
+						<Button
+							as={Link}
+							href={locale.NAVBAR.LINK}
+							className="hidden lg:inline-flex"
+							size="sm"
+							variant="bordered"
+							color="primary"
+						>
 							{locale.NAVBAR.BUTTON}
 						</Button>
 					</NavbarContent>
 				</NextNavbar>
-			</header>
+			</div>
 		);
 	},
 );
 
-Navbar.displayName = "Pomaray.Navbar";
+Header.displayName = "Pomaray.Navbar";
 
-export default Navbar;
+export default Header;

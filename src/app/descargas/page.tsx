@@ -5,9 +5,7 @@ import locale from "@/locales/download.json";
 
 export default async function DescargasPage() {
 	return (
-		<Container
-			size="7xl"
-		>
+		<Container size="7xl">
 			<section className="flex flex-col gap-8 mt-24">
 				<Text as="h1" size="heading-5" className="text-primary ">
 					{locale.HERO.TITLE}

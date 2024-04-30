@@ -25,7 +25,6 @@ export default async function PostSlugPage({
 		notFound();
 	}
 
-
 	return (
 		<Container>
 			<section className="min-h-[50vh] mt-24 pb-10">
@@ -52,9 +51,7 @@ export default async function PostSlugPage({
 					{post.last_updated_at && (
 						<div className="flex flex-col gap-2 w-full">
 							<span className="text-sm opacity-60">Ultima actualización:</span>
-							<span>
-								{formatDate(new Date(post.last_updated_at))}
-							</span>
+							<span>{formatDate(new Date(post.last_updated_at))}</span>
 						</div>
 					)}
 					{post.views >= 0 && (
