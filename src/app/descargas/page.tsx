@@ -1,4 +1,4 @@
-import { DownloadsTable } from "@/app/descargas/_components/DownloadsTable";
+import { DownloadsTable } from "@/components/table/DownloadsTable";
 import { Container } from "@/components/container";
 import { Text } from "@/components/text";
 import locale from "@/locales/download.json";

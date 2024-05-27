@@ -26,11 +26,6 @@ export const Sex = {
 	FEMALE: "Femenino",
 };
 
-export const NewsShortBy = {
-	Views: "Visitas",
-	Recents: "Recientes",
-};
-
 /* 
 	# API
 */

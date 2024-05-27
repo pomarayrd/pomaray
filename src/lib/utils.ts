@@ -1,5 +1,5 @@
 import path from "node:path";
-import type { API_METHOD } from "@/types/api";
+import type { APIMethod } from "@/types/api";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -33,7 +33,7 @@ export function objectToUrlParams(obj: {
 
 export function fastFetch(
 	endpoint: string,
-	method: API_METHOD,
+	method: APIMethod,
 	opts?: fastFetchOptions,
 ) {
 	return fetch(endpoint, {

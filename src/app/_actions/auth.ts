@@ -2,8 +2,8 @@
 
 import { API, cookiesKeys } from "@/lib/constants";
 import { fastFetch, getStatusError } from "@/lib/utils";
-import type { LoginResponse } from "@/types/actions/auth";
-import { LoginTokenScheme } from "@/types/scheme/auth";
+import type { LoginResponse } from "@/types/actions";
+import { LoginScheme } from "@/types/scheme/auth";
 import type { User } from "@/types/scheme/user";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -29,11 +29,14 @@ export async function login(
 			username: formData.get("username"),
 			password: formData.get("password"),
 		};
-		const validatedFields = LoginTokenScheme.safeParse(rawFormData);
+		const validatedFields = LoginScheme.safeParse(rawFormData);
 
 		if (!validatedFields.success) {
 			return {
-				error: validatedFields.error.flatten().fieldErrors,
+				errors: {
+					password: validatedFields.error.flatten().fieldErrors.password?.at(0),
+					username: validatedFields.error.flatten().fieldErrors.username?.at(0),
+				},
 			};
 		}
 
@@ -49,7 +52,7 @@ export async function login(
 		if (!response.ok) {
 			const status = response.status;
 			return {
-				error: await getStatusError(localeFile, status),
+				errors: await getStatusError(localeFile, status),
 			};
 		}
 
@@ -57,7 +60,7 @@ export async function login(
 
 		if (!responseBody.token) {
 			return {
-				error: "No se pudo obtener el token, por favor inténtelo de nuevo.",
+				errors: "No se pudo obtener el token, por favor inténtelo de nuevo.",
 			};
 		}
 
@@ -68,7 +71,7 @@ export async function login(
 		});
 	} catch (err) {
 		return {
-			error: "Hubo un error, por favor inténtelo de nuevo.",
+			errors: "Hubo un error, por favor inténtelo de nuevo.",
 		};
 	}
 }
@@ -100,7 +103,7 @@ export async function logout() {
 export async function getTokenUser(): Promise<User | undefined> {
 	const token = cookies().get(cookiesKeys.token.key);
 	if (!token?.value) {
-		throw Error("Token not found");
+		return;
 	}
 
 	try {

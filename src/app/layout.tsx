@@ -3,6 +3,7 @@ import { Header } from "@/components/header";
 import { Notify } from "@/components/notify";
 import { Providers } from "@/components/providers";
 import { cn } from "@/lib/utils";
+import locale from "@/locales/root.json"
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
@@ -12,8 +13,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Politécnico Madre Rafaela Ybarra",
-	description: "Un lugar de Recreación y visión para el futuro",
+	title: locale.WEBSITE.NAME,
+	description: locale.WEBSITE.DESCRIPTION,
 };
 
 export default function RootLayout({
@@ -25,6 +26,7 @@ export default function RootLayout({
 		<html lang="es-DO">
 			<head>
 				<meta name="theme-color" content="#387040" />
+				<link rel="icon" type="image/x-icon" href="images/icons/favicon.ico" />
 			</head>
 			<body
 				className={cn(

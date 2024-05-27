@@ -1,21 +1,32 @@
 import { getTokenUser } from "@/app/_actions/auth";
 import { type NextRequest, NextResponse } from "next/server";
 
-const middleware = async (request: NextRequest) => {
-	try {
-		const currentUser = await getTokenUser();
-		if (!currentUser) {
-			throw new Error("Is not logged in");
-		}
+import { Ratelimit } from "@upstash/ratelimit";
+import { kv } from "@vercel/kv";
 
-		return NextResponse.next();
-	} catch {
+const ratelimit = new Ratelimit({
+	redis: kv,
+	limiter: Ratelimit.slidingWindow(100, "10 s"),
+});
+
+const middleware = async (request: NextRequest) => {
+	const ip = request.ip ?? "127.0.0.1";
+	const currentUser = await getTokenUser();
+	const { success } = await ratelimit.limit(ip);
+
+	if (!currentUser && request.url.includes("/yupuyup")) {
 		return NextResponse.redirect(new URL("/acceder", request.url));
 	}
+
+	if (!success) {
+		return NextResponse.redirect(new URL("/limit", request.url));
+	}
+
+	return NextResponse.next();
 };
 
 export const config = {
-	matcher: ["/admin/:path*"],
+	matcher: ["/", "/admin/:path*"],
 };
 
 export default middleware;

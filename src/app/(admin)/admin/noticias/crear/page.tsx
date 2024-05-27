@@ -6,7 +6,7 @@ import { Message } from "@/components/message";
 import { ActionModal, SuccessModal, useSuccessModal } from "@/components/modal";
 import { Text } from "@/components/text";
 import useSession from "@/hooks/custom/useSessions";
-import type { SavePostResponse } from "@/types/actions/posts";
+import type { SavePostResponse } from "@/types/actions";
 import {
 	Image,
 	Input,
@@ -34,13 +34,13 @@ function NewPostsPage() {
 		last_updated_at: new Date(),
 		authors: user
 			? [
-					{
-						author_id: user.id,
-						author_name: user.display_name,
-						author_photo_url: user.photo_url,
-						is_creator: true,
-					},
-			  ]
+				{
+					author_id: user.id,
+					author_name: user.display_name,
+					author_photo_url: user.photo_url,
+					is_creator: true,
+				},
+			]
 			: [],
 	});
 
@@ -171,14 +171,14 @@ function NewPostsPage() {
 						</Text>
 					</ActionModal>
 				</div>
-				{response?.isSuccess === false && (
+				{response?.success === false && (
 					<Message className="w-full" variant="solid" color="danger">
 						Hubo un error al subir la noticia, por favor inténtelo de nuevo.
 					</Message>
 				)}
 				<div className="flex flex-col gap-4 py-6 w-full">
 					<div className="flex gap-4">
-						<small>Creador {String(response?.isSuccess)}:</small>
+						<small>Creador {String(response?.success)}:</small>
 						<UserUI
 							name={user.username}
 							description={user.display_name}

@@ -5,7 +5,7 @@ import { Container } from "@/components/container";
 import { Message } from "@/components/message";
 import SubmitButton from "@/components/submit-button";
 import { Text } from "@/components/text";
-import type { LoginResponse } from "@/types/actions/auth";
+import type { LoginResponse } from "@/types/actions";
 import { Input, Link } from "@nextui-org/react";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@nextui-org/shared-icons";
 import { useRouter } from "next/navigation";
@@ -25,7 +25,7 @@ export default function Login() {
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.name === "email") {
-			throw new Error("Email is not allowed, you are a bot?");
+			throw new Error("El email no esta permitido, eres un bot?");
 		}
 
 		event.target.name === "password"
@@ -33,7 +33,7 @@ export default function Login() {
 			: setUsernameError("");
 	};
 	const setErrorsState = (response?: LoginResponse) => {
-		const error = response?.error;
+		const error = response?.errors;
 
 		if (!error) {
 			router.push("/admin");
@@ -120,12 +120,7 @@ export default function Login() {
 					</form>
 					<Text size="paragraph-sm" align="center">
 						Ya he realizado este paso.{" "}
-						<Link
-							underline="hover"
-							href="/admin"
-							showAnchorIcon
-							className="cursor-pointer"
-						>
+						<Link underline="hover" href="/admin" showAnchorIcon>
 							Ir al panel administrativo.
 						</Link>
 					</Text>
