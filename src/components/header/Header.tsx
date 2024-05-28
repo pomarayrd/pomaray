@@ -12,6 +12,7 @@ import {
 	NavbarContent,
 	NavbarMenuToggle,
 	Navbar as NextNavbar,
+	Tooltip,
 } from "@nextui-org/react";
 import { ChevronIcon } from "@nextui-org/shared-icons";
 import Link from "next/link";
@@ -143,16 +144,19 @@ const Header = forwardRef<HTMLDivElement, NavbarProps>(
 							aria-label={isMenuOpen ? "Cerrar menu" : "Abrir menu"}
 							className="lg:hidden"
 						/>
-						<Button
-							as={Link}
-							href={locale.NAVBAR.LINK}
-							className="hidden lg:inline-flex"
-							size="sm"
-							variant="bordered"
-							color="primary"
-						>
-							{locale.NAVBAR.BUTTON}
-						</Button>
+						<Tooltip content="Próximamente.">
+							<Button
+								isDisabled={true}
+								as={Link}
+								href={locale.NAVBAR.LINK}
+								className="hidden lg:inline-flex"
+								size="sm"
+								variant="bordered"
+								color="primary"
+							>
+								{locale.NAVBAR.BUTTON}
+							</Button>
+						</Tooltip>
 					</NavbarContent>
 				</NextNavbar>
 			</div>

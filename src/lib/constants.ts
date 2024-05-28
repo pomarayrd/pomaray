@@ -31,7 +31,7 @@ export const Sex = {
 */
 
 export const API = {
-	url: "http://127.0.0.1:8000",
+	url: "https://pomaray-api.onrender.com",
 	getEndpoint(endpoint: string) {
 		return `${this.url}${endpoint}`;
 	},

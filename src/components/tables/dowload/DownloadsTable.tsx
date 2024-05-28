@@ -20,7 +20,7 @@ import {
 	useState,
 } from "react";
 import { PiDownloadSimpleFill } from "react-icons/pi";
-import { FileIcons } from "./FileIcons";
+import { FileIcons2 } from "./FileIcons";
 import { DeleteIcon } from "@nextui-org/shared-icons";
 import { getFiles } from "@/app/_actions/files";
 
@@ -60,14 +60,14 @@ export function DownloadsTable({ withDelete }: DownloadsTable) {
 	const renderCell = useCallback(
 		(file: DownloadFile, columnKey: Key) => {
 			const cellValue = file[columnKey as keyof DownloadFile];
-			const defaultFileIcon = FileIcons.find(
+			const defaultFileIcon = FileIcons2.find(
 				(icon) => Object.keys(icon)[0] === "default",
 			)?.default as { icon: JSX.Element; color: string };
 
 			switch (columnKey) {
 				case "type": {
 					const iconElement =
-						FileIcons.find((icon) => Object.keys(icon)[0] === cellValue)?.[
+						FileIcons2.find((icon) => Object.keys(icon)[0] === cellValue)?.[
 							cellValue as string
 						] || defaultFileIcon;
 

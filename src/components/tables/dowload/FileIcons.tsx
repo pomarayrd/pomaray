@@ -35,3 +35,10 @@ export const FileIcons: FileIcon[] = [
 	},
 	{ default: { icon: <FaFile />, color: "default-200" } },
 ];
+
+export const FileIcons2: FileIcon[] = [
+	{ ".pdf": { icon: <FaFilePdf />, color: "danger" } },
+	{ ".docx": { icon: <FaFileWord />, color: "blue-600" } },
+	{ ".xlsx": { icon: <FaFileExcel />, color: "success" } },
+	{ default: { icon: <FaFile />, color: "default-200" } },
+];

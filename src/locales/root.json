@@ -36,7 +36,7 @@
 						"TEXT": "Anuario",
 						"LINK": "/estudiantes",
 						"DESCRIPTION": "Conéctate con nosotros para cualquier pregunta, comentario o colaboración.",
-						"IS_DISABLED": false
+						"IS_DISABLED": true
 					},
 					{
 						"TEXT": "Boletín",
@@ -70,7 +70,7 @@
 						"TEXT": "Descargas",
 						"LINK": "/descargas",
 						"DESCRIPTION": "Documentos vitales y recursos del politécnico.",
-						"IS_DISABLED": false
+						"IS_DISABLED": true
 					},
 					{
 						"TEXT": "Contribuidores",

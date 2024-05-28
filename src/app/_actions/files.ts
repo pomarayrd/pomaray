@@ -25,9 +25,9 @@ export async function getFiles(): Promise<FilesResponse> {
 
 		const files: DownloadFile[] = cursor.blobs.map((result) => {
 			return {
-				name: result.pathname.split("/").pop() as string,
+				name: result.pathname.split(".").at(0) as string,
 				path: result.pathname,
-				type: result.pathname.split("/").at(2) as string,
+				type: `.${result.pathname.split(".").at(1)}` as string,
 				date: formatDate(result.uploadedAt),
 				size: formatFileSize(result.size),
 			};
