@@ -70,7 +70,7 @@
 						"TEXT": "Descargas",
 						"LINK": "/descargas",
 						"DESCRIPTION": "Documentos vitales y recursos del politécnico.",
-						"IS_DISABLED": true
+						"IS_DISABLED": false
 					},
 					{
 						"TEXT": "Contribuidores",
