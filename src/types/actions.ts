@@ -1,6 +1,7 @@
 import type { LoginRequest } from "@/types/scheme/auth";
 import type { DownloadFile } from "@/types/scheme/download";
 import type { Post } from "@/types/scheme/posts";
+import type { PutBlobResult } from "@vercel/blob";
 
 export type LoginResponse = {
 	errors?:
@@ -16,7 +17,8 @@ export type FilesResponse = {
 };
 
 export type FileUploadResponse = {
-	url?: string;
+	blob?: PutBlobResult;
+	error?: string;
 };
 
 export type SavePostResponse = {

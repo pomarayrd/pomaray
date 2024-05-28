@@ -2,7 +2,7 @@
 
 import { API } from "@/lib/constants";
 import { fastFetch } from "@/lib/utils";
-import type { SavePostResponse } from "@/types/actions/posts";
+import type { SavePostResponse } from "@/types/actions";
 import { type Post, PostScheme } from "@/types/scheme/posts";
 
 export async function savePost(post: Post): Promise<SavePostResponse> {
@@ -12,13 +12,12 @@ export async function savePost(post: Post): Promise<SavePostResponse> {
 				errors: {
 					authors: "El post parce no tener autores.",
 				},
-				isSuccess: false,
+				success: false,
 			};
 		}
 
 		const validation = PostScheme.safeParse(post);
 		if (!validation.success) {
-			console.log("Validaciones");
 			const validationErrors = validation.error.flatten().fieldErrors;
 			return {
 				errors: {
@@ -38,19 +37,17 @@ export async function savePost(post: Post): Promise<SavePostResponse> {
 		});
 
 		if (!response.ok) {
-			console.log(response.json());
-
 			return {
-				isSuccess: false,
+				success: false,
 			};
 		}
 
 		return {
-			isSuccess: true,
+			success: true,
 		};
 	} catch (err) {
 		return {
-			isSuccess: false,
+			success: false,
 		};
 	}
 }

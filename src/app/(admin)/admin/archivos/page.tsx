@@ -1,8 +1,8 @@
 import { Text } from "@/components/text";
 import Link from "next/link";
-import { Button, Link as NextLink, Tooltip } from "@nextui-org/react";
-import { FaUpload } from "react-icons/fa";
-import { DownloadsTable } from "@/components/table/DownloadsTable";
+import { Link as NextLink } from "@nextui-org/react";
+import { DownloadsTable } from "@/components/tables/dowload/DownloadsTable";
+import { UploadModal } from "./_components/upload-modal";
 
 export default function UploadFilePage() {
 	return (
@@ -19,11 +19,7 @@ export default function UploadFilePage() {
 					</Text>
 				</div>
 				<div>
-					<Tooltip content="Subir un archivo">
-						<Button isIconOnly color="primary" radius="sm">
-							<FaUpload />
-						</Button>
-					</Tooltip>
+					<UploadModal />
 				</div>
 			</section>
 			<section>

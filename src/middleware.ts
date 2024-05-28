@@ -1,4 +1,4 @@
-import { getTokenUser } from "@/app/_actions/auth";
+import { getTokenUserSafe } from "@/app/_actions/auth";
 import { type NextRequest, NextResponse } from "next/server";
 
 import { Ratelimit } from "@upstash/ratelimit";
@@ -11,10 +11,10 @@ const ratelimit = new Ratelimit({
 
 const middleware = async (request: NextRequest) => {
 	const ip = request.ip ?? "127.0.0.1";
-	const currentUser = await getTokenUser();
+	const currentUser = await getTokenUserSafe();
 	const { success } = await ratelimit.limit(ip);
 
-	if (!currentUser && request.url.includes("/yupuyup")) {
+	if (!currentUser && request.url.includes("/admin")) {
 		return NextResponse.redirect(new URL("/acceder", request.url));
 	}
 

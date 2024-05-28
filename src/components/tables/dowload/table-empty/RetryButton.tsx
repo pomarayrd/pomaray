@@ -6,7 +6,7 @@ function RetryButton({ onTry, color }: RetryButtonProps) {
 		<Button
 			size="sm"
 			radius="sm"
-			variant="light"
+			variant="flat"
 			aria-label="Volver a intentarlo"
 			onPress={onTry}
 			color={color}

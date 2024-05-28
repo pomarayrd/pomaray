@@ -1,14 +1,20 @@
+"use server";
+
 import { formatDate, formatFileSize } from "@/lib/format";
-import type { FilesResponse, FileUploadResponse } from "@/types/actions";
+import type { FilesResponse } from "@/types/actions";
 import type { DownloadFile } from "@/types/scheme/download";
-import { put, list } from "@vercel/blob";
+import { put, list, type PutBlobResult } from "@vercel/blob";
+import { revalidatePath } from "next/cache";
 
 export async function uploadFile(
 	fileName: string,
-	file: File,
-): Promise<FileUploadResponse> {
-	const { url } = await put(fileName, file, { access: "public" });
-	return { url };
+	file: File
+): Promise<PutBlobResult> {
+	const blob = await put(fileName, file, {
+		access: "public",
+	});
+	revalidatePath("/");
+	return blob;
 }
 
 export async function getFiles(): Promise<FilesResponse> {
@@ -26,13 +32,8 @@ export async function getFiles(): Promise<FilesResponse> {
 				size: formatFileSize(result.size),
 			};
 		});
-
-		console.log(cursor);
-
 		return { files, isError: false };
 	} catch (err) {
-		console.error(err);
-
 		return {
 			files: [],
 			isError: true,

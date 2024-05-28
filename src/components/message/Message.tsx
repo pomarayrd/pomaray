@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { tv } from "tailwind-variants";
 
 const containerVariant = tv({
-	base: "border-1 rounded-lg w-full gap-2",
+	base: "border-1 rounded-lg w-full gap-2 px-2 py-1",
 	variants: {
 		color: {
 			success: "border-success bg-success/20 text-success",

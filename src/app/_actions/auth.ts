@@ -16,7 +16,7 @@ function getBearer(token: string) {
 }
 
 export async function login(
-	formData: FormData,
+	formData: FormData
 ): Promise<LoginResponse | undefined> {
 	try {
 		const ip = (headers().get("x-forwarded-for") ?? "127.0.0.1").split(",")[0];
@@ -91,7 +91,7 @@ export async function logout() {
 		});
 
 		if (!response.ok) {
-			console.log(`Felid to logout: ${response.json()}`);
+			console.error(`Felid to logout: ${response.json()}`);
 		}
 	} catch (err) {
 	} finally {
@@ -100,10 +100,33 @@ export async function logout() {
 	}
 }
 
-export async function getTokenUser(): Promise<User | undefined> {
+export async function getTokenUserSafe(): Promise<User | undefined> {
 	const token = cookies().get(cookiesKeys.token.key);
 	if (!token?.value) {
 		return;
+	}
+
+	try {
+		const url = API.getEndpoint("/auth");
+
+		const response = await fastFetch(url, "GET", {
+			headers: {
+				authorization: getBearer(token.value),
+			},
+		});
+
+		const body = await response.json();
+
+		return body.user as User;
+	} catch (err) {
+		return;
+	}
+}
+
+export async function getTokenUser(): Promise<User | undefined> {
+	const token = cookies().get(cookiesKeys.token.key);
+	if (!token?.value) {
+		redirect("/acceder");
 	}
 
 	try {
@@ -115,9 +138,10 @@ export async function getTokenUser(): Promise<User | undefined> {
 		});
 
 		const body = await response.json();
+
 		return body.user as User;
 	} catch (err) {
-		return;
+		redirect("/acceder");
 	}
 }
 

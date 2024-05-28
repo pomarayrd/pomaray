@@ -11,12 +11,10 @@ function AdminHeader() {
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
-		const fetchData = async () => getUserSession();
-
-		fetchData();
+		getUserSession();
 	}, []);
 	return (
-		<div className="flex items-center justify-between w-full mt-24">
+		<div className="flex items-center justify-between w-full mt-24 mb-6">
 			<div>
 				{user ? (
 					<UserAvatar user={user} />

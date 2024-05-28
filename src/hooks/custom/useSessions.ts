@@ -15,6 +15,7 @@ const useSession = create<useSessionStore>((set) => ({
 	},
 	getUserSession: async () => {
 		const user = await getTokenUser();
+
 		set({
 			user,
 		});

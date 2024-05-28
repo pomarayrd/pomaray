@@ -29,14 +29,17 @@ function TableEmpty({
 	return (
 		<div className={cn(className, baseClassName)}>
 			{isNotFound ? (
-				<FaSearch className={iconClassName} />
+				<FaSearch className={cn("text-foreground", iconClassName)} />
 			) : (
 				<BiErrorAlt className={cn("text-danger/50", iconClassName)} />
 			)}
 			<Text
 				size="paragraph-sm"
 				align="center"
-				className={cn("max-w-[30ch]", !isNotFound && "text-danger/50")}
+				className={cn(
+					"max-w-[30ch] text-foreground",
+					!isNotFound && "text-danger/50",
+				)}
 			>
 				{isNotFound ? NOT_FOUND : ERROR}
 			</Text>

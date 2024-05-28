@@ -3,7 +3,7 @@ import { Header } from "@/components/header";
 import { Notify } from "@/components/notify";
 import { Providers } from "@/components/providers";
 import { cn } from "@/lib/utils";
-import locale from "@/locales/root.json"
+import locale from "@/locales/root.json";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
@@ -15,6 +15,14 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
 	title: locale.WEBSITE.NAME,
 	description: locale.WEBSITE.DESCRIPTION,
+	category: locale.WEBSITE.CATEGORY,
+	keywords: locale.WEBSITE.TAGS,
+	openGraph: {
+		title: locale.WEBSITE.NAME,
+		description: locale.WEBSITE.DESCRIPTION,
+		images: locale.WEBSITE.BANNER,
+	},
+	metadataBase: new URL("https://pomaray.vercel.app/"),
 };
 
 export default function RootLayout({

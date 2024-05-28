@@ -3,7 +3,7 @@ import i18n from "@/locales/creditos.json";
 import { Divider } from "@nextui-org/divider";
 import G3deon from "@/icons/G3deon";
 
-export default function CreditosContribuidoresPage() {
+export default function ContribuidoresPage() {
 	return (
 		<article className="max-w-5xl mx-auto px-6 sm:px-12 py-4">
 			<div className="flex justify-center">
@@ -152,14 +152,6 @@ export default function CreditosContribuidoresPage() {
 							</p>
 						</div>
 					))}
-				</div>
-			</section>
-
-			<section>
-				<div className="justify-start">
-					<h2 className="sm:text-3xl text-2xl text-balance text-primary py-6 font-bold">
-						{i18n.CONTRIBUTORS_TEAM.TITLE}
-					</h2>
 				</div>
 			</section>
 		</article>

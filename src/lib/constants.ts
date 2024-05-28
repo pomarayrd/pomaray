@@ -1,7 +1,7 @@
 /* 
     # Regex 
 */
-export const injectionRegex = /^[A-Za-z0-9.,_@#]+$/;
+export const injectionRegex = /^[A-Za-z0-9.,_@#*]+$/;
 export const ObjectIdRegex = /\b[0-9a-fA-F]{24}\b/g;
 
 /*  
@@ -31,7 +31,7 @@ export const Sex = {
 */
 
 export const API = {
-	url: "http://127.0.0.1:8000/v1",
+	url: "http://127.0.0.1:8000",
 	getEndpoint(endpoint: string) {
 		return `${this.url}${endpoint}`;
 	},
@@ -39,8 +39,6 @@ export const API = {
 
 export const CONNECTION_ERROR =
 	"No se pudo establecer la conexión. Por favor, verifique si tiene conexión a internet.";
-
-export const FILES_FOLDER = "public/files";
 
 /* 
 	# COOKIES KEYS

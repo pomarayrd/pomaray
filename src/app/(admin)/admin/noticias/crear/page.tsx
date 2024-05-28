@@ -34,13 +34,13 @@ function NewPostsPage() {
 		last_updated_at: new Date(),
 		authors: user
 			? [
-				{
-					author_id: user.id,
-					author_name: user.display_name,
-					author_photo_url: user.photo_url,
-					is_creator: true,
-				},
-			]
+					{
+						author_id: user.id,
+						author_name: user.display_name,
+						author_photo_url: user.photo_url,
+						is_creator: true,
+					},
+			  ]
 			: [],
 	});
 
@@ -78,7 +78,7 @@ function NewPostsPage() {
 	const handleConfirmButton = async () => {
 		const response = await savePost(editPost);
 		setResponse(response);
-		if (response.isSuccess) {
+		if (response.success) {
 			openSuccessModal();
 		}
 	};
@@ -178,7 +178,7 @@ function NewPostsPage() {
 				)}
 				<div className="flex flex-col gap-4 py-6 w-full">
 					<div className="flex gap-4">
-						<small>Creador {String(response?.success)}:</small>
+						<small>Creador:</small>
 						<UserUI
 							name={user.username}
 							description={user.display_name}

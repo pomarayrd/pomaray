@@ -68,7 +68,7 @@ const Header = forwardRef<HTMLDivElement, NavbarProps>(
 						</Link>
 					</NavbarBrand>
 					<NavbarMenu />
-					<NavbarContent justify="center" className="hidden lg:flex">
+					<NavbarContent justify="center" className="hidden lg:flex gap-x-8">
 						{locale.NAVBAR.ITEMS.map((item) => {
 							if (item.LINK) {
 								const itemIsActive = item.LINK === path;

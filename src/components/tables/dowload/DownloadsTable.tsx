@@ -1,6 +1,6 @@
 "use client";
 
-import { TableEmpty } from "@/components/table";
+import { TableEmpty } from "@/components/tables/dowload";
 import locale from "@/locales/download.json";
 import type { DownloadFile } from "@/types/scheme/download";
 import {
@@ -19,7 +19,6 @@ import {
 	useEffect,
 	useState,
 } from "react";
-import { AiOutlineReload } from "react-icons/ai";
 import { PiDownloadSimpleFill } from "react-icons/pi";
 import { FileIcons } from "./FileIcons";
 import { DeleteIcon } from "@nextui-org/shared-icons";
@@ -42,10 +41,11 @@ export function DownloadsTable({ withDelete }: DownloadsTable) {
 		link.download = filePath.split("/").pop() as string;
 		link.click();
 	}
+
 	const fetch = async () => {
 		setIsLoading(true);
 		const response = await getFiles();
-		if (response.files.length > 0) {
+		if (response.files.length <= 0) {
 			setIsNotFound(true);
 		}
 		setFiles(response.files);
@@ -130,25 +130,6 @@ export function DownloadsTable({ withDelete }: DownloadsTable) {
 				wrapper: "bg-transparent px-0",
 				thead: "[&>tr]:first:shadow-sm",
 			}}
-			bottomContent={
-				files?.length &&
-				files.length > 0 &&
-				!isLoading &&
-				!isNotFound && (
-					<div className="flex flex-center w-full">
-						<Button
-							endContent={<AiOutlineReload />}
-							variant="flat"
-							isLoading={isLoading}
-							onPress={fetch}
-							size="sm"
-							radius="sm"
-						>
-							Recargar
-						</Button>
-					</div>
-				)
-			}
 		>
 			<TableHeader columns={columns}>
 				{(column) => <TableColumn key={column.KEY}>{column.TEXT}</TableColumn>}

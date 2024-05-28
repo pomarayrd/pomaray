@@ -9,7 +9,7 @@ import usePostsStore, { INITIAL_PAGE } from "@/hooks/custom/usePosts";
 import { useDebounce } from "@/hooks/useDebounce";
 import { usePagination } from "@/hooks/usePagination";
 import { Divider, Input, Link, Pagination, Switch } from "@nextui-org/react";
-import { type ChangeEvent, useEffect, useState } from "react";
+import { type ChangeEvent, useEffect } from "react";
 import PostCard from "./_componentes/PostCard";
 import PostsSkeleton from "./_componentes/PostsSkeleton";
 

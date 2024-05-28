@@ -14,7 +14,7 @@
 			"innovación educativa",
 			"politécnico"
 		],
-		"BANNER": "assets/images/banner/home.png"
+		"BANNER": "/images/banner/pages/home.png"
 	},
 	"NAVBAR": {
 		"BUTTON": "Enviar excusas",

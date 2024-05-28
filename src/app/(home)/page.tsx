@@ -9,7 +9,6 @@ export default function Home() {
 	return (
 		<Container size="7xl" className="gap-32">
 			<HeroSection />
-			<Marquee />
 			<VideoSection />
 			<CollageSection />
 			<MapSection />
