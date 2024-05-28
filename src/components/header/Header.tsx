@@ -144,18 +144,21 @@ const Header = forwardRef<HTMLDivElement, NavbarProps>(
 							aria-label={isMenuOpen ? "Cerrar menu" : "Abrir menu"}
 							className="lg:hidden"
 						/>
-						<Tooltip content="Próximamente.">
-							<Button
-								isDisabled={true}
-								as={Link}
-								href={locale.NAVBAR.LINK}
-								className="hidden lg:inline-flex"
-								size="sm"
-								variant="bordered"
-								color="primary"
-							>
-								{locale.NAVBAR.BUTTON}
-							</Button>
+						<Tooltip placement="bottom" showArrow content="Próximamente...">
+							<div>
+								<Button
+									isDisabled
+									disableRipple
+									as={Link}
+									href={locale.NAVBAR.LINK}
+									className="hidden lg:inline-flex"
+									size="sm"
+									variant="bordered"
+									color="primary"
+								>
+									{locale.NAVBAR.BUTTON}
+								</Button>
+							</div>
 						</Tooltip>
 					</NavbarContent>
 				</NextNavbar>
